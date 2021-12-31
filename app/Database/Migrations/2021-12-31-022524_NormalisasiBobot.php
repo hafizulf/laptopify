@@ -14,7 +14,7 @@ class NormalisasiBobot extends Migration
       'nilai_normalisasi_bobot INT UNSIGNED NOT NULL DEFAULT "0"',
     ]);
     $this->forge->addKey('id', true);
-    $this->forge->addForeignKey('pembobotan_id', 'pembobotan', 'id');
+    $this->forge->addForeignKey('pembobotan_id', 'pembobotan', 'id', 'CASCADE', 'CASCADE');
     $this->forge->createTable('normalisasi_bobot');
   }
 
