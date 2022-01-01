@@ -27,10 +27,12 @@
                 <div class="form-group">
                   <label for="nama">Nama</label>
                   <input type="text" name="nama" id="nama" class="form-control" placeholder="Nama kriteria..">
+                  <div class="invalid-feedback"></div>
                 </div>
                 <div class="form-group">
                   <label for="jenis">Jenis</label>
                   <input type="text" name="jenis" id="jenis" class="form-control" placeholder="Jenis kriteria..">
+                  <div class="invalid-feedback"></div>
                 </div>
               </div>
               <div class="modal-footer">
@@ -80,12 +82,23 @@
               title: response.message
             })
           } else {
-            alert('no ok')
+            $.each(response.errors, function(key, val) {
+              $('[name="' + key + '"]').addClass('is-invalid')
+              $('[name="' + key + '"]').next().text(val)
+              if (val == '') {
+                $('[name="' + key + '"]').removeClass('is-invalid')
+                $('[name="' + key + '"]').addClass('is-valid')
+              }
+            })
           }
         },
         error: function(xhr, status, error) {
           alert('xhr: ' + xhr.responseText + ' status: ' + status)
         }
+      })
+
+      $('#formTambah input').keyup(function() {
+        $(this).removeClass('is-invalid is-valid')
       })
     })
   })
