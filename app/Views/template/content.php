@@ -89,6 +89,8 @@
   <!-- Custom scripts for all pages-->
   <script src="<?= base_url(); ?>/js/sb-admin-2.min.js"></script>
 
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
   <?= $this->renderSection('custom-js'); ?>
 
 </body>

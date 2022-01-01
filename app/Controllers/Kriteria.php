@@ -32,6 +32,6 @@ class Kriteria extends BaseController
       return $this->response->setJSON(['status' => FALSE, 'errors' => $errors]);
     }
 
-    return $this->response->setJSON(['status' => TRUE, 'msg' => 'ditambahkan']);
+    return $this->response->setJSON(['status' => TRUE, 'message' => 'Data berhasil ditambahkan']);
   }
 }

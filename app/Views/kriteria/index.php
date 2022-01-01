@@ -50,6 +50,14 @@
 
 <?php $this->section('custom-js'); ?>
 <script>
+  const Toast = Swal.mixin({
+    toast: true,
+    position: 'top-end',
+    showConfirmButton: false,
+    timer: 2000,
+    timerProgressBar: true
+  })
+
   $(document).ready(function() {
     $('#formTambah').submit(function(e) {
       e.preventDefault()
@@ -67,7 +75,10 @@
         },
         success: function(response) {
           if (response.status) {
-            alert(response.msg)
+            Toast.fire({
+              icon: 'success',
+              title: response.message
+            })
           } else {
             alert('no ok')
           }
