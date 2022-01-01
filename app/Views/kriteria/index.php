@@ -21,7 +21,7 @@
               </button>
             </div>
 
-            <form action="" method="POST">
+            <form action="" method="POST" id="formTambah">
               <div class="modal-body">
                 <?= csrf_field(); ?>
                 <div class="form-group">
@@ -35,7 +35,7 @@
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-primary"><i class="fas fa fa-save"></i> Simpan</button>
+                <button type="submit" class="btn btn-primary btn-simpan"><i class="fas fa fa-save"></i> Simpan</button>
               </div>
             </form>
           </div>
@@ -51,7 +51,32 @@
 <?php $this->section('custom-js'); ?>
 <script>
   $(document).ready(() => {
-    console.log('ok')
+    $('#formTambah').submit((e) => {
+      e.preventDefault()
+
+      $.ajax({
+        url: "<?= base_url('kriteria/create') ?>",
+        type: $(this).attr('method'),
+        dataType: 'JSON',
+        data: $(this).serialize(),
+        beforeSend: () => {
+          $('.btn-simpan').html('loading.. <span class="spinner-border spinner-border-sm"></span>')
+        },
+        complete: () => {
+          $('.btn-simpan').html('<i class="fas fa fa-save"></i> Simpan')
+        },
+        success: (response) => {
+          if (response.status) {
+            alert('ok')
+          } else {
+            alert('no ok')
+          }
+        },
+        error: (xhr, status, error) => {
+          alert('xhr: '+ xhr.responseText +' status: '+ status)
+        }
+      })
+    })
   })
 </script>
 <?php $this->endSection(); ?>
