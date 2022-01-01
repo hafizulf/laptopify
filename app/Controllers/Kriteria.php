@@ -14,7 +14,7 @@ class Kriteria extends BaseController
 
   public function create()
   {
-    if(!$this->request->isAJAX()) {
+    if (!$this->request->isAJAX()) {
       throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
     }
 
@@ -29,7 +29,9 @@ class Kriteria extends BaseController
         'jenis' => $this->validation->getError('jenis'),
       ];
 
-      echo json_encode(['status' => FALSE, 'errors' => $errors]);
+      return $this->response->setJSON(['status' => FALSE, 'errors' => $errors]);
     }
+
+    return $this->response->setJSON(['status' => TRUE, 'msg' => 'ditambahkan']);
   }
 }

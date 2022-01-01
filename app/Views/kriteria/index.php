@@ -21,7 +21,7 @@
               </button>
             </div>
 
-            <form action="" method="POST" id="formTambah">
+            <form action="/kriteria/create" method="POST" id="formTambah">
               <div class="modal-body">
                 <?= csrf_field(); ?>
                 <div class="form-group">
@@ -50,30 +50,30 @@
 
 <?php $this->section('custom-js'); ?>
 <script>
-  $(document).ready(() => {
-    $('#formTambah').submit((e) => {
+  $(document).ready(function() {
+    $('#formTambah').submit(function(e) {
       e.preventDefault()
 
       $.ajax({
-        url: "<?= base_url('kriteria/create') ?>",
+        url: $(this).attr('action'),
         type: $(this).attr('method'),
         dataType: 'JSON',
         data: $(this).serialize(),
-        beforeSend: () => {
+        beforeSend: function() {
           $('.btn-simpan').html('loading.. <span class="spinner-border spinner-border-sm"></span>')
         },
-        complete: () => {
+        complete: function() {
           $('.btn-simpan').html('<i class="fas fa fa-save"></i> Simpan')
         },
-        success: (response) => {
+        success: function(response) {
           if (response.status) {
-            alert('ok')
+            alert(response.msg)
           } else {
             alert('no ok')
           }
         },
-        error: (xhr, status, error) => {
-          alert('xhr: '+ xhr.responseText +' status: '+ status)
+        error: function(xhr, status, error) {
+          alert('xhr: ' + xhr.responseText + ' status: ' + status)
         }
       })
     })
