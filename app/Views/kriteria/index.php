@@ -81,6 +81,8 @@
               icon: 'success',
               title: response.message
             })
+
+            $('#modalBoxTambah').modal('toggle')
           } else {
             $.each(response.errors, function(key, val) {
               $('[name="' + key + '"]').addClass('is-invalid')
