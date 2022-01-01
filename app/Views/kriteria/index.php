@@ -14,19 +14,30 @@
       <div class="modal fade" id="modalBoxTambah" tabindex="-1" role="dialog" aria-labelledby="modalBoxTambahTitle" aria-hidden="true">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title">Modal title</h5>
+            <div class="modal-header badge-primary">
+              <h5 class="modal-title">Tambah <?= $judul; ?></h5>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
-            <div class="modal-body">
-              Body
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary">Save</button>
-            </div>
+
+            <form action="" method="POST">
+              <div class="modal-body">
+                <?= csrf_field(); ?>
+                <div class="form-group">
+                  <label for="nama">Nama</label>
+                  <input type="text" name="nama" id="nama" class="form-control" placeholder="Nama kriteria..">
+                </div>
+                <div class="form-group">
+                  <label for="jenis">Jenis</label>
+                  <input type="text" name="jenis" id="jenis" class="form-control" placeholder="Jenis kriteria..">
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary"><i class="fas fa fa-save"></i> Simpan</button>
+              </div>
+            </form>
           </div>
         </div>
       </div>
