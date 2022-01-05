@@ -140,7 +140,7 @@
       })
     }
 
-    const requestAjax = function(form, dataTarget) {
+    const requestSaveData = function(form, dataTarget, viewDataFunc) {
       $.ajax({
         url: form.attr('action'),
         type: form.attr('method'),
@@ -153,6 +153,7 @@
         success: function(response) {
           if (response.status) {
             toastSuccess(dataTarget, response)
+            viewDataFunc() // reloading view..
           } else {
             errorValidation(response)
           }
@@ -163,6 +164,16 @@
       })
 
       removeClasses()
+    }
+
+    const requestGetData = function(url) {
+      $.ajax({
+        url: '' + url + '',
+        dataType: 'JSON',
+        success: function(response) {
+          $('.view-data').html(response)
+        }
+      })
     }
   </script>
 

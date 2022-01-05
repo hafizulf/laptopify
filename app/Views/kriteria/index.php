@@ -56,26 +56,21 @@
 <?php $this->section('custom-js'); ?>
 <script>
   $(document).ready(function() {
-    const formTambah = $('#formTambah')
+    // requesting & view data
+    const viewData = function() {
+      requestGetData('/kriteria/getData')
+    }
+    viewData()
 
+    const formTambah = $('#formTambah')
     formTambah.submit(function(e) {
       e.preventDefault()
 
       let dataTarget = $('.btn-tambah').data('target')
-      requestAjax(formTambah, dataTarget)
+      requestSaveData(formTambah, dataTarget, viewData)
 
       removeClasses('#formTambah')
     })
-
-    // requesting view data
-    $.ajax({
-      url: "<?= base_url('kriteria/getData') ?>",
-      dataType: "JSON",
-      success: function(response) {
-        $(".view-data").html(response)
-      }
-    })
-
   })
 </script>
 <?php $this->endSection(); ?>

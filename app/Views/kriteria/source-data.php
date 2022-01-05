@@ -1,5 +1,5 @@
 <div class="row mt-4">
-  <div class="col-md-8">
+  <div class="col-md-12">
     <table class="table table-bordered">
       <thead>
         <th>No.</th>
