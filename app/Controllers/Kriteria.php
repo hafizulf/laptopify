@@ -7,6 +7,11 @@ use App\Models\Kriteria as KriteriaModel;
 
 class Kriteria extends BaseController
 {
+  public function __construct()
+  {
+    $this->model = new KriteriaModel();
+  }
+
   public function index()
   {
     $data['judul'] = 'Data Kriteria';
@@ -33,13 +38,20 @@ class Kriteria extends BaseController
       return $this->response->setJSON(['status' => FALSE, 'errors' => $errors]);
     }
 
-    $model = new KriteriaModel();
-
-    $model->save([
+    $this->model->save([
       'nama' => $this->request->getPost('nama'),
       'jenis' => $this->request->getPost('jenis'),
     ]);
 
     return $this->response->setJSON(['status' => TRUE, 'message' => 'Data berhasil ditambahkan']);
+  }
+
+  public function getData()
+  {
+    if (!$this->request->isAJAX()) {
+      throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
+    }
+    $data['kriteria'] = $this->model->findAll();
+    echo json_encode(view('kriteria/source-data', $data));
   }
 }

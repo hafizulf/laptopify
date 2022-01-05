@@ -140,9 +140,7 @@
       })
     }
 
-    const requestAjax = function(form) {
-      let dataTarget = $('.btn-tambah').data('target')
-
+    const requestAjax = function(form, dataTarget) {
       $.ajax({
         url: form.attr('action'),
         type: form.attr('method'),

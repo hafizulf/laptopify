@@ -10,6 +10,9 @@
 
       <button class="btn btn-primary btn-tambah" data-toggle="modal" data-target="#modalBoxTambah"><i class="fas fa fa-plus"></i> Tambah data</button>
 
+      <!-- request data -->
+      <div class="view-data"></div>
+
       <!-- Modal -->
       <div class="modal fade" id="modalBoxTambah" tabindex="-1" role="dialog" aria-labelledby="modalBoxTambahTitle" aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -54,13 +57,25 @@
 <script>
   $(document).ready(function() {
     const formTambah = $('#formTambah')
-    const formTambahString = '#formTambah'
 
     formTambah.submit(function(e) {
       e.preventDefault()
-      requestAjax(formTambah)
-      removeClasses(formTambahString)
+
+      let dataTarget = $('.btn-tambah').data('target')
+      requestAjax(formTambah, dataTarget)
+
+      removeClasses('#formTambah')
     })
+
+    // requesting view data
+    $.ajax({
+      url: "<?= base_url('kriteria/getData') ?>",
+      dataType: "JSON",
+      success: function(response) {
+        $(".view-data").html(response)
+      }
+    })
+
   })
 </script>
 <?php $this->endSection(); ?>
