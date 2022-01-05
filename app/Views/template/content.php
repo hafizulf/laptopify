@@ -91,6 +91,77 @@
 
   <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
+  <script>
+    const Toast = Swal.mixin({
+      toast: true,
+      position: 'top-end',
+      showConfirmButton: false,
+      timer: 2000,
+      timerProgressBar: true
+    })
+
+    const beforeSendAction = function() {
+      $('.btn-simpan').html('loading.. <span class="spinner-border spinner-border-sm"></span>')
+    }
+
+    const completeAction = function() {
+      $('.btn-simpan').html('<i class="fas fa fa-save"></i> Simpan')
+    }
+
+    const toastSuccess = function(type, response) {
+      Toast.fire({
+        icon: 'success',
+        title: response.message
+      })
+
+      $(type).modal('toggle')
+    }
+
+    const errorValidation = function(response) {
+      $.each(response.errors, function(key, val) {
+        $('[name="' + key + '"]').addClass('is-invalid')
+        $('[name="' + key + '"]').next().text(val)
+        if (val == '') {
+          $('[name="' + key + '"]').removeClass('is-invalid')
+          $('[name="' + key + '"]').addClass('is-valid')
+        }
+      })
+    }
+
+    const removeClasses = function(string) {
+      $(string + ' input').keyup(function() {
+        $(this).removeClass('is-invalid is-valid')
+      })
+    }
+
+    const requestAjax = function(form) {
+      let dataTarget = $('.btn-tambah').data('target')
+
+      $.ajax({
+        url: form.attr('action'),
+        type: form.attr('method'),
+        dataType: 'JSON',
+        data: form.serialize(),
+        beforeSend: beforeSendAction(),
+        complete: function() {
+          completeAction()
+        },
+        success: function(response) {
+          if (response.status) {
+            toastSuccess(dataTarget, response)
+          } else {
+            errorValidation(response)
+          }
+        },
+        error: function() {
+          alert('xhr: ' + xhr.responseText + ' status: ' + status)
+        }
+      })
+
+      removeClasses()
+    }
+  </script>
+
   <?= $this->renderSection('custom-js'); ?>
 
 </body>
