@@ -100,6 +100,12 @@
       timerProgressBar: true
     })
 
+    $('.modal').on('show.bs.modal', function() {
+      $('.formSubmit')[0].reset()
+      $(".is-valid").removeClass("is-valid");
+      $(".is-invalid").removeClass("is-invalid")
+    })
+
     const beforeSendAction = function() {
       $('.btn-simpan').html('loading.. <span class="spinner-border spinner-border-sm"></span>')
     }
@@ -128,8 +134,8 @@
       })
     }
 
-    const removeClasses = function(string) {
-      $(string + ' input').keyup(function() {
+    const removeClasses = function(form) {
+      $(form + ' input').keyup(function() {
         $(this).removeClass('is-invalid is-valid')
       })
     }

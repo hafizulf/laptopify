@@ -21,7 +21,7 @@
               </button>
             </div>
 
-            <form action="/kriteria/create" method="POST" id="formTambah">
+            <form action="/kriteria/create" method="POST" class="formSubmit" id="formTambah">
               <div class="modal-body">
                 <?= csrf_field(); ?>
                 <div class="form-group">
@@ -53,13 +53,13 @@
 <?php $this->section('custom-js'); ?>
 <script>
   $(document).ready(function() {
-    const form = $('#formTambah')
-    const formString = String('#formTambah')
+    const formTambah = $('#formTambah')
+    const formTambahString = '#formTambah'
 
-    form.submit(function(e) {
+    formTambah.submit(function(e) {
       e.preventDefault()
-      requestAjax(form)
-      removeClasses(formString)
+      requestAjax(formTambah)
+      removeClasses(formTambahString)
     })
   })
 </script>
