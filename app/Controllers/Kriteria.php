@@ -61,4 +61,31 @@ class Kriteria extends BaseController
     $data = $this->model->find($id);
     echo json_encode($data);
   }
+
+  public function update()
+  {
+    $id = $this->request->getPost('id');
+    $nama = $this->request->getPost('nama');
+
+    $data = $this->model->find($id);
+    $rules = ($data['nama'] == $nama ? 'required' : 'required|is_unique[kriteria.nama]');
+
+    $rules = [
+      'nama' => $rules,
+      'jenis' => 'required'
+    ];
+
+    $isValidated = $this->myHelper->fieldValidation($rules, $this);
+    if ($isValidated !== TRUE) {
+      return $this->response->setJSON(['status' => FALSE, 'errors' => $isValidated]);
+    }
+
+    $this->model->save([
+      'id' => $id,
+      'nama' => $nama,
+      'jenis' => $this->request->getPost('jenis'),
+    ]);
+
+    return $this->response->setJSON(['status' => TRUE, 'message' => 'Data berhasil diperbarui']);
+  }
 }

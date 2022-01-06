@@ -63,7 +63,7 @@
               </button>
             </div>
 
-            <form action="/kriteria/create" class="formSubmit" id="formTambah">
+            <form action="/kriteria/create" method="POST" class="formSubmit" id="formTambah">
               <div class="modal-body">
                 <?= csrf_field(); ?>
                 <div class="form-group">
@@ -97,7 +97,7 @@
               </button>
             </div>
 
-            <form action="/kriteria/update" class="formSubmit" id="formUbah">
+            <form action="/kriteria/update" method="POST" class="formSubmit" id="formUbah">
               <div class="modal-body">
                 <?= csrf_field(); ?>
                 <input type="hidden" name="id" id="id_ubah">
@@ -146,6 +146,15 @@
 
     $('.btn-ubah').on('click', function(e) {
       requestGetDataById('/kriteria/getDataById')
+    })
+
+    const formUbah = $('#formUbah')
+    formUbah.submit(function(e) {
+      e.preventDefault()
+
+      requestSaveData(formUbah, '#modalBoxUbah')
+
+      removeClasses('#formUbah')
     })
   })
 </script>

@@ -153,7 +153,7 @@
       }, 2000)
     }
 
-    const requestSaveData = function(form, dataTarget) {
+    const requestSaveData = function(form, ...values) {
       $.ajax({
         url: form.attr('action'),
         type: form.attr('method'),
@@ -165,7 +165,7 @@
         },
         success: function(response) {
           if (response.status) {
-            toastSuccess(response, dataTarget)
+            toastSuccess(response, values[0])
             reload()
           } else {
             errorValidation(response)
