@@ -9,6 +9,8 @@ use CodeIgniter\HTTP\RequestInterface;
 use CodeIgniter\HTTP\ResponseInterface;
 use Psr\Log\LoggerInterface;
 
+use PageNotFound;
+
 /**
  * Class BaseController
  *
@@ -35,19 +37,23 @@ class BaseController extends Controller
      *
      * @var array
      */
-    protected $helpers = [];
+    protected $helpers = ['PageNotFound'];
 
     /**
      * Constructor.
      */
     public function initController(RequestInterface $request, ResponseInterface $response, LoggerInterface $logger)
     {
-        // Do Not Edit This Line
-        parent::initController($request, $response, $logger);
+    // Do Not Edit This Line
+    parent::initController($request, $response, $logger);
 
-        // Preload any models, libraries, etc, here.
+    // Preload any models, libraries, etc, here.
 
-        // E.g.: $this->session = \Config\Services::session();
+    // E.g.: $this->session = \Config\Services::session();
     $this->validation =  \Config\Services::validation();
+
+    // redirect to 404 page not found [helper]
+    $this->pnf = new PageNotFound();
+
     }
 }
