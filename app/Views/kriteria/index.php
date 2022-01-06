@@ -106,8 +106,7 @@
     })
 
     $('.btn-hapus').on('click', function() {
-      const data = $('.checkbox:checked').serialize()
-      requestDeleteData('/kriteria/delete', data)
+      requestDeleteData('/kriteria/delete')
     })
   })
 </script>

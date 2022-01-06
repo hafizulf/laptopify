@@ -179,7 +179,9 @@
       removeClasses()
     }
 
-    const requestDeleteData = function(url, data) {
+    const requestDeleteData = function(url) {
+      const data = $('.checkbox:checked').serialize()
+
       if (data.length < 1) {
         Swal.fire({
           icon: 'error',
