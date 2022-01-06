@@ -9,8 +9,7 @@ use CodeIgniter\HTTP\RequestInterface;
 use CodeIgniter\HTTP\ResponseInterface;
 use Psr\Log\LoggerInterface;
 
-use PageNotFound;
-use FormValidator;
+use Laptopify;
 
 /**
  * Class BaseController
@@ -24,27 +23,27 @@ use FormValidator;
  */
 class BaseController extends Controller
 {
-    /**
-     * Instance of the main Request object.
-     *
-     * @var CLIRequest|IncomingRequest
-     */
-    protected $request;
+  /**
+   * Instance of the main Request object.
+   *
+   * @var CLIRequest|IncomingRequest
+   */
+  protected $request;
 
-    /**
-     * An array of helpers to be loaded automatically upon
-     * class instantiation. These helpers will be available
-     * to all other controllers that extend BaseController.
-     *
-     * @var array
-     */
-    protected $helpers = ['PageNotFound', 'FormValidator'];
+  /**
+   * An array of helpers to be loaded automatically upon
+   * class instantiation. These helpers will be available
+   * to all other controllers that extend BaseController.
+   *
+   * @var array
+   */
+  protected $helpers = ['Laptopify'];
 
-    /**
-     * Constructor.
-     */
-    public function initController(RequestInterface $request, ResponseInterface $response, LoggerInterface $logger)
-    {
+  /**
+   * Constructor.
+   */
+  public function initController(RequestInterface $request, ResponseInterface $response, LoggerInterface $logger)
+  {
     // Do Not Edit This Line
     parent::initController($request, $response, $logger);
 
@@ -54,8 +53,6 @@ class BaseController extends Controller
     $this->validation =  \Config\Services::validation();
 
     // redirect to 404 page not found [helper]
-    $this->pnf = new PageNotFound();
-    $this->formValidator = new FormValidator();
-
-    }
+    $this->myHelper = new Laptopify();
+  }
 }
