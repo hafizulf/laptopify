@@ -63,7 +63,7 @@
               </button>
             </div>
 
-            <form action="/kriteria/create" method="POST" class="formSubmit" id="formTambah">
+            <form action="/kriteria/create" class="formSubmit" id="formTambah">
               <div class="modal-body">
                 <?= csrf_field(); ?>
                 <div class="form-group">
@@ -74,6 +74,41 @@
                 <div class="form-group">
                   <label for="jenis">Jenis</label>
                   <input type="text" name="jenis" id="jenis" class="form-control" placeholder="Jenis kriteria..">
+                  <div class="invalid-feedback"></div>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary btn-simpan"><i class="fas fa fa-save"></i> Simpan</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <!-- Modal Ubah -->
+      <div class="modal fade" id="modalBoxUbah" tabindex="-1" role="dialog" aria-labelledby="modalBoxUbahTitle" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header badge-primary">
+              <h5 class="modal-title">Ubah <?= $judul; ?></h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+
+            <form action="/kriteria/update" class="formSubmit" id="formUbah">
+              <div class="modal-body">
+                <?= csrf_field(); ?>
+                <input type="hidden" name="id" id="id_ubah">
+                <div class="form-group">
+                  <label for="nama_ubah">Nama</label>
+                  <input type="text" name="nama" id="nama_ubah" class="form-control" placeholder="Nama kriteria..">
+                  <div class="invalid-feedback"></div>
+                </div>
+                <div class="form-group">
+                  <label for="jenis_ubah">Jenis</label>
+                  <input type="text" name="jenis" id="jenis_ubah" class="form-control" placeholder="Jenis kriteria..">
                   <div class="invalid-feedback"></div>
                 </div>
               </div>
@@ -107,6 +142,10 @@
 
     $('.btn-hapus').on('click', function() {
       requestDeleteData('/kriteria/delete')
+    })
+
+    $('.btn-ubah').on('click', function(e) {
+      requestGetDataById('/kriteria/getDataById')
     })
   })
 </script>

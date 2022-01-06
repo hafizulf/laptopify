@@ -179,15 +179,19 @@
       removeClasses()
     }
 
+    const warnEmptyData = function() {
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Tidak ada data yang terpilih!',
+      })
+    }
+
     const requestDeleteData = function(url) {
       const data = $('.checkbox:checked').serialize()
 
       if (data.length < 1) {
-        Swal.fire({
-          icon: 'error',
-          title: 'Oops...',
-          text: 'Tidak ada data yang terpilih!',
-        })
+        warnEmptyData()
       } else {
         Swal.fire({
           title: 'Apakah anda yakin?',
@@ -213,6 +217,37 @@
               error: function(xhr, ajaxOptions, thrownError) {
                 alert(xhr.status + "\n" + xhr.responseText + "\n" + thrownError)
               }
+            })
+          }
+        })
+      }
+    }
+
+    const requestGetDataById = function(url) {
+      let checked = $('.checkbox:checked')
+      let id = checked.val()
+
+      if (checked.length < 1) {
+        warnEmptyData()
+      } else if (checked.length > 1) {
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Silahkan pilih 1 data saja yang ingin diperbarui!',
+        })
+      } else {
+        $('#modalBoxUbah').modal('toggle')
+
+        $.ajax({
+          url: '' + url + '',
+          type: 'POST',
+          data: {
+            id: id
+          },
+          dataType: 'JSON',
+          success: function(response) {
+            $.each(response, function(key, val) {
+              $('[name="' + key + '"]').val(val)
             })
           }
         })
