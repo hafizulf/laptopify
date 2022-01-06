@@ -8,8 +8,6 @@
 
       <h1 class="text-gray-900"><?= $judul; ?></h1>
 
-      <button class="btn btn-primary btn-tambah" data-toggle="modal" data-target="#modalBoxTambah"><i class="fas fa fa-plus"></i> Tambah data</button>
-
       <!-- request data -->
       <div class="view-data"></div>
 
