@@ -18,6 +18,24 @@ class Kriteria extends BaseController
     return view('kriteria/index', $data);
   }
 
+  protected function fieldValidation($rules)
+  {
+    $rulesSize = count($rules);
+    $rulesConverted = array_keys($rules);
+
+    if (!$this->validate($rules)) {
+      $errors = [];
+
+      for ($i = 0; $i < $rulesSize; $i++) {
+        $errors[$rulesConverted[$i]] = $this->validation->getError($rulesConverted[$i]);
+      }
+
+      return $errors;
+    } else {
+      return TRUE;
+    }
+  }
+
   public function create()
   {
     if (!$this->request->isAJAX()) {
@@ -29,13 +47,10 @@ class Kriteria extends BaseController
       'jenis' => 'required',
     ];
 
-    if (!$this->validate($rules)) {
-      $errors  = [
-        'nama' => $this->validation->getError('nama'),
-        'jenis' => $this->validation->getError('jenis'),
-      ];
+    $isValidated = $this->fieldValidation($rules);
 
-      return $this->response->setJSON(['status' => FALSE, 'errors' => $errors]);
+    if ($isValidated !== TRUE) {
+      return $this->response->setJSON(['status' => FALSE, 'errors' => $isValidated]);
     }
 
     $this->model->save([
