@@ -93,6 +93,10 @@
   <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
   <script>
+    $('#checkboxes').on('click', function() {
+      $(this).is(':checked') ? $('.checkbox').prop('checked', true) : $('.checkbox').prop('checked', false)
+    })
+
     const Toast = Swal.mixin({
       toast: true,
       position: 'top-end',
