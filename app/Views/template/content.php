@@ -119,13 +119,15 @@
       $('.btn-simpan').html('<i class="fas fa fa-save"></i> Simpan')
     }
 
-    const toastSuccess = function(type, response) {
+    const toastSuccess = function(response, type = '') {
       Toast.fire({
         icon: 'success',
         title: response.message
       })
 
-      $(type).modal('toggle')
+      if (type != '') {
+        $(type).modal('toggle')
+      }
     }
 
     const errorValidation = function(response) {
@@ -145,7 +147,13 @@
       })
     }
 
-    const requestSaveData = function(form, dataTarget, viewDataFunc) {
+    const reload = function() {
+      setTimeout(function() {
+        location.reload()
+      }, 2000)
+    }
+
+    const requestSaveData = function(form, dataTarget) {
       $.ajax({
         url: form.attr('action'),
         type: form.attr('method'),
@@ -157,8 +165,8 @@
         },
         success: function(response) {
           if (response.status) {
-            toastSuccess(dataTarget, response)
-            viewDataFunc() // reloading view..
+            toastSuccess(response, dataTarget)
+            reload()
           } else {
             errorValidation(response)
           }
@@ -169,6 +177,44 @@
       })
 
       removeClasses()
+    }
+
+    const requestDeleteData = function(url, data) {
+      if (data.length < 1) {
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Tidak ada data yang terpilih!',
+        })
+      } else {
+        Swal.fire({
+          title: 'Apakah anda yakin?',
+          text: `anda akan menghapus data.`,
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'Ya, Hapus!'
+        }).then((result) => {
+          if (result.isConfirmed) {
+            $.ajax({
+              url: '' + url + '',
+              type: 'POST',
+              data: data,
+              dataType: 'JSON',
+              success: function(response) {
+                if (response.status) {
+                  toastSuccess(response)
+                  reload()
+                }
+              },
+              error: function(xhr, ajaxOptions, thrownError) {
+                alert(xhr.status + "\n" + xhr.responseText + "\n" + thrownError)
+              }
+            })
+          }
+        })
+      }
     }
   </script>
 

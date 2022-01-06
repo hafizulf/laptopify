@@ -100,9 +100,14 @@
       e.preventDefault()
 
       let dataTarget = $('.btn-tambah').data('target')
-      requestSaveData(formTambah, dataTarget, viewData)
+      requestSaveData(formTambah, dataTarget)
 
       removeClasses('#formTambah')
+    })
+
+    $('.btn-hapus').on('click', function() {
+      const data = $('.checkbox:checked').serialize()
+      requestDeleteData('/kriteria/delete', data)
     })
   })
 </script>
