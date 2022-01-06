@@ -14,8 +14,14 @@
 
   <!-- Heading -->
   <div class="sidebar-heading">
-    Interface
+    Menu
   </div>
+
+  <li class="nav-item <?= url_is('/kriteria') ? 'active' : '' ?>">
+    <a class="nav-link" href="/kriteria">
+      <i class="fas fa-fw fa-table"></i>
+      <span>Kriteria</span></a>
+  </li>
 
   <!-- Nav Item - Pages Collapse Menu -->
   <li class="nav-item">
@@ -30,13 +36,6 @@
         <a class="collapse-item" href="cards.html">Cards</a>
       </div>
     </div>
-  </li>
-
-  <!-- Nav Item - Charts -->
-  <li class="nav-item">
-    <a class="nav-link" href="charts.html">
-      <i class="fas fa-fw fa-chart-area"></i>
-      <span>Charts</span></a>
   </li>
 
   <!-- Divider -->
