@@ -166,16 +166,6 @@
 
       removeClasses()
     }
-
-    const requestGetData = function(url) {
-      $.ajax({
-        url: '' + url + '',
-        dataType: 'JSON',
-        success: function(response) {
-          $('.view-data').html(response)
-        }
-      })
-    }
   </script>
 
   <?= $this->renderSection('custom-js'); ?>

@@ -14,7 +14,11 @@ class Kriteria extends BaseController
 
   public function index()
   {
-    $data['judul'] = 'Data Kriteria';
+    $data = [
+      'judul' => 'Data Kriteria',
+      'kriteria' => $this->model->findAll(),
+    ];
+
     return view('kriteria/index', $data);
   }
 
@@ -38,13 +42,5 @@ class Kriteria extends BaseController
     ]);
 
     return $this->response->setJSON(['status' => TRUE, 'message' => 'Data berhasil ditambahkan']);
-  }
-
-  public function getData()
-  {
-    $this->myHelper->checkAjaxRequest($this);
-
-    $data['kriteria'] = $this->model->findAll();
-    echo json_encode(view('kriteria/source-data', $data));
   }
 }
