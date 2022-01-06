@@ -38,9 +38,7 @@ class Kriteria extends BaseController
 
   public function create()
   {
-    if (!$this->request->isAJAX()) {
-      throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
-    }
+    $this->pnf->checkAjaxRequest($this); // check ajax request? return page not found
 
     $rules = [
       'nama' => 'required',
@@ -63,9 +61,8 @@ class Kriteria extends BaseController
 
   public function getData()
   {
-    if (!$this->request->isAJAX()) {
-      throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
-    }
+    $this->pnf->checkAjaxRequest($this);
+
     $data['kriteria'] = $this->model->findAll();
     echo json_encode(view('kriteria/source-data', $data));
   }
