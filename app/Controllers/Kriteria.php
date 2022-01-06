@@ -45,7 +45,7 @@ class Kriteria extends BaseController
       'jenis' => 'required',
     ];
 
-    $isValidated = $this->fieldValidation($rules);
+    $isValidated = $this->formValidator->fieldValidation($rules, $this);
 
     if ($isValidated !== TRUE) {
       return $this->response->setJSON(['status' => FALSE, 'errors' => $isValidated]);

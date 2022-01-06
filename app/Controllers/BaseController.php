@@ -10,6 +10,7 @@ use CodeIgniter\HTTP\ResponseInterface;
 use Psr\Log\LoggerInterface;
 
 use PageNotFound;
+use FormValidator;
 
 /**
  * Class BaseController
@@ -37,7 +38,7 @@ class BaseController extends Controller
      *
      * @var array
      */
-    protected $helpers = ['PageNotFound'];
+    protected $helpers = ['PageNotFound', 'FormValidator'];
 
     /**
      * Constructor.
@@ -54,6 +55,7 @@ class BaseController extends Controller
 
     // redirect to 404 page not found [helper]
     $this->pnf = new PageNotFound();
+    $this->formValidator = new FormValidator();
 
     }
 }
