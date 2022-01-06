@@ -52,7 +52,6 @@ class BaseController extends Controller
     // E.g.: $this->session = \Config\Services::session();
     $this->validation =  \Config\Services::validation();
 
-    // redirect to 404 page not found [helper]
     $this->myHelper = new Laptopify();
   }
 }
