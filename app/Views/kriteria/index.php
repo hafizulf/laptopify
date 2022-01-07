@@ -38,7 +38,9 @@
                     <?php endforeach; ?>
                   <?php else : ?>
                     <tr>
-                      <td colspan="2" class="text-gray-900 text-center">Data belum ada</td>
+                      <td colspan="3" class="text-gray-900 text-center">
+                        <h3>DATA BELUM ADA</h3>
+                      </td>
                     </tr>
                   <?php endif; ?>
                 </tbody>
@@ -48,9 +50,6 @@
 
         </div>
       </div>
-
-      <!-- request data -->
-      <div class="view-data"></div>
 
       <!-- Modal -->
       <div class="modal fade" id="modalBoxTambah" tabindex="-1" role="dialog" aria-labelledby="modalBoxTambahTitle" aria-hidden="true">
@@ -134,8 +133,7 @@
     formTambah.submit(function(e) {
       e.preventDefault()
 
-      let dataTarget = $('.btn-tambah').data('target')
-      requestSaveData(formTambah, dataTarget)
+      requestSaveData(formTambah, '#modalBoxTambah')
 
       removeClasses('#formTambah')
     })
