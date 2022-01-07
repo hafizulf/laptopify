@@ -58,6 +58,8 @@ class Kriteria extends BaseController
 
   public function update()
   {
+    $this->myHelper->checkAjaxRequest($this);
+
     $data = [
       'id' => $this->request->getPost('id'),
       'nama' => $this->request->getPost('nama'),
