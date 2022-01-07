@@ -134,10 +134,6 @@
       $.each(response.errors, function(key, val) {
         $('[name="' + key + '"]').addClass('is-invalid')
         $('[name="' + key + '"]').next().text(val)
-        if (val == '') {
-          $('[name="' + key + '"]').removeClass('is-invalid')
-          $('[name="' + key + '"]').addClass('is-valid')
-        }
       })
     }
 

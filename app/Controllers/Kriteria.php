@@ -24,24 +24,18 @@ class Kriteria extends BaseController
 
   public function create()
   {
-    $this->myHelper->checkAjaxRequest($this); // check ajax request? return page not found
+    $this->myHelper->checkAjaxRequest($this);
 
-    $rules = [
-      'nama' => 'required',
-      'jenis' => 'required',
-    ];
-
-    $isValidated = $this->myHelper->fieldValidation($rules, $this);
-    if ($isValidated !== TRUE) {
-      return $this->response->setJSON(['status' => FALSE, 'errors' => $isValidated]);
-    }
-
-    $this->model->save([
+    $data = [
       'nama' => $this->request->getPost('nama'),
       'jenis' => $this->request->getPost('jenis'),
-    ]);
+    ];
 
-    return $this->response->setJSON(['status' => TRUE, 'message' => 'Data berhasil ditambahkan']);
+    if ($this->model->save($data) === FALSE) {
+      return $this->response->setJSON(['status' => FALSE, 'errors' => $this->model->errors()]);
+    } else {
+      return $this->response->setJSON(['status' => TRUE, 'message' => 'Data berhasil ditambahkan']);
+    }
   }
 
   public function delete()
@@ -64,28 +58,16 @@ class Kriteria extends BaseController
 
   public function update()
   {
-    $id = $this->request->getPost('id');
-    $nama = $this->request->getPost('nama');
-
-    $data = $this->model->find($id);
-    $rules = ($data['nama'] == $nama ? 'required' : 'required|is_unique[kriteria.nama]');
-
-    $rules = [
-      'nama' => $rules,
-      'jenis' => 'required'
+    $data = [
+      'id' => $this->request->getPost('id'),
+      'nama' => $this->request->getPost('nama'),
+      'jenis' => $this->request->getPost('jenis'),
     ];
 
-    $isValidated = $this->myHelper->fieldValidation($rules, $this);
-    if ($isValidated !== TRUE) {
-      return $this->response->setJSON(['status' => FALSE, 'errors' => $isValidated]);
+    if ($this->model->save($data) === FALSE) {
+      return $this->response->setJSON(['status' => FALSE, 'errors' => $this->model->errors()]);
+    } else {
+      return $this->response->setJSON(['status' => TRUE, 'message' => 'Data berhasil diperbarui']);
     }
-
-    $this->model->save([
-      'id' => $id,
-      'nama' => $nama,
-      'jenis' => $this->request->getPost('jenis'),
-    ]);
-
-    return $this->response->setJSON(['status' => TRUE, 'message' => 'Data berhasil diperbarui']);
   }
 }
