@@ -119,15 +119,21 @@
       $('.btn-simpan').html('<i class="fas fa fa-save"></i> Simpan')
     }
 
-    const toastSuccess = function(response, type = '') {
+    const toastSuccess = function(response, dataTarget = '') {
       Toast.fire({
         icon: 'success',
         title: response.message
       })
 
-      if (type != '') {
-        $(type).modal('toggle')
+      if (dataTarget != '') {
+        $(dataTarget).modal('toggle')
       }
+    }
+
+    const reload = function() {
+      setTimeout(function() {
+        location.reload()
+      }, 2000)
     }
 
     const errorValidation = function(response) {
@@ -141,12 +147,6 @@
       $(form + ' input').keyup(function() {
         $(this).removeClass('is-invalid is-valid')
       })
-    }
-
-    const reload = function() {
-      setTimeout(function() {
-        location.reload()
-      }, 2000)
     }
 
     const requestSaveData = function(form, ...values) {
