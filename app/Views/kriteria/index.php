@@ -49,9 +49,6 @@
         </div>
       </div>
 
-      <!-- request data -->
-      <div class="view-data"></div>
-
       <!-- Modal -->
       <div class="modal fade" id="modalBoxTambah" tabindex="-1" role="dialog" aria-labelledby="modalBoxTambahTitle" aria-hidden="true">
         <div class="modal-dialog" role="document">
