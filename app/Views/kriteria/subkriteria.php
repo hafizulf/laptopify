@@ -3,7 +3,7 @@
 <?php $this->section('content') ?>
 <div class="section">
   <div class="row">
-    <div class="col-md-8">
+    <div class="col-md-12">
 
       <h1 class="text-gray-900"><?= $judul; ?></h1>
 
@@ -16,7 +16,7 @@
               <button class="btn btn-success btn-ubah"><i class="fas fa fa-edit"></i> Ubah</button>
             </div>
             <div class="card-body">
-              <table class="table table-bordered table-main">
+              <table class="table table-bordered table-subkriteria">
                 <thead>
                   <th>
                     <input type="checkbox" id="checkboxes">
@@ -28,16 +28,26 @@
                 </thead>
                 <tbody>
                   <?php if ($subkriteria) : ?>
-                    <?php foreach ($subkriteria as $key => $row) : ?>
+                    <?php $nomor = 1; ?>
+                    <?php foreach ($subkriteria->getResultArray() as $key => $row) : ?>
                       <tr>
                         <td>
                           <input type="checkbox" name="id[]" class="checkbox" value="<?= $row['id']; ?>">
                         </td>
-                        <td><?= $key + 1; ?></td>
-                        <td><?= $row['kriteria_id']; ?></td>
+
+                        <?php if ($rowspan[$row['nama_kriteria']]['printed'] == 'yes') : ?>
+                          <td rowspan="<?= $rowspan[$row['nama_kriteria']]['rowspan'] ?>"><?= $nomor; ?></td>
+                          <td rowspan="<?= $rowspan[$row['nama_kriteria']]['rowspan'] ?>"><?= ucwords($row['nama_kriteria']); ?></td>
+
+                          <?php $rowspan[$row['nama_kriteria']]['printed'] = 'no' ?>
+                        <?php else : ?>
+                          <?php $nomor -= 1; ?>
+                        <?php endif; ?>
+
                         <td><?= $row['nama']; ?></td>
                         <td><?= $row['nilai_preferensi']; ?></td>
                       </tr>
+                      <?php $nomor++ ?>
                     <?php endforeach; ?>
                   <?php else : ?>
                     <tr>
