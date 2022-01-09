@@ -13,4 +13,9 @@ class Kriteria extends Model
     'nama' => 'required|is_unique[kriteria.nama, id, {id}]',
     'jenis' => 'required'
   ];
+
+  public function getQualitativeBenefitCriteria()
+  {
+    // query
+  }
 }

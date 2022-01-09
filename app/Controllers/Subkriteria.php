@@ -4,12 +4,14 @@ namespace App\Controllers;
 
 use App\Controllers\BaseController;
 use App\Models\Subkriteria as SubkriteriaModel;
+use App\Models\Kriteria as KriteriaModel;
 
 class Subkriteria extends BaseController
 {
   public function __construct()
   {
     $this->model = new SubkriteriaModel();
+    $this->kriteriaModel = new KriteriaModel();
   }
 
   public function getRowSpan(array $data)
@@ -48,5 +50,14 @@ class Subkriteria extends BaseController
     ];
 
     return view('kriteria/subkriteria', $data);
+  }
+
+  public function create_page()
+  {
+    $data = [
+      'kriteria' => $this->kriteriaModel->getQualitativeBenefitCriteria(),
+    ];
+
+    return view('kriteria/create-subkriteria', $data);
   }
 }

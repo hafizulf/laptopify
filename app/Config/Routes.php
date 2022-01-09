@@ -34,6 +34,7 @@ $routes->setAutoRoute(true);
 $routes->get('/', 'Home::index');
 $routes->get('/kriteria', 'Kriteria::index');
 $routes->get('/sub-kriteria', 'Subkriteria::index');
+$routes->get('/sub-kriteria/create', 'Subkriteria::create_page');
 
 /*
  * --------------------------------------------------------------------
