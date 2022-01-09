@@ -29,6 +29,7 @@ class Kriteria extends BaseController
     $data = [
       'nama' => $this->request->getPost('nama'),
       'jenis' => $this->request->getPost('jenis'),
+      'data_kuantitatif' => $this->request->getPost('data_kuantitatif'),
     ];
 
     if ($this->model->save($data) === FALSE) {
@@ -64,6 +65,7 @@ class Kriteria extends BaseController
       'id' => $this->request->getPost('id'),
       'nama' => $this->request->getPost('nama'),
       'jenis' => $this->request->getPost('jenis'),
+      'data_kuantitatif' => $this->request->getPost('data_kuantitatif'),
     ];
 
     if ($this->model->save($data) === FALSE) {

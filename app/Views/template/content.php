@@ -109,6 +109,7 @@
       $('.formSubmit')[0].reset()
       $(".is-valid").removeClass("is-valid");
       $(".is-invalid").removeClass("is-invalid")
+      $('.evolution').remove('')
     })
 
     const beforeSendAction = function() {
@@ -145,6 +146,10 @@
 
     const removeClasses = function(form) {
       $(form + ' input').keyup(function() {
+        $(this).removeClass('is-invalid is-valid')
+      })
+
+      $(form + ' select').click(function() {
         $(this).removeClass('is-invalid is-valid')
       })
     }
@@ -219,6 +224,48 @@
       }
     }
 
+    const updateJenisKriteriaOption = function(key, val) {
+      const jenis = ['cc', 'bc']
+
+      for (let i = 0; i < jenis.length; i++) {
+        const value = jenis[i] == 'bc' ? 'Benefit Criteria' : 'Cost Criteria'
+
+        if (jenis[i] == val) {
+          $('[name="' + key + '"]').append(`<option value="${jenis[i]}" selected class="evolution">${value}</option>`);
+        } else {
+          $('[name="' + key + '"]').append(`<option value="${jenis[i]}" class="evolution">${value}</option>`);
+        }
+      }
+    }
+
+    const updateDataKuantitatifKriteriaOption = function(key, val) {
+      const dataKuantitatif = [1, 0] // true or false
+
+      for (let i = 0; i < dataKuantitatif.length; i++) {
+        const value = dataKuantitatif[i] == 1 ? 'Kuantitatif' : 'Kualitatif'
+
+        if (dataKuantitatif[i] == val) {
+          $('[name="' + key + '"]').append(`<option value="${dataKuantitatif[i]}" selected class="evolution">${value}</option>`);
+        } else {
+          $('[name="' + key + '"]').append(`<option value="${dataKuantitatif[i]}" class="evolution">${value}</option>`);
+        }
+      }
+    }
+
+    const selectTagAction = function(key, val) {
+      switch (key) {
+        case 'jenis':
+          updateJenisKriteriaOption(key, val)
+          break;
+
+        case 'data_kuantitatif':
+          updateDataKuantitatifKriteriaOption(key, val)
+          break;
+        default:
+          break;
+      }
+    }
+
     const requestGetDataById = function(url) {
       let checked = $('.checkbox:checked')
       let id = checked.val()
@@ -244,6 +291,11 @@
           success: function(response) {
             $.each(response, function(key, val) {
               $('[name="' + key + '"]').val(val)
+
+              // select option
+              if ($('[name="' + key + '"]').prop("tagName") == "SELECT") {
+                selectTagAction(key, val)
+              }
             })
           }
         })

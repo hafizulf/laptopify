@@ -8,10 +8,15 @@ li {
   text-align: center;
 }
 
+.table-kriteria>thead>tr>th,
 .table-subkriteria>thead>tr>th,
 .table-subkriteria>tbody>tr>td:nth-child(1),
 .table-subkriteria>tbody>tr>td:nth-child(2) {
   text-align: center;
+}
+
+.table-kriteria>tbody>tr>td:nth-child(3) {
+  text-align: left;
 }
 
 .bg-gradient-primary {
