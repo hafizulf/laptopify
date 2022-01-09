@@ -13,18 +13,18 @@ class Kriteria extends Seeder
   public function run()
   {
     $data = [
-      ['nama' => 'harga', 'jenis' => 'cc'],
-      ['nama' => 'rating_produk', 'jenis' => 'bc'],
-      ['nama' => 'merk', 'jenis' => 'bc'],
-      ['nama' => 'prosesor', 'jenis' => 'bc'],
-      ['nama' => 'kapasitas_ram', 'jenis' => 'bc'],
-      ['nama' => 'tipe_penyimpanan', 'jenis' => 'bc'],
-      ['nama' => 'kapasitas_penyimpanan', 'jenis' => 'bc'],
-      ['nama' => 'ukuran_layar', 'jenis' => 'bc'],
-      ['nama' => 'kartu_grafis', 'jenis' => 'bc'],
-      ['nama' => 'sistem_operasi', 'jenis' => 'bc'],
-      ['nama' => 'masa_garansi', 'jenis' => 'bc'],
-      ['nama' => 'kondisi_produk', 'jenis' => 'bc'],
+      ['nama' => 'harga', 'jenis' => 'cc', 'data_kuantitatif' => 1],
+      ['nama' => 'rating_produk', 'jenis' => 'bc', 'data_kuantitatif' => 0],
+      ['nama' => 'merk', 'jenis' => 'bc', 'data_kuantitatif' => 0],
+      ['nama' => 'prosesor', 'jenis' => 'bc', 'data_kuantitatif' => 0],
+      ['nama' => 'kapasitas_ram', 'jenis' => 'bc', 'data_kuantitatif' => 1],
+      ['nama' => 'tipe_penyimpanan', 'jenis' => 'bc', 'data_kuantitatif' => 0],
+      ['nama' => 'kapasitas_penyimpanan', 'jenis' => 'bc', 'data_kuantitatif' => 1],
+      ['nama' => 'ukuran_layar', 'jenis' => 'bc', 'data_kuantitatif' => 0],
+      ['nama' => 'kartu_grafis', 'jenis' => 'bc', 'data_kuantitatif' => 0],
+      ['nama' => 'sistem_operasi', 'jenis' => 'bc', 'data_kuantitatif' => 0],
+      ['nama' => 'masa_garansi', 'jenis' => 'bc', 'data_kuantitatif' => 0],
+      ['nama' => 'kondisi_produk', 'jenis' => 'bc', 'data_kuantitatif' => 0],
     ];
 
     // Simple Queries
