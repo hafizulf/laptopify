@@ -23,17 +23,15 @@
       <span>Kriteria</span></a>
   </li>
 
-  <!-- Nav Item - Pages Collapse Menu -->
-  <li class="nav-item">
-    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-      <i class="fas fa-fw fa-cog"></i>
-      <span>Components</span>
+  <li class="nav-item <?= url_is('sub-kriteria') || url_is('sub-kriteria/create') ? 'active' : '' ?>">
+    <a class="pt-0 nav-link collapsed" href="#" data-toggle="collapse" data-target="#subkriteriaCollapse" aria-expanded="true" aria-controls="subkriteriaCollapse">
+      <i class="fas fa-fw fa-table"></i>
+      <span>Sub Kriteria</span>
     </a>
-    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+    <div id="subkriteriaCollapse" class="collapse" data-parent="#accordionSidebar">
       <div class="bg-white py-2 collapse-inner rounded">
-        <h6 class="collapse-header">Custom Components:</h6>
-        <a class="collapse-item" href="buttons.html">Buttons</a>
-        <a class="collapse-item" href="cards.html">Cards</a>
+        <a class="collapse-item" href="/sub-kriteria">Master Data</a>
+        <a class="collapse-item" href="/sub-kriteria/create">Create</a>
       </div>
     </div>
   </li>
