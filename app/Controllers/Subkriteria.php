@@ -60,4 +60,9 @@ class Subkriteria extends BaseController
 
     return view('kriteria/create-subkriteria', $data);
   }
+
+  public function create()
+  {
+    //
+  }
 }

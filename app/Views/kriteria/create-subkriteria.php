@@ -32,6 +32,13 @@
 
 <?php $this->section('custom-js') ?>
 <script>
+  $(window).keydown(function(event) {
+    if (event.keyCode == 13) {
+      event.preventDefault();
+      return false;
+    }
+  });
+
   const tambahSub = function() {
     const jumlahSub = $('#jumlahSk').val()
 
@@ -41,12 +48,13 @@
 
       let skSection = ''
       for (let i = 0; i < jumlahSub; i++) {
+        let number = i + 1
         skSection += `
-      <div class="form-group">
-        <label for="sk${i}">Sub Kriteria - ${i}</label>
-        <input type="text" class="form-control" name="subkriteria${i}" id="sk${i}" placeholder="Nama sub kriteria..">
-      </div>
-      `
+        <div class="form-group">
+          <label for="sk${i}">Sub Kriteria - ${number}</label>
+          <input type="text" class="form-control" name="subkriteria${i}" id="sk${i}" placeholder="Nama sub kriteria..">
+        </div>
+        `
       }
       $('.subkriteria-section').html(skSection)
 
