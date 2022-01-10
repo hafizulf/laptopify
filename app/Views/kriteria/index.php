@@ -169,7 +169,7 @@
     })
 
     $('.btn-ubah').on('click', function(e) {
-      requestGetDataById('/kriteria/getDataById')
+      requestGetDataById('/kriteria/getDataById', 'kriteria')
     })
 
     const formUbah = $('#formUbah')

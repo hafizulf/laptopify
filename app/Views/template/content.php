@@ -154,7 +154,7 @@
       })
     }
 
-    const requestSaveData = function(form, ...values) {
+    const requestSaveData = function(form, ...params) {
       $.ajax({
         url: form.attr('action'),
         type: form.attr('method'),
@@ -166,7 +166,7 @@
         },
         success: function(response) {
           if (response.status) {
-            toastSuccess(response, values[0])
+            toastSuccess(response, params[0])
             reload()
           } else {
             errorValidation(response)
@@ -224,49 +224,39 @@
       }
     }
 
-    const updateJenisKriteriaOption = function(key, val) {
-      const jenis = ['cc', 'bc']
+    const updateKriteriaOption = function(key, val) {
+      let arr = []
+      key == 'jenis' ? arr = ['cc', 'bc'] : arr = [1, 0]
 
-      for (let i = 0; i < jenis.length; i++) {
-        const value = jenis[i] == 'bc' ? 'Benefit Criteria' : 'Cost Criteria'
+      let jenisVal = ''
+      let dkVal = ''
+      for (let i = 0; i < arr.length; i++) {
+        if (key == 'jenis') {
+          jenisVal = arr[i] == 'bc' ? 'Benefit Criteria' : 'Cost Criteria'
+        } else if (key == 'data_kuantitatif') {
+          dkVal = arr[i] == 1 ? 'Kuantitatif' : 'Kualitatif'
+        }
 
-        if (jenis[i] == val) {
-          $('[name="' + key + '"]').append(`<option value="${jenis[i]}" selected class="evolution">${value}</option>`);
+        let optionValue = key == 'jenis' ? jenisVal : dkVal
+        if (arr[i] == val) {
+          $('[name="' + key + '"]').append(`<option value="${arr[i]}" selected class="evolution">${optionValue}</option>`);
         } else {
-          $('[name="' + key + '"]').append(`<option value="${jenis[i]}" class="evolution">${value}</option>`);
+          $('[name="' + key + '"]').append(`<option value="${arr[i]}" class="evolution">${optionValue}</option>`);
         }
       }
     }
 
-    const updateDataKuantitatifKriteriaOption = function(key, val) {
-      const dataKuantitatif = [1, 0] // true or false
-
-      for (let i = 0; i < dataKuantitatif.length; i++) {
-        const value = dataKuantitatif[i] == 1 ? 'Kuantitatif' : 'Kualitatif'
-
-        if (dataKuantitatif[i] == val) {
-          $('[name="' + key + '"]').append(`<option value="${dataKuantitatif[i]}" selected class="evolution">${value}</option>`);
-        } else {
-          $('[name="' + key + '"]').append(`<option value="${dataKuantitatif[i]}" class="evolution">${value}</option>`);
-        }
-      }
-    }
-
-    const selectTagAction = function(key, val) {
-      switch (key) {
-        case 'jenis':
-          updateJenisKriteriaOption(key, val)
-          break;
-
-        case 'data_kuantitatif':
-          updateDataKuantitatifKriteriaOption(key, val)
+    const selectTagAction = function(key, val, type) {
+      switch (type) {
+        case 'kriteria':
+          updateKriteriaOption(key, val)
           break;
         default:
           break;
       }
     }
 
-    const requestGetDataById = function(url) {
+    const requestGetDataById = function(url, ...params) {
       let checked = $('.checkbox:checked')
       let id = checked.val()
 
@@ -294,7 +284,7 @@
 
               // select option
               if ($('[name="' + key + '"]').prop("tagName") == "SELECT") {
-                selectTagAction(key, val)
+                selectTagAction(key, val, params[0])
               }
             })
           }
