@@ -55,6 +55,7 @@ class Subkriteria extends BaseController
   public function create_page()
   {
     $data = [
+      'judul' => 'Subkriteria - Tambah Data',
       'kriteria' => $this->kriteriaModel->getQualitativeBenefitCriteria(),
     ];
 
