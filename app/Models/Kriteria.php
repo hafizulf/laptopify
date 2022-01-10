@@ -17,6 +17,8 @@ class Kriteria extends Model
 
   public function getQualitativeBenefitCriteria()
   {
-    // query
+    return $this->db->query(
+      "SELECT * FROM " . $this->table . " WHERE jenis = 'bc' AND data_kuantitatif = 0"
+    );
   }
 }

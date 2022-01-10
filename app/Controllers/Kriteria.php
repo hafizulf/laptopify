@@ -26,8 +26,9 @@ class Kriteria extends BaseController
   {
     $this->myHelper->checkAjaxRequest($this);
 
+    $nama = ucwords($this->request->getPost('nama'));
     $data = [
-      'nama' => $this->request->getPost('nama'),
+      'nama' => $nama,
       'jenis' => $this->request->getPost('jenis'),
       'data_kuantitatif' => $this->request->getPost('data_kuantitatif'),
     ];
@@ -61,9 +62,10 @@ class Kriteria extends BaseController
   {
     $this->myHelper->checkAjaxRequest($this);
 
+    $nama = ucwords($this->request->getPost('nama'));
     $data = [
       'id' => $this->request->getPost('id'),
-      'nama' => $this->request->getPost('nama'),
+      'nama' => $nama,
       'jenis' => $this->request->getPost('jenis'),
       'data_kuantitatif' => $this->request->getPost('data_kuantitatif'),
     ];

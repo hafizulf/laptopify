@@ -37,7 +37,7 @@
 
                         <?php if ($rowspan[$row['nama_kriteria']]['printed'] == 'yes') : ?>
                           <td rowspan="<?= $rowspan[$row['nama_kriteria']]['rowspan'] ?>"><?= $nomor; ?></td>
-                          <td rowspan="<?= $rowspan[$row['nama_kriteria']]['rowspan'] ?>"><?= ucwords($row['nama_kriteria']); ?></td>
+                          <td rowspan="<?= $rowspan[$row['nama_kriteria']]['rowspan'] ?>"><?= $row['nama_kriteria']; ?></td>
 
                           <?php $rowspan[$row['nama_kriteria']]['printed'] = 'no' ?>
                         <?php else : ?>
