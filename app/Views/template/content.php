@@ -137,11 +137,23 @@
       }, 2000)
     }
 
-    const errorValidation = function(response) {
-      $.each(response.errors, function(key, val) {
+    const errorValidation = function(errors) {
+      $.each(errors, function(key, val) {
         $('[name="' + key + '"]').addClass('is-invalid')
         $('[name="' + key + '"]').next().text(val)
       })
+    }
+
+    const errorValidationArr = function(errors) {
+      let errorsSection = ''
+      $.each(errors, function(key, val) {
+        errorsSection += `
+        <div class="alert alert-danger" role="alert">
+          ${val}
+        </div>
+        `
+      })
+      $('.errors-section').html(errorsSection)
     }
 
     const removeClasses = function(form) {
@@ -169,15 +181,14 @@
             toastSuccess(response, params[0])
             reload()
           } else {
-            errorValidation(response)
+            const errors = response.errors
+            params[1] === 'has array' ? errorValidationArr(errors) : errorValidation(errors)
           }
         },
         error: function(xhr, ajaxOptions, thrownError) {
           alert(xhr.status + "\n" + xhr.responseText + "\n" + thrownError)
         }
       })
-
-      removeClasses()
     }
 
     const warnEmptyData = function() {

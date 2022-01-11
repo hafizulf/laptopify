@@ -64,6 +64,26 @@ class Subkriteria extends BaseController
 
   public function create()
   {
-    //
+    $kriteria_id = $this->request->getPost('kriteria_id');
+    $nama = $this->request->getPost('nama');
+    $nilai_preferensi = $this->request->getPost('nilai_preferensi');
+    $jumlahSk = $this->request->getPost('jumlahsk');
+
+    $batchData = [];
+    for ($i = 0; $i < $jumlahSk; $i++) {
+      $data = [
+        'kriteria_id' => $kriteria_id,
+        'nama' => $nama[$i],
+        'nilai_preferensi' => $nilai_preferensi[$i],
+      ];
+
+      array_push($batchData, $data);
+    }
+
+    if ($this->model->saveSubkriteria($batchData) === FALSE) {
+      return $this->response->setJSON(['status' => FALSE, 'errors' => $this->model->errors()]);
+    } else {
+      return $this->response->setJSON(['status' => TRUE, 'message' => 'Data berhasil ditambahkan']);
+    }
   }
 }
