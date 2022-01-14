@@ -110,6 +110,10 @@
 
       removeClasses('#formTambah')
     })
+
+    $('.btn-hapus').on('click', function() {
+      requestDeleteData('/bobot/delete')
+    })
   })
 </script>
 <?= $this->endSection(); ?>
