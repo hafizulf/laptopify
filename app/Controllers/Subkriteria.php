@@ -113,6 +113,12 @@ class Subkriteria extends BaseController
       'nilai_preferensi' => $this->request->getPost('nilai_preferensi'),
     ];
 
+    $this->model->setValidationRules([
+      'kriteria_id' => 'required',
+      'nama' => 'required|is_unique[sub_kriteria.nama, id, {id}]',
+      'nilai_preferensi' => 'required|is_numeric',
+    ]);
+
     if ($this->model->save($data) === FALSE) {
       return $this->response->setJSON(['status' => FALSE, 'errors' => $this->model->errors()]);
     } else {
