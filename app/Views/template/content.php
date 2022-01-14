@@ -280,7 +280,11 @@
           text: 'Silahkan pilih 1 data saja yang ingin diperbarui!',
         })
       } else {
-        $('#modalBoxUbah').modal('toggle')
+        $('#modalBoxUbah').modal({
+          toggle: true,
+          backdrop: 'static',
+          keyboard: false
+        })
 
         $.ajax({
           url: '' + url + '',
