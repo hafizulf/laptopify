@@ -46,7 +46,7 @@ class Kriteria extends BaseController
 
     $ids = $this->request->getPost('id');
     $this->model->whereIn('id', $ids)->delete();
-    echo json_encode(['status' => TRUE, 'message' => 'Data berhasil dihapus']);
+    return $this->response->setJSON(['status' => TRUE, 'message' => 'Data berhasil dihapus']);
   }
 
   public function getDataById()
@@ -55,7 +55,7 @@ class Kriteria extends BaseController
 
     $id = $this->request->getPost('id');
     $data = $this->model->find($id);
-    echo json_encode($data);
+    return $this->response->setJSON($data);
   }
 
   public function update()

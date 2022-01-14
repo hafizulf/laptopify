@@ -95,4 +95,28 @@ class Subkriteria extends BaseController
     $this->model->whereIn('id', $ids)->delete();
     return $this->response->setJSON(['status' => TRUE, 'message' => 'Data berhasil dihapus']);
   }
+
+  public function getDataById()
+  {
+    $id = $this->request->getPost('id');
+    $data = $this->model->findSubkriteriaById($id);
+    return $this->response->setJSON($data);
+  }
+
+  public function update()
+  {
+    $this->myHelper->checkAjaxRequest($this);
+
+    $data = [
+      'id' => $this->request->getPost('id'),
+      'nama' => $this->request->getPost('nama'),
+      'nilai_preferensi' => $this->request->getPost('nilai_preferensi'),
+    ];
+
+    if ($this->model->save($data) === FALSE) {
+      return $this->response->setJSON(['status' => FALSE, 'errors' => $this->model->errors()]);
+    } else {
+      return $this->response->setJSON(['status' => TRUE, 'message' => 'Data berhasil diperbarui']);
+    }
+  }
 }

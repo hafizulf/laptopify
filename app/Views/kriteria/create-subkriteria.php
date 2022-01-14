@@ -28,6 +28,7 @@
         </div>
         <div class="card-body">
           <form action="/subkriteria/create" method="post" id="formTambah">
+            <?= csrf_field(); ?>
             <div class="form-group">
               <label for="kriteria">Kriteria</label>
               <select name="kriteria_id" id="kriteria" class="form-control">

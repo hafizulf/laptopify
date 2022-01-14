@@ -64,6 +64,41 @@
         </div>
       </div>
 
+      <!-- Modal Ubah -->
+      <div class="modal fade" id="modalBoxUbah" tabindex="-1" role="dialog" aria-labelledby="modalBoxUbahTitle" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header badge-primary">
+              <h5 class="modal-title">Ubah <?= $judul; ?></h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+
+            <form action="/subkriteria/update" method="POST" class="formSubmit" id="formUbah">
+              <div class="modal-body">
+                <?= csrf_field(); ?>
+                <input type="hidden" name="id" id="id_ubah">
+                <div class="form-group">
+                  <label for="nama_ubah">Nama</label>
+                  <input type="text" name="nama" id="nama_ubah" class="form-control" placeholder="Sub kriteria..">
+                  <div class="invalid-feedback"></div>
+                </div>
+                <div class="form-group">
+                  <label for="nilai_preferensi_ubah">Nilai Preferensi</label>
+                  <input type="text" name="nilai_preferensi" id="nilai_preferensi_ubah" class="form-control" placeholder="Sub kriteria..">
+                  <div class="invalid-feedback"></div>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary btn-simpan"><i class="fas fa fa-save"></i> Simpan</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
 </div>
@@ -77,6 +112,18 @@
       requestDeleteData('/subkriteria/delete')
     })
 
+    $('.btn-ubah').on('click', function(e) {
+      requestGetDataById('/subkriteria/getDataById')
+    })
+
+    const formUbah = $('#formUbah')
+    formUbah.submit(function(e) {
+      e.preventDefault()
+
+      requestSaveData(formUbah, '#modalBoxUbah')
+
+      removeClasses(formUbah)
+    })
   })
 </script>
 

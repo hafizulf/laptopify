@@ -36,6 +36,13 @@ class Subkriteria extends Model
     );
   }
 
+  public function findSubkriteriaById($id)
+  {
+    return $this->db->query(
+      "SELECT id, nama, nilai_preferensi FROM " . $this->table . " WHERE id = $id"
+    )->getRowArray();
+  }
+
   public function saveSubkriteria($data)
   {
     $this->db->disableForeignKeyChecks();
