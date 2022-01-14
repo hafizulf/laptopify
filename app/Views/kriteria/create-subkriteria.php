@@ -4,7 +4,24 @@
 <div class="section">
   <div class="row">
     <div class="col-md-10">
+
       <h1 class="text-gray-900 mt-2 mb-4"><?= $judul; ?></h1>
+
+      <div class="card-shadow">
+        <div class="card-body badge-info">
+          <h6>Catatan</h6>
+          <hr>
+          <ul>
+            <li>
+              <p>Isi jumlah sub kriteria yang diinginkan sesuai dengan kriteria yang ada</p>
+            </li>
+            <li>
+              <p>Isi nilai preferensi yang berbeda untuk masing-masing sub kriteria, sesuai dengan tingkat kepentingan yang diprioritaskan. Contoh: dengan pola bilangan ganjil 1-9, berikan nilai tertinggi untuk sub kriteria yang di anggap penting (<span class="text-sm text-danger">Pastikan nilai tidak ada yang sama, untuk mendapatkan hasil yang optimal</span>)</p>
+            </li>
+          </ul>
+        </div>
+      </div>
+
       <div class="card shadow">
         <div class="card-header">
           <div class="errors-section"></div>
@@ -61,10 +78,10 @@
         let number = i + 1
         subkriteriaSection += `
         <div class="form-group row">
-          <div class="col-10">
+          <div class="col-8">
             <input type="text" class="form-control" name="nama[]" id="sk${i}" placeholder="Nama sub kriteria..">
           </div>
-          <div class="col-2">
+          <div class="col-4">
             <input type="text" class="form-control" name="nilai_preferensi[]" id="np${i}" placeholder="Nilai..">
           </div>
         </div>

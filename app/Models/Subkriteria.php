@@ -17,7 +17,7 @@ class Subkriteria extends Model
 
   protected $validationMessages = [
     "kriteria_id" => [
-      "required" => "Kriteria wajib diisi",
+      "required" => "Kriteria wajib dipilih",
     ],
     "nama.*" => [
       "required" => "Sub kriteria wajib diisi",
