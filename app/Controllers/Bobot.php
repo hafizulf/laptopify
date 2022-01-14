@@ -18,6 +18,7 @@ class Bobot extends BaseController
   {
     $data = [
       'judul' => 'Pembobotan',
+      'bobot' => $this->model->findAllBobot(),
       'kriteria' => $this->kriteriaModel->getCriteria(),
     ];
     return view('bobot/index', $data);

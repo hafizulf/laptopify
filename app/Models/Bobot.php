@@ -17,4 +17,11 @@ class Bobot extends Model
       'required' => 'wajib dipilih.'
     ]
   ];
+
+  public function findAllBobot()
+  {
+    return $this->db->query(
+      "SELECT k.nama as nama_kriteria, p.* FROM " . $this->table . " AS p JOIN kriteria AS k ON p.kriteria_id = k.id"
+    );
+  }
 }

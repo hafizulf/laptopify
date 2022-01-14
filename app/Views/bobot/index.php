@@ -9,7 +9,7 @@
       <h1 class="text-gray-900"><?= $judul; ?></h1>
 
       <div class="row mt-4">
-        <div class="col-md-12">
+        <div class="col-md-8">
           <div class="card shadow">
             <div class="card-header">
               <button class="btn btn-primary btn-tambah" data-toggle="modal" data-target="#modalBoxTambah" data-backdrop="static" data-keyboard="false"><i class="fas fa fa-plus"></i> Tambah</button>
@@ -23,8 +23,28 @@
                     <input type="checkbox" id="checkboxes">
                   </th>
                   <th>No.</th>
+                  <th>Kriteria</th>
+                  <th>Nilai Bobot</th>
                 </thead>
                 <tbody>
+                  <?php if ($bobot) : ?>
+                    <?php foreach ($bobot->getResultArray() as $key => $row) : ?>
+                      <tr>
+                        <td>
+                          <input type="checkbox" name="id[]" class="checkbox" value="<?= $row['id']; ?>">
+                        </td>
+                        <td><?= $key + 1; ?></td>
+                        <td><?= $row['nama_kriteria']; ?></td>
+                        <td><?= $row['nilai_bobot']; ?></td>
+                      </tr>
+                    <?php endforeach; ?>
+                  <?php else : ?>
+                    <tr>
+                      <td colspan="3" class="text-gray-900 text-center">
+                        <h3>DATA BELUM ADA</h3>
+                      </td>
+                    </tr>
+                  <?php endif; ?>
                 </tbody>
               </table>
             </div>
