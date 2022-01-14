@@ -98,6 +98,8 @@ class Subkriteria extends BaseController
 
   public function getDataById()
   {
+    $this->myHelper->checkAjaxRequest($this);
+
     $id = $this->request->getPost('id');
     $data = $this->model->findSubkriteriaById($id);
     return $this->response->setJSON($data);
