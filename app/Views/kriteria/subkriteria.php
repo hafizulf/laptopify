@@ -68,3 +68,16 @@
   </div>
 </div>
 <?php $this->endSection(); ?>
+
+<?php $this->section('custom-js'); ?>
+<script>
+  $(document).ready(function() {
+
+    $('.btn-hapus').on('click', function() {
+      requestDeleteData('/subkriteria/delete')
+    })
+
+  })
+</script>
+
+<?php $this->endSection(); ?>
