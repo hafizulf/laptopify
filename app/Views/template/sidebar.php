@@ -17,23 +17,15 @@
     Menu
   </div>
 
-  <li class="nav-item <?= url_is('/kriteria') ? 'active' : '' ?>">
-    <a class="nav-link" href="/kriteria">
+  <li class="nav-item <?= url_is('/kriteria') || url_is('sub-kriteria') || url_is('sub-kriteria/create') ? 'active' : '' ?>">
+    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#kriteriaCollapse" aria-expanded="true" aria-controls="kriteriaCollapse">
       <i class="fas fa-fw fa-table"></i>
-      <span>Kriteria</span></a>
-  </li>
-
-  <!-- Nav Item - Pages Collapse Menu -->
-  <li class="nav-item">
-    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-      <i class="fas fa-fw fa-cog"></i>
-      <span>Components</span>
+      <span>Kriteria</span>
     </a>
-    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+    <div id="kriteriaCollapse" class="collapse" data-parent="#accordionSidebar">
       <div class="bg-white py-2 collapse-inner rounded">
-        <h6 class="collapse-header">Custom Components:</h6>
-        <a class="collapse-item" href="buttons.html">Buttons</a>
-        <a class="collapse-item" href="cards.html">Cards</a>
+        <a class="collapse-item" href="/kriteria">Kriteria</a>
+        <a class="collapse-item" href="/sub-kriteria">Sub Kriteria</a>
       </div>
     </div>
   </li>

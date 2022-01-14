@@ -9,7 +9,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title><?= $judul; ?></title>
+  <title><?= isset($judul) ? $judul : 'laptopify'; ?></title>
 
   <!-- Custom fonts for this template-->
   <link href="<?= base_url(); ?>/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -109,6 +109,7 @@
       $('.formSubmit')[0].reset()
       $(".is-valid").removeClass("is-valid");
       $(".is-invalid").removeClass("is-invalid")
+      $('.evolution').remove('')
     })
 
     const beforeSendAction = function() {
@@ -136,20 +137,36 @@
       }, 2000)
     }
 
-    const errorValidation = function(response) {
-      $.each(response.errors, function(key, val) {
+    const errorValidation = function(errors) {
+      $.each(errors, function(key, val) {
         $('[name="' + key + '"]').addClass('is-invalid')
         $('[name="' + key + '"]').next().text(val)
       })
+    }
+
+    const errorValidationArr = function(errors) {
+      let errorsSection = ''
+      $.each(errors, function(key, val) {
+        errorsSection += `
+        <div class="alert alert-danger" role="alert">
+          ${val}
+        </div>
+        `
+      })
+      $('.errors-section').html(errorsSection)
     }
 
     const removeClasses = function(form) {
       $(form + ' input').keyup(function() {
         $(this).removeClass('is-invalid is-valid')
       })
+
+      $(form + ' select').click(function() {
+        $(this).removeClass('is-invalid is-valid')
+      })
     }
 
-    const requestSaveData = function(form, ...values) {
+    const requestSaveData = function(form, ...params) {
       $.ajax({
         url: form.attr('action'),
         type: form.attr('method'),
@@ -161,18 +178,17 @@
         },
         success: function(response) {
           if (response.status) {
-            toastSuccess(response, values[0])
+            toastSuccess(response, params[0])
             reload()
           } else {
-            errorValidation(response)
+            const errors = response.errors
+            params[1] === 'has array' ? errorValidationArr(errors) : errorValidation(errors)
           }
         },
         error: function(xhr, ajaxOptions, thrownError) {
           alert(xhr.status + "\n" + xhr.responseText + "\n" + thrownError)
         }
       })
-
-      removeClasses()
     }
 
     const warnEmptyData = function() {
@@ -219,7 +235,39 @@
       }
     }
 
-    const requestGetDataById = function(url) {
+    const updateKriteriaOption = function(key, val) {
+      let arr = []
+      key == 'jenis' ? arr = ['cc', 'bc'] : arr = [1, 0]
+
+      let jenisVal = ''
+      let dkVal = ''
+      for (let i = 0; i < arr.length; i++) {
+        if (key == 'jenis') {
+          jenisVal = arr[i] == 'bc' ? 'Benefit Criteria' : 'Cost Criteria'
+        } else if (key == 'data_kuantitatif') {
+          dkVal = arr[i] == 1 ? 'Kuantitatif' : 'Kualitatif'
+        }
+
+        let optionValue = key == 'jenis' ? jenisVal : dkVal
+        if (arr[i] == val) {
+          $('[name="' + key + '"]').append(`<option value="${arr[i]}" selected class="evolution">${optionValue}</option>`);
+        } else {
+          $('[name="' + key + '"]').append(`<option value="${arr[i]}" class="evolution">${optionValue}</option>`);
+        }
+      }
+    }
+
+    const selectTagAction = function(key, val, type) {
+      switch (type) {
+        case 'kriteria':
+          updateKriteriaOption(key, val)
+          break;
+        default:
+          break;
+      }
+    }
+
+    const requestGetDataById = function(url, ...params) {
       let checked = $('.checkbox:checked')
       let id = checked.val()
 
@@ -232,7 +280,11 @@
           text: 'Silahkan pilih 1 data saja yang ingin diperbarui!',
         })
       } else {
-        $('#modalBoxUbah').modal('toggle')
+        $('#modalBoxUbah').modal({
+          toggle: true,
+          backdrop: 'static',
+          keyboard: false
+        })
 
         $.ajax({
           url: '' + url + '',
@@ -244,6 +296,11 @@
           success: function(response) {
             $.each(response, function(key, val) {
               $('[name="' + key + '"]').val(val)
+
+              // select option
+              if ($('[name="' + key + '"]').prop("tagName") == "SELECT") {
+                selectTagAction(key, val, params[0])
+              }
             })
           }
         })

@@ -26,9 +26,11 @@ class Kriteria extends BaseController
   {
     $this->myHelper->checkAjaxRequest($this);
 
+    $nama = ucwords($this->request->getPost('nama'));
     $data = [
-      'nama' => $this->request->getPost('nama'),
+      'nama' => $nama,
       'jenis' => $this->request->getPost('jenis'),
+      'data_kuantitatif' => $this->request->getPost('data_kuantitatif'),
     ];
 
     if ($this->model->save($data) === FALSE) {
@@ -44,7 +46,7 @@ class Kriteria extends BaseController
 
     $ids = $this->request->getPost('id');
     $this->model->whereIn('id', $ids)->delete();
-    echo json_encode(['status' => TRUE, 'message' => 'Data berhasil dihapus']);
+    return $this->response->setJSON(['status' => TRUE, 'message' => 'Data berhasil dihapus']);
   }
 
   public function getDataById()
@@ -53,17 +55,19 @@ class Kriteria extends BaseController
 
     $id = $this->request->getPost('id');
     $data = $this->model->find($id);
-    echo json_encode($data);
+    return $this->response->setJSON($data);
   }
 
   public function update()
   {
     $this->myHelper->checkAjaxRequest($this);
 
+    $nama = ucwords($this->request->getPost('nama'));
     $data = [
       'id' => $this->request->getPost('id'),
-      'nama' => $this->request->getPost('nama'),
+      'nama' => $nama,
       'jenis' => $this->request->getPost('jenis'),
+      'data_kuantitatif' => $this->request->getPost('data_kuantitatif'),
     ];
 
     if ($this->model->save($data) === FALSE) {

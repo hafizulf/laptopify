@@ -8,7 +8,7 @@ $routes = Services::routes();
 // Load the system's routing file first, so that the app and ENVIRONMENT
 // can override as needed.
 if (file_exists(SYSTEMPATH . 'Config/Routes.php')) {
-    require SYSTEMPATH . 'Config/Routes.php';
+  require SYSTEMPATH . 'Config/Routes.php';
 }
 
 /*
@@ -33,6 +33,8 @@ $routes->setAutoRoute(true);
 // route since we don't have to scan directories.
 $routes->get('/', 'Home::index');
 $routes->get('/kriteria', 'Kriteria::index');
+$routes->get('/sub-kriteria', 'Subkriteria::index');
+$routes->get('/sub-kriteria/create', 'Subkriteria::create_page');
 
 /*
  * --------------------------------------------------------------------
@@ -48,5 +50,5 @@ $routes->get('/kriteria', 'Kriteria::index');
  * needing to reload it.
  */
 if (file_exists(APPPATH . 'Config/' . ENVIRONMENT . '/Routes.php')) {
-    require APPPATH . 'Config/' . ENVIRONMENT . '/Routes.php';
+  require APPPATH . 'Config/' . ENVIRONMENT . '/Routes.php';
 }

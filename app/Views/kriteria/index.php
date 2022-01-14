@@ -4,7 +4,7 @@
 
 <div class="section">
   <div class="row">
-    <div class="col-md-8">
+    <div class="col-md-12">
 
       <h1 class="text-gray-900"><?= $judul; ?></h1>
 
@@ -12,18 +12,20 @@
         <div class="col-md-12">
           <div class="card shadow">
             <div class="card-header">
-              <button class="btn btn-primary btn-tambah" data-toggle="modal" data-target="#modalBoxTambah"><i class="fas fa fa-plus"></i> Tambah</button>
+              <button class="btn btn-primary btn-tambah" data-toggle="modal" data-target="#modalBoxTambah" data-backdrop="static" data-keyboard="false"><i class="fas fa fa-plus"></i> Tambah</button>
               <button class="btn btn-danger btn-hapus"><i class="fas fa fa-trash-alt"></i> Hapus</button>
               <button class="btn btn-success btn-ubah"><i class="fas fa fa-edit"></i> Ubah</button>
             </div>
             <div class="card-body">
-              <table class="table table-bordered table-main">
+              <table class="table table-bordered table-striped table-kriteria">
                 <thead>
                   <th>
                     <input type="checkbox" id="checkboxes">
                   </th>
                   <th>No.</th>
                   <th>Nama</th>
+                  <th>Jenis</th>
+                  <th>Tipe Data</th>
                 </thead>
                 <tbody>
                   <?php if ($kriteria) : ?>
@@ -34,6 +36,8 @@
                         </td>
                         <td><?= $key + 1; ?></td>
                         <td><?= $row['nama']; ?></td>
+                        <td><?= $row['jenis'] == 'bc' ? 'Benefit Criteria' : 'Cost Criteria'; ?></td>
+                        <td><?= $row['data_kuantitatif'] == 1 ? 'Kuantitatif' : 'Kualitatif'; ?></td>
                       </tr>
                     <?php endforeach; ?>
                   <?php else : ?>
@@ -72,7 +76,20 @@
                 </div>
                 <div class="form-group">
                   <label for="jenis">Jenis</label>
-                  <input type="text" name="jenis" id="jenis" class="form-control" placeholder="Jenis kriteria..">
+                  <select name="jenis" class="form-control" id="jenis">
+                    <option value="">-- Pilih --</option>
+                    <option value="cc">Cost Criteria</option>
+                    <option value="bc">Benefit Criteria</option>
+                  </select>
+                  <div class="invalid-feedback"></div>
+                </div>
+                <div class="form-group">
+                  <label for="data_kuantitatif">Tipe Data</label>
+                  <select name="data_kuantitatif" class="form-control" id="data_kuantitatif">
+                    <option value="">-- Pilih --</option>
+                    <option value="1">Kuantitatif</option>
+                    <option value="0">Kualitatif</option>
+                  </select>
                   <div class="invalid-feedback"></div>
                 </div>
               </div>
@@ -107,7 +124,16 @@
                 </div>
                 <div class="form-group">
                   <label for="jenis_ubah">Jenis</label>
-                  <input type="text" name="jenis" id="jenis_ubah" class="form-control" placeholder="Jenis kriteria..">
+                  <select name="jenis" id="jenis_ubah" class="form-control">
+                    <option value="">-- Pilih --</option>
+                  </select>
+                  <div class="invalid-feedback"></div>
+                </div>
+                <div class="form-group">
+                  <label for="data_kuantitatif_ubah">Data Kuantitatif</label>
+                  <select name="data_kuantitatif" id="data_kuantitatif_ubah" class="form-control">
+                    <option value="">-- Pilih --</option>
+                  </select>
                   <div class="invalid-feedback"></div>
                 </div>
               </div>
@@ -143,7 +169,7 @@
     })
 
     $('.btn-ubah').on('click', function(e) {
-      requestGetDataById('/kriteria/getDataById')
+      requestGetDataById('/kriteria/getDataById', 'kriteria')
     })
 
     const formUbah = $('#formUbah')

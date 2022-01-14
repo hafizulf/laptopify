@@ -3,28 +3,20 @@ li {
   color: black;
 }
 
-.table-main {
+.table>tbody>tr>* {
+  vertical-align: middle;
   text-align: center;
 }
 
-.table>tbody>tr>* {
-  vertical-align: middle;
+.table-kriteria>thead>tr>th,
+.table-subkriteria>thead>tr>th,
+.table-subkriteria>tbody>tr>td:nth-child(1),
+.table-subkriteria>tbody>tr>td:nth-child(2) {
+  text-align: center;
 }
 
-/* table>thead>tr>th:nth-child(3), */
-table>tbody>tr>td:nth-child(4),
-.table-arsip>tbody>tr>td:nth-child(3) {
+.table-kriteria>tbody>tr>td:nth-child(3) {
   text-align: left;
-}
-
-.table-arsip>tbody>tr,
-.table-main>tbody>tr {
-  line-height: 0px;
-}
-
-.table-main>tbody>tr>td>table:nth-child(1) label {
-  /* line-height: 1px; */
-  margin-bottom: 0;
 }
 
 .bg-gradient-primary {
