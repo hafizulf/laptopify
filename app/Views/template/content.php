@@ -294,6 +294,7 @@
           },
           dataType: 'JSON',
           success: function(response) {
+            console.log(response);
             $.each(response, function(key, val) {
               $('[name="' + key + '"]').val(val)
 

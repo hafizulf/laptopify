@@ -48,4 +48,29 @@ class Bobot extends BaseController
     $this->model->whereIn('id', $ids)->delete();
     return $this->response->setJSON(['status' => TRUE, 'message' => 'Data berhasil dihapus']);
   }
+
+  public function getDataById()
+  {
+    $this->myHelper->checkAjaxRequest($this);
+
+    $id = $this->request->getPost('id');
+    $data = $this->model->findBobotById($id);
+    return $this->response->setJSON($data);
+  }
+
+  public function update()
+  {
+    $this->myHelper->checkAjaxRequest($this);
+
+    $data = [
+      'id' => $this->request->getPost('id'),
+      'nilai_bobot' => $this->request->getPost('nilai_bobot'),
+    ];
+
+    if ($this->model->save($data) === FALSE) {
+      return $this->response->setJSON(['status' => FALSE, 'errors' => $this->model->errors()]);
+    } else {
+      return $this->response->setJSON(['status' => TRUE, 'message' => 'Data berhasil diperbarui']);
+    }
+  }
 }
