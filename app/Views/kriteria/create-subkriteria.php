@@ -83,7 +83,7 @@
             <input type="text" class="form-control" name="nama[]" id="sk${i}" placeholder="Nama sub kriteria..">
           </div>
           <div class="col-4">
-            <input type="text" class="form-control" name="nilai_preferensi[]" id="np${i}" placeholder="Nilai..">
+            <input type="number" class="form-control" name="nilai_preferensi[]" id="np${i}" placeholder="Nilai.." min="1" max="9">
           </div>
         </div>
         `

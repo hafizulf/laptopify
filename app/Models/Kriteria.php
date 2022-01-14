@@ -21,4 +21,11 @@ class Kriteria extends Model
       "SELECT * FROM " . $this->table . " WHERE jenis = 'bc' AND data_kuantitatif = 0"
     );
   }
+
+  public function getCriteria()
+  {
+    return $this->db->query(
+      "SELECT id, nama FROM " . $this->table . ""
+    );
+  }
 }
