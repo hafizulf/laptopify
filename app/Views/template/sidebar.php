@@ -17,21 +17,15 @@
     Menu
   </div>
 
-  <li class="nav-item <?= url_is('/kriteria') ? 'active' : '' ?>">
-    <a class="nav-link" href="/kriteria">
+  <li class="nav-item <?= url_is('/kriteria') || url_is('sub-kriteria') || url_is('sub-kriteria/create') ? 'active' : '' ?>">
+    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#kriteriaCollapse" aria-expanded="true" aria-controls="kriteriaCollapse">
       <i class="fas fa-fw fa-table"></i>
-      <span>Kriteria</span></a>
-  </li>
-
-  <li class="nav-item <?= url_is('sub-kriteria') || url_is('sub-kriteria/create') ? 'active' : '' ?>">
-    <a class="pt-0 nav-link collapsed" href="#" data-toggle="collapse" data-target="#subkriteriaCollapse" aria-expanded="true" aria-controls="subkriteriaCollapse">
-      <i class="fas fa-fw fa-table"></i>
-      <span>Sub Kriteria</span>
+      <span>Kriteria</span>
     </a>
-    <div id="subkriteriaCollapse" class="collapse" data-parent="#accordionSidebar">
+    <div id="kriteriaCollapse" class="collapse" data-parent="#accordionSidebar">
       <div class="bg-white py-2 collapse-inner rounded">
-        <a class="collapse-item" href="/sub-kriteria">Master Data</a>
-        <a class="collapse-item" href="/sub-kriteria/create">Create</a>
+        <a class="collapse-item" href="/kriteria">Kriteria</a>
+        <a class="collapse-item" href="/sub-kriteria">Sub Kriteria</a>
       </div>
     </div>
   </li>

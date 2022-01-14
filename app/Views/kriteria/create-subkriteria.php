@@ -13,10 +13,10 @@
           <hr>
           <ul>
             <li>
-              <p>Isi jumlah sub kriteria yang diinginkan sesuai dengan kriteria yang ada</p>
+              <p>Masukkan jumlah sub kriteria yang diinginkan sesuai dengan kriteria yang ada</p>
             </li>
             <li>
-              <p>Isi nilai preferensi yang berbeda untuk masing-masing sub kriteria, sesuai dengan tingkat kepentingan yang diprioritaskan. Contoh: dengan pola bilangan ganjil 1-9, berikan nilai tertinggi untuk sub kriteria yang di anggap penting (<span class="text-sm text-danger">Pastikan nilai tidak ada yang sama, untuk mendapatkan hasil yang optimal</span>)</p>
+              <p>Masukkan nilai preferensi yang berbeda untuk masing-masing sub kriteria, sesuai dengan tingkat kepentingan yang diprioritaskan. Contoh: dengan pola bilangan ganjil 1-9, berikan nilai 9 untuk sub-kriteria yang dianggap paling penting (<span class="text-sm text-danger">Pastikan nilai tidak ada yang sama, untuk mendapatkan hasil yang optimal</span>)</p>
             </li>
           </ul>
         </div>
