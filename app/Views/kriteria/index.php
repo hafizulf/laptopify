@@ -42,7 +42,7 @@
                     <?php endforeach; ?>
                   <?php else : ?>
                     <tr>
-                      <td colspan="3" class="text-gray-900 text-center">
+                      <td colspan="5" class="text-gray-900 text-center">
                         <h3>DATA BELUM ADA</h3>
                       </td>
                     </tr>

@@ -9,12 +9,19 @@
       <h1 class="text-gray-900"><?= $judul; ?></h1>
 
       <div class="row mt-4">
-        <div class="col-md-8">
+        <div class="col-md-12">
           <div class="card shadow">
             <div class="card-header">
-              <button class="btn btn-primary btn-tambah" data-toggle="modal" data-target="#modalBoxTambah" data-backdrop="static" data-keyboard="false"><i class="fas fa fa-plus"></i> Tambah</button>
-              <button class="btn btn-danger btn-hapus"><i class="fas fa fa-trash-alt"></i> Hapus</button>
-              <button class="btn btn-success btn-ubah"><i class="fas fa fa-edit"></i> Ubah</button>
+              <div class="row">
+                <div class="col-md-8">
+                  <button type="button" class="btn btn-primary btn-tambah" data-toggle="modal" data-target="#modalBoxTambah" data-backdrop="static" data-keyboard="false"><i class="fas fa fa-plus"></i> Tambah</button>
+                  <button type="button" class="btn btn-danger btn-hapus"><i class="fas fa fa-trash-alt"></i> Hapus</button>
+                  <button type="button" class="btn btn-success btn-ubah"><i class="fas fa fa-edit"></i> Ubah</button>
+                </div>
+                <div class="col-md-4">
+                  <button type="button" class="btn btn-dark btn-float-right btn-normalisasi"><i class="fas fa fa-recycle"></i> Update Normalisasi Nilai Bobot</button>
+                </div>
+              </div>
             </div>
             <div class="card-body">
               <table class="table table-bordered table-striped table-kriteria">
@@ -25,10 +32,13 @@
                   <th>No.</th>
                   <th>Kriteria</th>
                   <th>Nilai Bobot</th>
+                  <?php if ($normalisasi_bobot) : ?>
+                    <th>Nilai Ternormalisasi</th>
+                  <?php endif; ?>
                 </thead>
                 <tbody>
                   <?php if ($bobot) : ?>
-                    <?php foreach ($bobot->getResultArray() as $key => $row) : ?>
+                    <?php foreach ($bobot as $key => $row) : ?>
                       <tr>
                         <td>
                           <input type="checkbox" name="id[]" class="checkbox" value="<?= $row['id']; ?>">
@@ -36,11 +46,14 @@
                         <td><?= $key + 1; ?></td>
                         <td><?= $row['nama_kriteria']; ?></td>
                         <td><?= $row['nilai_bobot']; ?></td>
+                        <?php if ($normalisasi_bobot) : ?>
+                          <td><?= $normalisasi_bobot[$key]['nilai_normalisasi_bobot']; ?></td>
+                        <?php endif; ?>
                       </tr>
                     <?php endforeach; ?>
                   <?php else : ?>
                     <tr>
-                      <td colspan="3" class="text-gray-900 text-center">
+                      <td colspan="5" class="text-gray-900 text-center">
                         <h3>DATA BELUM ADA</h3>
                       </td>
                     </tr>
@@ -162,6 +175,27 @@
       requestSaveData(formUbah, '#modalBoxUbah')
 
       removeClasses('#formUbah')
+    })
+
+    $('.btn-normalisasi').on('click', function() {
+      $.ajax({
+        url: '/NormalisasiBobot/normalisasi',
+        type: 'POST',
+        dataType: 'JSON',
+        beforeSend: function() {
+          $('.btn-normalisasi').html('loading.. <span class="spinner-border spinner-border-sm"></span>')
+        },
+        complete: function() {
+          $('.btn-normalisasi').html('<i class="fas fa fa-recycle"></i>  Normalisasi Bobot')
+        },
+        success: function(response) {
+          toastSuccess(response)
+          reload()
+        },
+        error: function(xhr, ajaxOptions, thrownError) {
+          alert(xhr.status + "\n" + xhr.responseText + "\n" + thrownError)
+        }
+      })
     })
   })
 </script>
