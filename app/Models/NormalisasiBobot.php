@@ -14,4 +14,11 @@ class NormalisasiBobot extends Model
     $this->truncate();
     return $this->insertBatch($data);
   }
+
+  public function getNilaiNormalisasiBobot()
+  {
+    return $this->db->query(
+      "SELECT nilai_normalisasi_bobot FROM " . $this->table . ""
+    )->getResultArray();
+  }
 }

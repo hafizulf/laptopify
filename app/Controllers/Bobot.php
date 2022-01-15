@@ -5,6 +5,7 @@ namespace App\Controllers;
 use App\Controllers\BaseController;
 use App\Models\Bobot as ModelsBobot;
 use App\Models\Kriteria;
+use App\Models\NormalisasiBobot;
 
 class Bobot extends BaseController
 {
@@ -12,14 +13,28 @@ class Bobot extends BaseController
   {
     $this->model = new ModelsBobot();
     $this->kriteriaModel = new Kriteria();
+    $this->normalisasiBobotModel = new NormalisasiBobot();
   }
 
   public function index()
   {
+    $bobot = $this->model->findAllBobot()->getResultArray();
+    $normalisasiBobot = $this->normalisasiBobotModel->getNilaiNormalisasiBobot();
+
+    if (sizeOf($bobot) > 0 && sizeOf($normalisasiBobot) > 0) {
+      $jmlNilaiBobot = count($bobot);
+      $jmlNilaiBobotTernormalisasi = count($normalisasiBobot);
+
+      if ($jmlNilaiBobot !== $jmlNilaiBobotTernormalisasi) {
+        $normalisasiBobot = 0;
+      }
+    }
+
     $data = [
       'judul' => 'Pembobotan',
-      'bobot' => $this->model->findAllBobot(),
+      'bobot' => $bobot,
       'kriteria' => $this->kriteriaModel->getCriteria(),
+      'normalisasi_bobot' => $normalisasiBobot,
     ];
 
     return view('bobot/index', $data);
