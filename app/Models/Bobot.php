@@ -15,7 +15,7 @@ class Bobot extends Model
   protected $validationMessages = [
     'kriteria_id' => [
       'required' => 'wajib dipilih.',
-      'is_unique' => 'kriteria sudah ada, coba lain.'
+      'is_unique' => 'bobot kriteria sudah ada, coba lain.'
     ]
   ];
 
@@ -31,5 +31,12 @@ class Bobot extends Model
     return $this->db->query(
       "SELECT k.nama as nama_kriteria, p.id, p.nilai_bobot FROM " . $this->table . " AS p JOIN kriteria AS k ON p.kriteria_id = k.id WHERE p.id = $id"
     )->getRowArray();
+  }
+
+  public function getNilaiBobot()
+  {
+    return $this->db->query(
+      "SELECT id, nilai_bobot FROM " . $this->table . ""
+    )->getResultArray();
   }
 }
