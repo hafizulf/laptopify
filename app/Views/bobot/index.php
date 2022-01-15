@@ -28,7 +28,7 @@
                 </thead>
                 <tbody>
                   <?php if ($bobot) : ?>
-                    <?php foreach ($bobot->getResultArray() as $key => $row) : ?>
+                    <?php foreach ($bobot as $key => $row) : ?>
                       <tr>
                         <td>
                           <input type="checkbox" name="id[]" class="checkbox" value="<?= $row['id']; ?>">
@@ -38,9 +38,13 @@
                         <td><?= $row['nilai_bobot']; ?></td>
                       </tr>
                     <?php endforeach; ?>
+                    <tr>
+                      <td colspan="3" class="bg-info text-white">Total Nilai Bobot</td>
+                      <td class="bg-info text-white"><?= $total_nilai_bobot; ?></td>
+                    </tr>
                   <?php else : ?>
                     <tr>
-                      <td colspan="3" class="text-gray-900 text-center">
+                      <td colspan="4" class="text-gray-900 text-center">
                         <h3>DATA BELUM ADA</h3>
                       </td>
                     </tr>

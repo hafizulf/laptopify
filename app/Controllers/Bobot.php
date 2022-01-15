@@ -16,11 +16,17 @@ class Bobot extends BaseController
 
   public function index()
   {
+    $bobot = $this->model->findAllBobot()->getResultArray();
+    $nilaiBobot = array_column($bobot, 'nilai_bobot');
+    $totalNilaiBobot = array_sum($nilaiBobot);
+
     $data = [
       'judul' => 'Pembobotan',
-      'bobot' => $this->model->findAllBobot(),
+      'bobot' => $bobot,
       'kriteria' => $this->kriteriaModel->getCriteria(),
+      'total_nilai_bobot' => $totalNilaiBobot,
     ];
+
     return view('bobot/index', $data);
   }
 
