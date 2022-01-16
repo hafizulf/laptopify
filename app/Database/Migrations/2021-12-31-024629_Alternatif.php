@@ -24,7 +24,7 @@ class Alternatif extends Migration
       'sistem_operasi VARCHAR(64) NOT NULL',
       'masa_garansi INT UNSIGNED NOT NULL',
       'kondisi_produk VARCHAR(64) NOT NULL',
-      'link_produk TEXT NOT NULL',
+      'url_produk TEXT NOT NULL',
     ]);
     $this->forge->addKey('id', true);
     $this->forge->createTable('alternatif');

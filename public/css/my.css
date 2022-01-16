@@ -11,7 +11,8 @@ li {
 .table-kriteria>thead>tr>th,
 .table-subkriteria>thead>tr>th,
 .table-subkriteria>tbody>tr>td:nth-child(1),
-.table-subkriteria>tbody>tr>td:nth-child(2) {
+.table-subkriteria>tbody>tr>td:nth-child(2),
+.table-alternatif>thead>tr>th {
   text-align: center;
 }
 

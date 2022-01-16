@@ -16,6 +16,10 @@ class NormalisasiBobot extends BaseController
 
   public function normalisasi()
   {
+    if (!$this->request->isAJAX()) {
+      throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
+    }
+
     $bobot = $this->bobotModel->getNilaiBobot();
     $nilaiBobot = array_column($bobot, 'nilai_bobot');
     $totalNilaiBobot = array_sum($nilaiBobot);
