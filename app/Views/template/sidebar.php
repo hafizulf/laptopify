@@ -31,13 +31,19 @@
   </li>
 
   <li class="nav-item <?= url_is('/bobot') ? 'active' : '' ?>">
-    <a class="nav-link" href="/bobot">
+    <a class="nav-link pb-0" href="/bobot">
       <i class="fas fa-fw fa-weight"></i>
       <span>Bobot</span></a>
   </li>
 
+  <li class="nav-item <?= url_is('/alternatif') ? 'active' : '' ?>">
+    <a class="nav-link pb-0" href="/alternatif">
+      <i class="fas fa-fw fa-database"></i>
+      <span>Alternatif</span></a>
+  </li>
+
   <!-- Divider -->
-  <hr class="sidebar-divider d-none d-md-block">
+  <hr class="sidebar-divider d-none d-md-block mt-2">
 
   <!-- Sidebar Toggler (Sidebar) -->
   <div class="text-center d-none d-md-inline">
