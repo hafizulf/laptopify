@@ -21,4 +21,9 @@ class Alternatif extends BaseController
 
     return view('alternatif/index', $data);
   }
+
+  public function create()
+  {
+    //
+  }
 }
