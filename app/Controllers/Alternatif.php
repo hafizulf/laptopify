@@ -48,4 +48,11 @@ class Alternatif extends BaseController
       return $this->response->setJSON(['status' => TRUE, 'message' => 'Data berhasil ditambahkan']);
     }
   }
+
+  public function delete()
+  {
+    $ids = $this->request->getPost('id');
+    $this->model->whereIn('id', $ids)->delete();
+    return $this->response->setJSON(['status' => TRUE, 'message' => 'Data berhasil dihapus']);
+  }
 }
