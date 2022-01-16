@@ -24,6 +24,9 @@ class Alternatif extends BaseController
 
   public function create()
   {
+    if (!$this->request->isAJAX()) {
+      throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
+    }
 
     $harga = str_replace(['Rp', '.'], '', $this->request->getPost('harga'));
     $data = [
@@ -53,6 +56,10 @@ class Alternatif extends BaseController
 
   public function delete()
   {
+    if (!$this->request->isAJAX()) {
+      throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
+    }
+
     $ids = $this->request->getPost('id');
     $this->model->whereIn('id', $ids)->delete();
     return $this->response->setJSON(['status' => TRUE, 'message' => 'Data berhasil dihapus']);
@@ -60,6 +67,10 @@ class Alternatif extends BaseController
 
   public function getDataById()
   {
+    if (!$this->request->isAJAX()) {
+      throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
+    }
+
     $id = $this->request->getPost('id');
     $data = $this->model->find($id);
     return $this->response->setJSON($data);
@@ -67,6 +78,10 @@ class Alternatif extends BaseController
 
   public function update()
   {
+    if (!$this->request->isAJAX()) {
+      throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
+    }
+
     $data = [
       'id' => $this->request->getPost('id'),
       'kode' => $this->request->getPost('kode'),
