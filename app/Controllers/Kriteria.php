@@ -24,7 +24,9 @@ class Kriteria extends BaseController
 
   public function create()
   {
-    $this->myHelper->checkAjaxRequest($this);
+    if (!$this->request->isAJAX()) {
+      throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
+    }
 
     $nama = ucwords($this->request->getPost('nama'));
     $data = [
@@ -42,7 +44,9 @@ class Kriteria extends BaseController
 
   public function delete()
   {
-    $this->myHelper->checkAjaxRequest($this);
+    if (!$this->request->isAJAX()) {
+      throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
+    }
 
     $ids = $this->request->getPost('id');
     $this->model->whereIn('id', $ids)->delete();
@@ -51,7 +55,9 @@ class Kriteria extends BaseController
 
   public function getDataById()
   {
-    $this->myHelper->checkAjaxRequest($this);
+    if (!$this->request->isAJAX()) {
+      throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
+    }
 
     $id = $this->request->getPost('id');
     $data = $this->model->find($id);
@@ -60,7 +66,9 @@ class Kriteria extends BaseController
 
   public function update()
   {
-    $this->myHelper->checkAjaxRequest($this);
+    if (!$this->request->isAJAX()) {
+      throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
+    }
 
     $nama = ucwords($this->request->getPost('nama'));
     $data = [

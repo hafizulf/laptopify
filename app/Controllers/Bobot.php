@@ -42,7 +42,9 @@ class Bobot extends BaseController
 
   public function create()
   {
-    $this->myHelper->checkAjaxRequest($this);
+    if (!$this->request->isAJAX()) {
+      throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
+    }
 
     $data = [
       'kriteria_id' => $this->request->getPost('kriteria_id'),
@@ -58,7 +60,9 @@ class Bobot extends BaseController
 
   public function delete()
   {
-    $this->myHelper->checkAjaxRequest($this);
+    if (!$this->request->isAJAX()) {
+      throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
+    }
 
     $ids = $this->request->getPost('id');
     $this->model->whereIn('id', $ids)->delete();
@@ -67,7 +71,9 @@ class Bobot extends BaseController
 
   public function getDataById()
   {
-    $this->myHelper->checkAjaxRequest($this);
+    if (!$this->request->isAJAX()) {
+      throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
+    }
 
     $id = $this->request->getPost('id');
     $data = $this->model->findBobotById($id);
@@ -76,7 +82,9 @@ class Bobot extends BaseController
 
   public function update()
   {
-    $this->myHelper->checkAjaxRequest($this);
+    if (!$this->request->isAJAX()) {
+      throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
+    }
 
     $data = [
       'id' => $this->request->getPost('id'),

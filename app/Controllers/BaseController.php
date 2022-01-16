@@ -9,8 +9,6 @@ use CodeIgniter\HTTP\RequestInterface;
 use CodeIgniter\HTTP\ResponseInterface;
 use Psr\Log\LoggerInterface;
 
-use Laptopify;
-
 /**
  * Class BaseController
  *
@@ -37,7 +35,7 @@ class BaseController extends Controller
    *
    * @var array
    */
-  protected $helpers = ['Laptopify'];
+  protected $helpers = [];
 
   /**
    * Constructor.
@@ -51,7 +49,5 @@ class BaseController extends Controller
 
     // E.g.: $this->session = \Config\Services::session();
     $this->validation =  \Config\Services::validation();
-
-    $this->myHelper = new Laptopify();
   }
 }

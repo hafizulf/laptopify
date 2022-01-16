@@ -89,7 +89,9 @@ class Subkriteria extends BaseController
 
   public function delete()
   {
-    $this->myHelper->checkAjaxRequest($this);
+    if (!$this->request->isAJAX()) {
+      throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
+    }
 
     $ids = $this->request->getPost('id');
     $this->model->whereIn('id', $ids)->delete();
@@ -98,7 +100,9 @@ class Subkriteria extends BaseController
 
   public function getDataById()
   {
-    $this->myHelper->checkAjaxRequest($this);
+    if (!$this->request->isAJAX()) {
+      throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
+    }
 
     $id = $this->request->getPost('id');
     $data = $this->model->findSubkriteriaById($id);
@@ -107,7 +111,9 @@ class Subkriteria extends BaseController
 
   public function update()
   {
-    $this->myHelper->checkAjaxRequest($this);
+    if (!$this->request->isAJAX()) {
+      throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
+    }
 
     $data = [
       'id' => $this->request->getPost('id'),
