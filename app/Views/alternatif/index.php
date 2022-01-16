@@ -38,7 +38,7 @@
                         <td><?= $row['kode']; ?></td>
                         <td><?= $row['nama']; ?></td>
                         <td>
-                          <button type="button" class="btn btn-info"><i class="fas fa-eye"></i></button>
+                          <button type="button" class="btn btn-info btn-detail" data-id="<?= $row['id']; ?>"><i class=" fas fa-eye"></i></button>
                         </td>
                       </tr>
                     <?php endforeach; ?>
@@ -82,7 +82,7 @@
                     </div>
                     <div class="form-group">
                       <label for="harga">Harga</label>
-                      <input type="number" name="harga" id="harga" class="form-control" placeholder="misal. 6.000.000..">
+                      <input type="text" name="harga" id="harga" class="form-control" placeholder="misal. 6.000.000..">
                       <div class="invalid-feedback"></div>
                     </div>
                     <div class="form-group">
@@ -207,7 +207,7 @@
                     </div>
                     <div class="form-group">
                       <label for="harga_ubah">Harga</label>
-                      <input type="number" name="harga" id="harga_ubah" class="form-control" placeholder="misal. 6.000.000..">
+                      <input type="text" name="harga" id="harga_ubah" class="form-control" placeholder="misal. 6.000.000..">
                       <div class="invalid-feedback"></div>
                     </div>
                     <div class="form-group">
@@ -301,6 +301,106 @@
         </div>
       </div>
 
+      <!-- Modal Detail -->
+      <div class="modal fade" id="modalBoxDetail" tabindex="-1" role="dialog" aria-labelledby="modalBoxDetailTitleId" aria-hidden="true">
+        <div class="modal-dialog modal-xl" role="document">
+          <div class="modal-content">
+            <div class="modal-header badge-primary">
+              <h5 class="modal-title">Detail <?= $judul; ?></h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <div class="row">
+                <div class="col-12">
+                  <div class="card shadow card-detail">
+                    <div class="card-body">
+                      <div class="row">
+                        <div class="col-md-3 text-gray-900">Kode Alternatif</div>
+                        <div class="col-md-1 d-none d-md-block">:</div>
+                        <div class="col-md-8 kode"></div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-3 text-gray-900">Nama Produk</div>
+                        <div class="col-md-1 d-none d-md-block">:</div>
+                        <div class="col-md-8 nama"></div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-3 text-gray-900">Harga</div>
+                        <div class="col-md-1 d-none d-md-block">:</div>
+                        <div class="col-md-8 harga"></div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-3 text-gray-900">Rating Produk</div>
+                        <div class="col-md-1 d-none d-md-block">:</div>
+                        <div class="col-md-8 rating_produk"></div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-3 text-gray-900">Merk</div>
+                        <div class="col-md-1 d-none d-md-block">:</div>
+                        <div class="col-md-8 merk"></div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-3 text-gray-900">Prosesor</div>
+                        <div class="col-md-1 d-none d-md-block">:</div>
+                        <div class="col-md-8 prosesor"></div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-3 text-gray-900">Kapasitas Memori RAM (GB)</div>
+                        <div class="col-md-1 d-none d-md-block">:</div>
+                        <div class="col-md-8 kapasitas_ram"></div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-3 text-gray-900">Tipe Penyimpanan</div>
+                        <div class="col-md-1 d-none d-md-block">:</div>
+                        <div class="col-md-8 tipe_penyimpanan"></div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-3 text-gray-900">Kapasitas Penyimpanan (GB)</div>
+                        <div class="col-md-1 d-none d-md-block">:</div>
+                        <div class="col-md-8 kapasitas_penyimpanan"></div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-3 text-gray-900">Ukuran Layar</div>
+                        <div class="col-md-1 d-none d-md-block">:</div>
+                        <div class="col-md-8 ukuran_layar"></div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-3 text-gray-900">Kartu Grafis</div>
+                        <div class="col-md-1 d-none d-md-block">:</div>
+                        <div class="col-md-8 kartu_grafis"></div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-3 text-gray-900">Sistem Operasi</div>
+                        <div class="col-md-1 d-none d-md-block">:</div>
+                        <div class="col-md-8 sistem_operasi"></div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-3 text-gray-900">Masa Garansi (bulan)</div>
+                        <div class="col-md-1 d-none d-md-block">:</div>
+                        <div class="col-md-8 masa_garansi"></div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-3 text-gray-900">Kondisi Produk</div>
+                        <div class="col-md-1 d-none d-md-block">:</div>
+                        <div class="col-md-8 kondisi_produk"></div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-3 text-gray-900">URL Produk</div>
+                        <div class="col-md-1 d-none d-md-block">:</div>
+                        <div class="col-md-8 url_produk"></div>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
 </div>
@@ -308,6 +408,8 @@
 <?php $this->endSection(); ?>
 
 <?php $this->section('custom-js') ?>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/autonumeric/4.1.0/autoNumeric.min.js" integrity="sha512-U0/lvRgEOjWpS5e0JqXK6psnAToLecl7pR+c7EEnndsVkWq3qGdqIGQGN2qxSjrRnCyBJhoaktKXTVceVG2fTw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
 <script>
   $(document).ready(function() {
     const formTambah = $('#formTambah')
@@ -334,6 +436,17 @@
       requestSaveData(formUbah, '#modalBoxUbah')
 
       removeClasses('#formUbah')
+    })
+
+    new AutoNumeric('[name="harga"]', {
+      currencySymbol: 'Rp ',
+      decimalPlaces: 0,
+      decimalCharacter: ',',
+      digitGroupSeparator: '.',
+    });
+
+    $('.btn-detail').on('click', function() {
+      requestGetDataById('/alternatif/getDataById', '', 'detail')
     })
   })
 </script>

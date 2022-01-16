@@ -24,10 +24,12 @@ class Alternatif extends BaseController
 
   public function create()
   {
+
+    $harga = str_replace(['Rp', '.'], '', $this->request->getPost('harga'));
     $data = [
       'kode' => $this->request->getPost('kode'),
       'nama' => $this->request->getPost('nama'),
-      'harga' => $this->request->getPost('harga'),
+      'harga' => $harga,
       'rating_produk' => $this->request->getPost('rating_produk'),
       'merk' => $this->request->getPost('merk'),
       'prosesor' => $this->request->getPost('prosesor'),

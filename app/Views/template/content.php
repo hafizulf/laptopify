@@ -258,23 +258,51 @@
     }
 
     const requestGetDataById = function(url, ...params) {
-      let checked = $('.checkbox:checked')
-      let id = checked.val()
+      if (params[1] !== 'detail') {
+        let checked = $('.checkbox:checked')
+        let id = checked.val()
 
-      if (checked.length < 1) {
-        warnEmptyData()
-      } else if (checked.length > 1) {
-        Swal.fire({
-          icon: 'error',
-          title: 'Oops...',
-          text: 'Silahkan pilih 1 data saja yang ingin diperbarui!',
-        })
+        if (checked.length < 1) {
+          warnEmptyData()
+        } else if (checked.length > 1) {
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Silahkan pilih 1 data saja yang ingin diperbarui!',
+          })
+        } else {
+          $('#modalBoxUbah').modal({
+            toggle: true,
+            backdrop: 'static',
+            keyboard: false
+          })
+
+          $.ajax({
+            url: '' + url + '',
+            type: 'POST',
+            data: {
+              id: id
+            },
+            dataType: 'JSON',
+            success: function(response) {
+              $.each(response, function(key, val) {
+                $('[name="' + key + '"]').val(val)
+
+                // select option
+                // if ($('[name="' + key + '"]').prop("tagName") == "SELECT") {
+                //   selectTagAction(key, val, params[0])
+                // }
+                if (params[0] == 'kriteria') {
+                  updateKriteriaOption(key, val)
+                }
+              })
+            }
+          })
+        }
       } else {
-        $('#modalBoxUbah').modal({
-          toggle: true,
-          backdrop: 'static',
-          keyboard: false
-        })
+        $('#modalBoxDetail').modal('toggle')
+
+        let id = $('.btn-detail').data('id')
 
         $.ajax({
           url: '' + url + '',
@@ -284,16 +312,14 @@
           },
           dataType: 'JSON',
           success: function(response) {
-            console.log(response);
             $.each(response, function(key, val) {
-              $('[name="' + key + '"]').val(val)
+              $('.' + key + '').text(val)
 
-              // select option
-              // if ($('[name="' + key + '"]').prop("tagName") == "SELECT") {
-              //   selectTagAction(key, val, params[0])
-              // }
-              if (params[0] == 'kriteria') {
-                updateKriteriaOption(key, val)
+              if (key === 'harga') {
+                $('.' + key + '').text(`Rp. ${val}`)
+              }
+              if (key === 'url_produk') {
+                $('.' + key + '').html(`<a href="${val}" target="_blank">Link to product</a>`)
               }
             })
           }
