@@ -10,7 +10,7 @@ class Alternatif extends Model
   protected $allowedFields    = ['kode', 'nama', 'harga', 'rating_produk', 'merk', 'prosesor', 'kapasitas_ram', 'tipe_penyimpanan', 'kapasitas_penyimpanan', 'ukuran_layar', 'kartu_grafis', 'sistem_operasi', 'masa_garansi', 'kondisi_produk', 'url_produk'];
 
   protected $validationRules = [
-    'kode' => 'required|is_unique[alternatif.kode]',
+    'kode' => 'required|is_unique[alternatif.kode, id, {id}]',
     'nama' => 'required',
     'harga' => 'required|is_numeric',
     'rating_produk' => 'required',

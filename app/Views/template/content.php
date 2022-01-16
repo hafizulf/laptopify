@@ -257,16 +257,6 @@
       }
     }
 
-    const selectTagAction = function(key, val, type) {
-      switch (type) {
-        case 'kriteria':
-          updateKriteriaOption(key, val)
-          break;
-        default:
-          break;
-      }
-    }
-
     const requestGetDataById = function(url, ...params) {
       let checked = $('.checkbox:checked')
       let id = checked.val()
@@ -294,12 +284,16 @@
           },
           dataType: 'JSON',
           success: function(response) {
+            console.log(response);
             $.each(response, function(key, val) {
               $('[name="' + key + '"]').val(val)
 
               // select option
-              if ($('[name="' + key + '"]').prop("tagName") == "SELECT") {
-                selectTagAction(key, val, params[0])
+              // if ($('[name="' + key + '"]').prop("tagName") == "SELECT") {
+              //   selectTagAction(key, val, params[0])
+              // }
+              if (params[0] == 'kriteria') {
+                updateKriteriaOption(key, val)
               }
             })
           }
