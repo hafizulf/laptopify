@@ -56,57 +56,67 @@
               </button>
             </div>
 
-            <form action="/kriteria/create" method="POST" class="formSubmit" id="formTambah">
+            <form action="/alternatif/create" method="POST" class="formSubmit" id="formTambah">
               <div class="modal-body">
                 <?= csrf_field(); ?>
 
                 <div class="row">
-                  <div class="col-3">
+                  <div class="col-xl-3">
                     <div class="form-group">
                       <label for="kode">Kode</label>
                       <input type="text" name="kode" id="kode" class="form-control" placeholder="misal. A1..">
+                      <div class="invalid-feedback"></div>
                     </div>
                     <div class="form-group">
                       <label for="nama">Nama Produk</label>
                       <input type="text" name="nama" id="nama" class="form-control" placeholder="misal. Laptop Asus 2022..">
+                      <div class="invalid-feedback"></div>
                     </div>
                     <div class="form-group">
                       <label for="harga">Harga</label>
-                      <input type="number" name="harga" id="harga" class="form-control" placeholder="misal. 10000000..">
+                      <input type="number" name="harga" id="harga" class="form-control" placeholder="misal. 6.000.000..">
+                      <div class="invalid-feedback"></div>
                     </div>
                     <div class="form-group">
                       <label for="url_produk">URL Produk</label>
-                      <input type="text" name="url_produk" id="url_produk" class="form-control" placeholder="misal. 10000000..">
+                      <input type="text" name="url_produk" id="url_produk" class="form-control" placeholder="misal. shopee.co.id/laptop-asus-2022..">
+                      <div class="invalid-feedback"></div>
                     </div>
                   </div>
 
-                  <div class="col-3">
+                  <div class="col-xl-3">
                     <div class="form-group">
                       <label for="rating_produk">Rating Produk</label>
                       <input type="text" name="rating_produk" id="rating_produk" class="form-control" placeholder="misal. 4,8..">
+                      <div class="invalid-feedback"></div>
                     </div>
                     <div class="form-group">
                       <label for="merk">Merk</label>
                       <input type="text" name="merk" id="merk" class="form-control" placeholder="misal. Lenovo..">
+                      <div class="invalid-feedback"></div>
                     </div>
                     <div class="form-group">
                       <label for="prosesor">Prosesor</label>
-                      <input type="text" name="prosesor" id="prosesor" class="form-control" placeholder="misal. Lenovo..">
+                      <input type="text" name="prosesor" id="prosesor" class="form-control" placeholder="misal. Intel Core i3..">
+                      <div class="invalid-feedback"></div>
                     </div>
                     <div class="form-group">
                       <label for="kapasitas_ram">Kapasitas Memori RAM (GB)</label>
                       <input type="number" name="kapasitas_ram" id="kapasitas_ram" class="form-control" placeholder="misal. 8..">
+                      <div class="invalid-feedback"></div>
                     </div>
                   </div>
 
-                  <div class="col-3">
+                  <div class="col-xl-3">
                     <div class="form-group">
                       <label for="tipe_penyimpanan">Tipe Penyimpanan</label>
-                      <input type="number" name="tipe_penyimpanan" id="tipe_penyimpanan" class="form-control" placeholder="misal. 500..">
+                      <input type="number" name="tipe_penyimpanan" id="tipe_penyimpanan" class="form-control" placeholder="misal. SSD..">
+                      <div class="invalid-feedback"></div>
                     </div>
                     <div class="form-group">
                       <label for="kapasitas_penyimpanan">Kapasitas Penyimpanan (GB)</label>
                       <input type="number" name="kapasitas_penyimpanan" id="kapasitas_penyimpanan" class="form-control" placeholder="misal. 500..">
+                      <div class="invalid-feedback"></div>
                     </div>
                     <div class="form-group">
                       <label for="ukuran_layar">Ukuran Layar (inch)</label>
@@ -117,21 +127,25 @@
                         <option value="standard">Standard (15-16,5 inch)</option>
                         <option value="large">Large (> 17,3 inch)</option>
                       </select>
+                      <div class="invalid-feedback"></div>
                     </div>
                     <div class="form-group">
                       <label for="kartu_grafis">Kartu Grafis</label>
-                      <input type="text" name="kartu_grafis" id="kartu_grafis" class="form-control" placeholder="misal. intel nvidia..">
+                      <input type="text" name="kartu_grafis" id="kartu_grafis" class="form-control" placeholder="misal. ATI RAGE 3D..">
+                      <div class="invalid-feedback"></div>
                     </div>
                   </div>
 
-                  <div class="col-3">
+                  <div class="col-xl-3">
                     <div class="form-group">
                       <label for="sistem_operasi">Sistem Operasi</label>
                       <input type="text" name="sistem_operasi" id="sistem_operasi" class="form-control" placeholder="misal. windows..">
+                      <div class="invalid-feedback"></div>
                     </div>
                     <div class="form-group">
                       <label for="masa_garansi">Garansi (bulan)</label>
                       <input type="number" name="masa_garansi" id="masa_garansi" class="form-control" placeholder="misal. 12..">
+                      <div class="invalid-feedback"></div>
                     </div>
                     <div class="form-group">
                       <label for="kondisi_produk">Kondisi</label>
@@ -140,6 +154,7 @@
                         <option value="Baru">Baru</option>
                         <option value="Bekas">Bekas</option>
                       </select>
+                      <div class="invalid-feedback"></div>
                     </div>
                   </div>
                 </div>
@@ -158,3 +173,18 @@
 </div>
 
 <?php $this->endSection(); ?>
+
+<?php $this->section('custom-js') ?>
+<script>
+  $(document).ready(function() {
+    const formTambah = $('#formTambah')
+    formTambah.submit(function(e) {
+      e.preventDefault()
+
+      requestSaveData(formTambah, '#modalBoxTambah')
+
+      removeClasses('#formTambah')
+    })
+  })
+</script>
+<?= $this->endSection(); ?>
