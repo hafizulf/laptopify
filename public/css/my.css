@@ -19,6 +19,10 @@ li {
   text-align: left;
 }
 
+.table-alternatif>thead>tr>th:nth-child(4) {
+  text-align: center;
+}
+
 .bg-gradient-primary {
   background-color: #095779;
   background-image: -webkit-gradient(linear, left top, left bottom, color-stop(10%, #095779), to(#161e74));

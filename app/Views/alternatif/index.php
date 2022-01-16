@@ -18,20 +18,28 @@
             </div>
             <div class="card-body">
               <?php if ($alternatif) : ?>
-                <table class="table table-bordered table-striped table-kriteria">
+                <table class="table table-bordered table-striped table-alternatif">
                   <thead>
                     <th>
                       <input type="checkbox" id="checkboxes">
                     </th>
                     <th>No.</th>
+                    <th>Kode</th>
+                    <th>Nama</th>
+                    <th>Detail</th>
                   </thead>
                   <tbody>
-                    <?php foreach ($alternatif->getResultArray() as $key => $row) : ?>
+                    <?php foreach ($alternatif as $key => $row) : ?>
                       <tr>
                         <td>
                           <input type="checkbox" name="id[]" class="checkbox" value="<?= $row['id']; ?>">
                         </td>
                         <td><?= $key + 1; ?></td>
+                        <td><?= $row['kode']; ?></td>
+                        <td><?= $row['nama']; ?></td>
+                        <td>
+                          <button type="button" class="btn btn-info"><i class="fas fa-eye"></i></button>
+                        </td>
                       </tr>
                     <?php endforeach; ?>
                   </tbody>
@@ -110,7 +118,7 @@
                   <div class="col-xl-3">
                     <div class="form-group">
                       <label for="tipe_penyimpanan">Tipe Penyimpanan</label>
-                      <input type="number" name="tipe_penyimpanan" id="tipe_penyimpanan" class="form-control" placeholder="misal. SSD..">
+                      <input type="text" name="tipe_penyimpanan" id="tipe_penyimpanan" class="form-control" placeholder="misal. SSD..">
                       <div class="invalid-feedback"></div>
                     </div>
                     <div class="form-group">
@@ -131,7 +139,7 @@
                     </div>
                     <div class="form-group">
                       <label for="kartu_grafis">Kartu Grafis</label>
-                      <input type="text" name="kartu_grafis" id="kartu_grafis" class="form-control" placeholder="misal. ATI RAGE 3D..">
+                      <input type="text" name="kartu_grafis" id="kartu_grafis" class="form-control" placeholder="misal. integrated (bawaan laptop)..">
                       <div class="invalid-feedback"></div>
                     </div>
                   </div>
