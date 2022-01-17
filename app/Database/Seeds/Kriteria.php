@@ -14,7 +14,7 @@ class Kriteria extends Seeder
   {
     $data = [
       ['nama' => 'harga', 'jenis' => 'cc', 'data_kuantitatif' => 1],
-      ['nama' => 'rating_produk', 'jenis' => 'bc', 'data_kuantitatif' => 0],
+      ['nama' => 'rating_produk', 'jenis' => 'bc', 'data_kuantitatif' => 1],
       ['nama' => 'merk', 'jenis' => 'bc', 'data_kuantitatif' => 0],
       ['nama' => 'prosesor', 'jenis' => 'bc', 'data_kuantitatif' => 0],
       ['nama' => 'kapasitas_ram', 'jenis' => 'bc', 'data_kuantitatif' => 1],
@@ -23,7 +23,7 @@ class Kriteria extends Seeder
       ['nama' => 'ukuran_layar', 'jenis' => 'bc', 'data_kuantitatif' => 0],
       ['nama' => 'kartu_grafis', 'jenis' => 'bc', 'data_kuantitatif' => 0],
       ['nama' => 'sistem_operasi', 'jenis' => 'bc', 'data_kuantitatif' => 0],
-      ['nama' => 'masa_garansi', 'jenis' => 'bc', 'data_kuantitatif' => 0],
+      ['nama' => 'masa_garansi', 'jenis' => 'bc', 'data_kuantitatif' => 1],
       ['nama' => 'kondisi_produk', 'jenis' => 'bc', 'data_kuantitatif' => 0],
     ];
 
