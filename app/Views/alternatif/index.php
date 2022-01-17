@@ -12,9 +12,16 @@
         <div class="col-md-12">
           <div class="card shadow">
             <div class="card-header">
-              <button class="btn btn-primary btn-tambah" data-toggle="modal" data-target="#modalBoxTambah" data-backdrop="static" data-keyboard="false"><i class="fas fa fa-plus"></i> Tambah</button>
-              <button class="btn btn-danger btn-hapus"><i class="fas fa fa-trash-alt"></i> Hapus</button>
-              <button class="btn btn-success btn-ubah"><i class="fas fa fa-edit"></i> Ubah</button>
+              <div class="row">
+                <div class="col-md-8">
+                  <button class="btn btn-primary btn-tambah" data-toggle="modal" data-target="#modalBoxTambah" data-backdrop="static" data-keyboard="false"><i class="fas fa fa-plus"></i> Tambah</button>
+                  <button class="btn btn-danger btn-hapus"><i class="fas fa fa-trash-alt"></i> Hapus</button>
+                  <button class="btn btn-success btn-ubah"><i class="fas fa fa-edit"></i> Ubah</button>
+                </div>
+                <div class="col-md-4">
+                  <button type="button" class="btn btn-dark float-right btn-nilai-kriteria"><i class="fas fa fa-recycle"></i> Tentukan Nilai Kriteria</button>
+                </div>
+              </div>
             </div>
             <div class="card-body">
               <?php if ($alternatif) : ?>
