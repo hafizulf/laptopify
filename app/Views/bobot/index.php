@@ -186,7 +186,7 @@
           $('.btn-normalisasi').html('loading.. <span class="spinner-border spinner-border-sm"></span>')
         },
         complete: function() {
-          $('.btn-normalisasi').html('<i class="fas fa fa-recycle"></i>  Normalisasi Bobot')
+          $('.btn-normalisasi').html('<i class="fas fa fa-recycle"></i>  Update Normalisasi Bobot')
         },
         success: function(response) {
           toastSuccess(response)
