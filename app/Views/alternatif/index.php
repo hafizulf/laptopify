@@ -432,13 +432,12 @@
           $('.btn-nilai-kriteria').html('<i class="fas fa fa-recycle"></i> Tentukan Nilai Kriteria')
         },
         success: function(response) {
-          console.log(response);
-          // toastSuccess(response)
-          // reload()
+          toastSuccess(response)
+          reload()
         },
-        // error: function(xhr, ajaxOptions, thrownError) {
-        //   alert(xhr.status + "\n" + xhr.responseText + "\n" + thrownError)
-        // }
+        error: function(xhr, ajaxOptions, thrownError) {
+          alert(xhr.status + "\n" + xhr.responseText + "\n" + thrownError)
+        }
       })
     })
 

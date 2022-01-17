@@ -76,6 +76,14 @@ class NilaiKriteria extends BaseController
 
     $nilaiKriteria = array_merge($dataKuantitatif, $dataKualitatif);
 
-    var_dump($nilaiKriteria);
+    if (sizeOf($nilaiKriteria) <= 0) {
+      return $this->response->setJSON(['status' => TRUE, 'message' => 'Belum ada data bobot kriteria']);
+    }
+
+    if ($this->model->setNilaiKriteria($nilaiKriteria) === FALSE) {
+      return $this->response->setJSON(['status' => FALSE, 'errors' => $this->model->errors()]);
+    } else {
+      return $this->response->setJSON(['status' => TRUE, 'message' => 'Nilai Kriteria Telah Diperbarui']);
+    }
   }
 }
