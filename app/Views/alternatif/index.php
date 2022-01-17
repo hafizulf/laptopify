@@ -419,6 +419,29 @@
 
 <script>
   $(document).ready(function() {
+
+    $('.btn-nilai-kriteria').on('click', function() {
+      $.ajax({
+        url: '/NilaiKriteria/setNilaiKriteria',
+        type: 'POST',
+        dataType: 'JSON',
+        beforeSend: function() {
+          $('.btn-nilai-kriteria').html('loading.. <span class="spinner-border spinner-border-sm"></span>')
+        },
+        complete: function() {
+          $('.btn-nilai-kriteria').html('<i class="fas fa fa-recycle"></i> Tentukan Nilai Kriteria')
+        },
+        success: function(response) {
+          console.log(response);
+          // toastSuccess(response)
+          // reload()
+        },
+        error: function(xhr, ajaxOptions, thrownError) {
+          alert(xhr.status + "\n" + xhr.responseText + "\n" + thrownError)
+        }
+      })
+    })
+
     const formTambah = $('#formTambah')
     formTambah.submit(function(e) {
       e.preventDefault()

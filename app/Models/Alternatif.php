@@ -26,4 +26,11 @@ class Alternatif extends Model
     'kondisi_produk' => 'required',
     'url_produk' => 'required',
   ];
+
+  public function getAlternatifCriteria()
+  {
+    return $this->db->query("
+      SELECT id, harga, rating_produk, merk, prosesor, kapasitas_ram, tipe_penyimpanan, kapasitas_penyimpanan, ukuran_layar, kartu_grafis, sistem_operasi, masa_garansi, kondisi_produk FROM " . $this->table . "
+    ")->getResultArray();
+  }
 }
