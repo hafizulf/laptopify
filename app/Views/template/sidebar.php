@@ -33,13 +33,13 @@
   <li class="nav-item <?= url_is('/bobot') ? 'active' : '' ?>">
     <a class="nav-link pb-0" href="/bobot">
       <i class="fas fa-fw fa-weight"></i>
-      <span>Bobot</span></a>
+      <span>Pembobotan Kriteria</span></a>
   </li>
 
   <li class="nav-item <?= url_is('/alternatif') ? 'active' : '' ?>">
     <a class="nav-link pb-0" href="/alternatif">
       <i class="fas fa-fw fa-database"></i>
-      <span>Alternatif</span></a>
+      <span>Data Alternatif</span></a>
   </li>
 
   <!-- Divider -->
