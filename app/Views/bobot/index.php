@@ -19,7 +19,7 @@
                   <button type="button" class="btn btn-success btn-ubah"><i class="fas fa fa-edit"></i> Ubah</button>
                 </div>
                 <div class="col-md-4">
-                  <button type="button" class="btn btn-dark btn-float-right btn-normalisasi"><i class="fas fa fa-recycle"></i> Update Normalisasi Nilai Bobot</button>
+                  <button type="button" class="btn btn-dark float-right btn-normalisasi"><i class="fas fa fa-recycle"></i> Update Normalisasi Nilai Bobot</button>
                 </div>
               </div>
             </div>
@@ -186,7 +186,7 @@
           $('.btn-normalisasi').html('loading.. <span class="spinner-border spinner-border-sm"></span>')
         },
         complete: function() {
-          $('.btn-normalisasi').html('<i class="fas fa fa-recycle"></i>  Normalisasi Bobot')
+          $('.btn-normalisasi').html('<i class="fas fa fa-recycle"></i>  Update Normalisasi Bobot')
         },
         success: function(response) {
           toastSuccess(response)

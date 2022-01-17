@@ -8,13 +8,26 @@
 
       <h1 class="text-gray-900"><?= $judul; ?></h1>
 
+      <div class="alert alert-primary mt-3" role="alert">
+        <strong>
+          Pastikan telah memasukkan semua data kriteria dan sub kriteria, hal ini juga akan digunakan pada form tambah data alternatif.
+        </strong>
+      </div>
+
       <div class="row mt-4">
         <div class="col-md-12">
           <div class="card shadow">
             <div class="card-header">
-              <button class="btn btn-primary btn-tambah" data-toggle="modal" data-target="#modalBoxTambah" data-backdrop="static" data-keyboard="false"><i class="fas fa fa-plus"></i> Tambah</button>
-              <button class="btn btn-danger btn-hapus"><i class="fas fa fa-trash-alt"></i> Hapus</button>
-              <button class="btn btn-success btn-ubah"><i class="fas fa fa-edit"></i> Ubah</button>
+              <div class="row">
+                <div class="col-md-8">
+                  <button class="btn btn-primary btn-tambah" data-toggle="modal" data-target="#modalBoxTambah" data-backdrop="static" data-keyboard="false"><i class="fas fa fa-plus"></i> Tambah</button>
+                  <button class="btn btn-danger btn-hapus"><i class="fas fa fa-trash-alt"></i> Hapus</button>
+                  <button class="btn btn-success btn-ubah"><i class="fas fa fa-edit"></i> Ubah</button>
+                </div>
+                <div class="col-md-4">
+                  <button type="button" class="btn btn-dark float-right btn-nilai-kriteria"><i class="fas fa fa-recycle"></i> Tentukan Nilai Kriteria</button>
+                </div>
+              </div>
             </div>
             <div class="card-body">
               <?php if ($alternatif) : ?>
@@ -82,7 +95,7 @@
                     </div>
                     <div class="form-group">
                       <label for="harga">Harga</label>
-                      <input type="text" name="harga" id="harga" class="form-control" placeholder="misal. 6.000.000..">
+                      <input type="text" name="harga" id="harga" class="form-control" placeholder="misal. 6000000">
                       <div class="invalid-feedback"></div>
                     </div>
                     <div class="form-group">
@@ -95,17 +108,27 @@
                   <div class="col-xl-3">
                     <div class="form-group">
                       <label for="rating_produk">Rating Produk</label>
-                      <input type="text" name="rating_produk" id="rating_produk" class="form-control" placeholder="misal. 4,8..">
+                      <input type="text" name="rating_produk" id="rating_produk" class="form-control" placeholder="misal. 4.8">
                       <div class="invalid-feedback"></div>
                     </div>
                     <div class="form-group">
                       <label for="merk">Merk</label>
-                      <input type="text" name="merk" id="merk" class="form-control" placeholder="misal. Lenovo..">
+                      <select name="merk" id="merk" class="form-control">
+                        <option value="">-- Pilih --</option>
+                        <?php foreach ($merk_options as $row) : ?>
+                          <option value="<?= $row['nama']; ?>"><?= $row['nama']; ?></option>
+                        <?php endforeach; ?>
+                      </select>
                       <div class="invalid-feedback"></div>
                     </div>
                     <div class="form-group">
                       <label for="prosesor">Prosesor</label>
-                      <input type="text" name="prosesor" id="prosesor" class="form-control" placeholder="misal. Intel Core i3..">
+                      <select name="prosesor" id="prosesor" class="form-control">
+                        <option value="">-- Pilih --</option>
+                        <?php foreach ($prosesor_options as $row) : ?>
+                          <option value="<?= $row['nama']; ?>"><?= $row['nama']; ?></option>
+                        <?php endforeach; ?>
+                      </select>
                       <div class="invalid-feedback"></div>
                     </div>
                     <div class="form-group">
@@ -118,7 +141,12 @@
                   <div class="col-xl-3">
                     <div class="form-group">
                       <label for="tipe_penyimpanan">Tipe Penyimpanan</label>
-                      <input type="text" name="tipe_penyimpanan" id="tipe_penyimpanan" class="form-control" placeholder="misal. SSD..">
+                      <select name="tipe_penyimpanan" id="tipe_penyimpanan" class="form-control">
+                        <option value="">-- Pilih --</option>
+                        <?php foreach ($tipe_penyimpanan_options as $row) : ?>
+                          <option value="<?= $row['nama']; ?>"><?= $row['nama']; ?></option>
+                        <?php endforeach; ?>
+                      </select>
                       <div class="invalid-feedback"></div>
                     </div>
                     <div class="form-group">
@@ -130,16 +158,20 @@
                       <label for="ukuran_layar">Ukuran Layar (inch)</label>
                       <select name="ukuran_layar" id="ukuran_layar" class="form-control">
                         <option value="">-- Pilih --</option>
-                        <option value="ultra portable">Ultra Portable (<13 inch)</option>
-                        <option value="portable">Portable (13-14,9 inch)</option>
-                        <option value="standard">Standard (15-16,5 inch)</option>
-                        <option value="large">Large (> 17,3 inch)</option>
+                        <?php foreach ($ukuran_layar_options as $row) : ?>
+                          <option value="<?= $row['nama']; ?>"><?= $row['nama']; ?></option>
+                        <?php endforeach; ?>
                       </select>
                       <div class="invalid-feedback"></div>
                     </div>
                     <div class="form-group">
                       <label for="kartu_grafis">Kartu Grafis</label>
-                      <input type="text" name="kartu_grafis" id="kartu_grafis" class="form-control" placeholder="misal. integrated (bawaan laptop)..">
+                      <select name="kartu_grafis" id="kartu_grafis" class="form-control">
+                        <option value="">-- Pilih --</option>
+                        <?php foreach ($kartu_grafis_options as $row) : ?>
+                          <option value="<?= $row['nama']; ?>"><?= $row['nama']; ?></option>
+                        <?php endforeach; ?>
+                      </select>
                       <div class="invalid-feedback"></div>
                     </div>
                   </div>
@@ -147,7 +179,12 @@
                   <div class="col-xl-3">
                     <div class="form-group">
                       <label for="sistem_operasi">Sistem Operasi</label>
-                      <input type="text" name="sistem_operasi" id="sistem_operasi" class="form-control" placeholder="misal. windows..">
+                      <select name="sistem_operasi" id="sistem_operasi" class="form-control">
+                        <option value="">-- Pilih --</option>
+                        <?php foreach ($sistem_operasi_options as $row) : ?>
+                          <option value="<?= $row['nama']; ?>"><?= $row['nama']; ?></option>
+                        <?php endforeach; ?>
+                      </select>
                       <div class="invalid-feedback"></div>
                     </div>
                     <div class="form-group">
@@ -159,8 +196,9 @@
                       <label for="kondisi_produk">Kondisi</label>
                       <select name="kondisi_produk" id="kondisi_produk" class="form-control">
                         <option value="">-- Pilih --</option>
-                        <option value="Baru">Baru</option>
-                        <option value="Bekas">Bekas</option>
+                        <?php foreach ($kondisi_produk_options as $row) : ?>
+                          <option value="<?= $row['nama']; ?>"><?= $row['nama']; ?></option>
+                        <?php endforeach; ?>
                       </select>
                       <div class="invalid-feedback"></div>
                     </div>
@@ -220,17 +258,27 @@
                   <div class="col-xl-3">
                     <div class="form-group">
                       <label for="rating_produk_ubah">Rating Produk</label>
-                      <input type="text" name="rating_produk" id="rating_produk_ubah" class="form-control" placeholder="misal. 4,8..">
+                      <input type="text" name="rating_produk" id="rating_produk_ubah" class="form-control" placeholder="misal. 4.8">
                       <div class="invalid-feedback"></div>
                     </div>
                     <div class="form-group">
                       <label for="merk_ubah">Merk</label>
-                      <input type="text" name="merk" id="merk_ubah" class="form-control" placeholder="misal. Lenovo..">
+                      <select name="merk" id="merk" class="form-control">
+                        <option value="">-- Pilih --</option>
+                        <?php foreach ($merk_options as $row) : ?>
+                          <option value="<?= $row['nama']; ?>"><?= $row['nama']; ?></option>
+                        <?php endforeach; ?>
+                      </select>
                       <div class="invalid-feedback"></div>
                     </div>
                     <div class="form-group">
                       <label for="prosesor_ubah">Prosesor</label>
-                      <input type="text" name="prosesor" id="prosesor_ubah" class="form-control" placeholder="misal. Intel Core i3..">
+                      <select name="prosesor" id="prosesor" class="form-control">
+                        <option value="">-- Pilih --</option>
+                        <?php foreach ($prosesor_options as $row) : ?>
+                          <option value="<?= $row['nama']; ?>"><?= $row['nama']; ?></option>
+                        <?php endforeach; ?>
+                      </select>
                       <div class="invalid-feedback"></div>
                     </div>
                     <div class="form-group">
@@ -243,7 +291,12 @@
                   <div class="col-xl-3">
                     <div class="form-group">
                       <label for="tipe_penyimpanan_ubah">Tipe Penyimpanan</label>
-                      <input type="text" name="tipe_penyimpanan" id="tipe_penyimpanan_ubah" class="form-control" placeholder="misal. SSD..">
+                      <select name="tipe_penyimpanan" id="tipe_penyimpanan" class="form-control">
+                        <option value="">-- Pilih --</option>
+                        <?php foreach ($tipe_penyimpanan_options as $row) : ?>
+                          <option value="<?= $row['nama']; ?>"><?= $row['nama']; ?></option>
+                        <?php endforeach; ?>
+                      </select>
                       <div class="invalid-feedback"></div>
                     </div>
                     <div class="form-group">
@@ -253,18 +306,22 @@
                     </div>
                     <div class="form-group">
                       <label for="ukuran_layar_ubah">Ukuran Layar (inch)</label>
-                      <select name="ukuran_layar" id="ukuran_layar_ubah" class="form-control">
+                      <select name="ukuran_layar" id="ukuran_layar" class="form-control">
                         <option value="">-- Pilih --</option>
-                        <option value="ultra portable">Ultra Portable (<13 inch)</option>
-                        <option value="portable">Portable (13-14,9 inch)</option>
-                        <option value="standard">Standard (15-16,5 inch)</option>
-                        <option value="large">Large (> 17,3 inch)</option>
+                        <?php foreach ($ukuran_layar_options as $row) : ?>
+                          <option value="<?= $row['nama']; ?>"><?= $row['nama']; ?></option>
+                        <?php endforeach; ?>
                       </select>
                       <div class="invalid-feedback"></div>
                     </div>
                     <div class="form-group">
                       <label for="kartu_grafis_ubah">Kartu Grafis</label>
-                      <input type="text" name="kartu_grafis" id="kartu_grafis_ubah" class="form-control" placeholder="misal. integrated (bawaan laptop)..">
+                      <select name="kartu_grafis" id="kartu_grafis" class="form-control">
+                        <option value="">-- Pilih --</option>
+                        <?php foreach ($kartu_grafis_options as $row) : ?>
+                          <option value="<?= $row['nama']; ?>"><?= $row['nama']; ?></option>
+                        <?php endforeach; ?>
+                      </select>
                       <div class="invalid-feedback"></div>
                     </div>
                   </div>
@@ -272,7 +329,12 @@
                   <div class="col-xl-3">
                     <div class="form-group">
                       <label for="sistem_operasi_ubah">Sistem Operasi</label>
-                      <input type="text" name="sistem_operasi" id="sistem_operasi_ubah" class="form-control" placeholder="misal. windows..">
+                      <select name="sistem_operasi" id="sistem_operasi" class="form-control">
+                        <option value="">-- Pilih --</option>
+                        <?php foreach ($sistem_operasi_options as $row) : ?>
+                          <option value="<?= $row['nama']; ?>"><?= $row['nama']; ?></option>
+                        <?php endforeach; ?>
+                      </select>
                       <div class="invalid-feedback"></div>
                     </div>
                     <div class="form-group">
@@ -282,10 +344,11 @@
                     </div>
                     <div class="form-group">
                       <label for="kondisi_produk_ubah">Kondisi</label>
-                      <select name="kondisi_produk" id="kondisi_produk_ubah" class="form-control">
+                      <select name="kondisi_produk" id="kondisi_produk" class="form-control">
                         <option value="">-- Pilih --</option>
-                        <option value="Baru">Baru</option>
-                        <option value="Bekas">Bekas</option>
+                        <?php foreach ($kondisi_produk_options as $row) : ?>
+                          <option value="<?= $row['nama']; ?>"><?= $row['nama']; ?></option>
+                        <?php endforeach; ?>
                       </select>
                       <div class="invalid-feedback"></div>
                     </div>
@@ -408,10 +471,30 @@
 <?php $this->endSection(); ?>
 
 <?php $this->section('custom-js') ?>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/autonumeric/4.1.0/autoNumeric.min.js" integrity="sha512-U0/lvRgEOjWpS5e0JqXK6psnAToLecl7pR+c7EEnndsVkWq3qGdqIGQGN2qxSjrRnCyBJhoaktKXTVceVG2fTw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
 <script>
   $(document).ready(function() {
+
+    $('.btn-nilai-kriteria').on('click', function() {
+      $.ajax({
+        url: '/NilaiKriteria/setNilaiKriteria',
+        type: 'POST',
+        dataType: 'JSON',
+        beforeSend: function() {
+          $('.btn-nilai-kriteria').html('loading.. <span class="spinner-border spinner-border-sm"></span>')
+        },
+        complete: function() {
+          $('.btn-nilai-kriteria').html('<i class="fas fa fa-recycle"></i> Tentukan Nilai Kriteria')
+        },
+        success: function(response) {
+          toastSuccess(response)
+          reload()
+        },
+        error: function(xhr, ajaxOptions, thrownError) {
+          alert(xhr.status + "\n" + xhr.responseText + "\n" + thrownError)
+        }
+      })
+    })
+
     const formTambah = $('#formTambah')
     formTambah.submit(function(e) {
       e.preventDefault()
@@ -437,13 +520,6 @@
 
       removeClasses('#formUbah')
     })
-
-    new AutoNumeric('[name="harga"]', {
-      currencySymbol: 'Rp ',
-      decimalPlaces: 0,
-      decimalCharacter: ',',
-      digitGroupSeparator: '.',
-    });
 
     $('.btn-detail').on('click', function() {
       requestGetDataById('/alternatif/getDataById', '', 'detail')

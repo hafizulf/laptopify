@@ -11,7 +11,7 @@ class Subkriteria extends Model
 
   protected $validationRules = [
     'kriteria_id' => 'required',
-    'nama.*' => 'required|is_unique[sub_kriteria.nama, id, {id}]',
+    'nama.*' => 'required',
     'nilai_preferensi.*' => 'required|is_numeric',
   ];
 
@@ -47,5 +47,18 @@ class Subkriteria extends Model
   {
     $this->db->disableForeignKeyChecks();
     return $this->insertBatch($data);
+  }
+
+  public function getSpesificSubkriteria($clause = FALSE)
+  {
+    if ($clause) {
+      return $this->db->query(
+        "SELECT sk.nama FROM " . $this->table . " AS sk JOIN kriteria ON sk.kriteria_id = kriteria.id WHERE kriteria.nama = '" . $clause . "' ORDER BY kriteria_id"
+      )->getResultArray();
+    } else {
+      return $this->db->query(
+        "SELECT k.nama as nama_kriteria, sk.kriteria_id, sk.nama, sk.nilai_preferensi FROM " . $this->table . " AS sk JOIN kriteria AS k ON sk.kriteria_id = k.id ORDER BY kriteria_id"
+      )->getResultArray();
+    }
   }
 }

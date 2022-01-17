@@ -13,7 +13,7 @@ class Alternatif extends Model
     'kode' => 'required|is_unique[alternatif.kode, id, {id}]',
     'nama' => 'required',
     'harga' => 'required|is_numeric',
-    'rating_produk' => 'required',
+    'rating_produk' => 'required|is_numeric',
     'merk' => 'required',
     'prosesor' => 'required',
     'kapasitas_ram' => 'required|is_numeric',
@@ -26,4 +26,11 @@ class Alternatif extends Model
     'kondisi_produk' => 'required',
     'url_produk' => 'required',
   ];
+
+  public function getAlternatifCriteria()
+  {
+    return $this->db->query("
+      SELECT id, harga, rating_produk, merk, prosesor, kapasitas_ram, tipe_penyimpanan, kapasitas_penyimpanan, ukuran_layar, kartu_grafis, sistem_operasi, masa_garansi, kondisi_produk FROM " . $this->table . "
+    ")->getResultArray();
+  }
 }

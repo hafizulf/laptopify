@@ -4,12 +4,14 @@ namespace App\Controllers;
 
 use App\Controllers\BaseController;
 use App\Models\Alternatif as ModelsAlternatif;
+use App\Models\Subkriteria;
 
 class Alternatif extends BaseController
 {
   public function __construct()
   {
     $this->model = new ModelsAlternatif();
+    $this->subkriteriaModel = new Subkriteria();
   }
 
   public function index()
@@ -17,6 +19,13 @@ class Alternatif extends BaseController
     $data = [
       'judul' => 'Alternatif',
       'alternatif' => $this->model->findAll(),
+      'merk_options' => $this->subkriteriaModel->getSpesificSubkriteria('merk'),
+      'prosesor_options' => $this->subkriteriaModel->getSpesificSubkriteria('prosesor'),
+      'tipe_penyimpanan_options' => $this->subkriteriaModel->getSpesificSubkriteria('tipe_penyimpanan'),
+      'ukuran_layar_options' => $this->subkriteriaModel->getSpesificSubkriteria('ukuran_layar'),
+      'kartu_grafis_options' => $this->subkriteriaModel->getSpesificSubkriteria('kartu_grafis'),
+      'sistem_operasi_options' => $this->subkriteriaModel->getSpesificSubkriteria('sistem_operasi'),
+      'kondisi_produk_options' => $this->subkriteriaModel->getSpesificSubkriteria('kondisi_produk'),
     ];
 
     return view('alternatif/index', $data);
