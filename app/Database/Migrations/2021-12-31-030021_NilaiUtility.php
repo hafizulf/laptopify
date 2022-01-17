@@ -10,8 +10,8 @@ class NilaiUtility extends Migration
   {
     $this->forge->addField([
       'id INT UNSIGNED AUTO_INCREMENT',
-      'nilai_kriteria_id INT UNSIGNED NOT NULL',
-      'nilai_utility FLOAT NOT NULL',
+      'nilai_kriteria_id INT UNSIGNED',
+      'nilai_utility FLOAT',
     ]);
     $this->forge->addKey('id', true);
     $this->forge->addForeignKey('nilai_kriteria_id', 'nilai_kriteria', 'id', 'CASCADE', 'CASCADE');
