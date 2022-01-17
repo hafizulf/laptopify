@@ -13,7 +13,7 @@ class Alternatif extends Model
     'kode' => 'required|is_unique[alternatif.kode, id, {id}]',
     'nama' => 'required',
     'harga' => 'required|is_numeric',
-    'rating_produk' => 'required',
+    'rating_produk' => 'required|is_numeric',
     'merk' => 'required',
     'prosesor' => 'required',
     'kapasitas_ram' => 'required|is_numeric',

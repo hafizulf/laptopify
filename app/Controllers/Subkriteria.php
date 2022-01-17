@@ -123,7 +123,7 @@ class Subkriteria extends BaseController
 
     $this->model->setValidationRules([
       'kriteria_id' => 'required',
-      'nama' => 'required|is_unique[sub_kriteria.nama, id, {id}]',
+      'nama' => 'required',
       'nilai_preferensi' => 'required|is_numeric',
     ]);
 

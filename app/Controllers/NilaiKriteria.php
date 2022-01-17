@@ -83,7 +83,7 @@ class NilaiKriteria extends BaseController
     if ($this->model->setNilaiKriteria($nilaiKriteria) === FALSE) {
       return $this->response->setJSON(['status' => FALSE, 'errors' => $this->model->errors()]);
     } else {
-      return $this->response->setJSON(['status' => TRUE, 'message' => 'Nilai Kriteria Telah Diperbarui']);
+      return $this->response->setJSON(['status' => TRUE, 'message' => 'Nilai Kriteria Berhasil Diperbarui']);
     }
   }
 }
