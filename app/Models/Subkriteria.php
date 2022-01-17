@@ -48,4 +48,11 @@ class Subkriteria extends Model
     $this->db->disableForeignKeyChecks();
     return $this->insertBatch($data);
   }
+
+  public function getSpesificSubkriteria()
+  {
+    return $this->db->query(
+      "SELECT k.nama as nama_kriteria, sk.kriteria_id, sk.nama, sk.nilai_preferensi FROM " . $this->table . " AS sk JOIN kriteria AS k ON sk.kriteria_id = k.id ORDER BY kriteria_id"
+    )->getResultArray();
+  }
 }

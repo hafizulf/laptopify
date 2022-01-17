@@ -4,48 +4,77 @@ namespace App\Controllers;
 
 use App\Controllers\BaseController;
 use App\Models\NilaiKriteria as ModelsNilaiKriteria;
-use App\Models\Alternatif as modelsAlternatif;
-use App\Models\Kriteria as modelsKriteria;
+use App\Models\Alternatif;
+use App\Models\Kriteria;
+use App\Models\Subkriteria;
 
 class NilaiKriteria extends BaseController
 {
   public function __construct()
   {
     $this->model = new ModelsNilaiKriteria();
-    $this->kriteriaModel = new modelsKriteria();
-    $this->alternatifModel = new modelsAlternatif();
+    $this->kriteriaModel = new Kriteria();
+    $this->alternatifModel = new Alternatif();
+    $this->subkriteriaModel = new Subkriteria();
+  }
+
+  public function setNilaiKriteriaKuantitatif($alternatif, $kriteria)
+  {
+    $nilaiKriteria = [];
+    for ($i = 0; $i < sizeOf($kriteria); $i++) {
+
+      for ($j = 0; $j < sizeOf($alternatif); $j++) {
+        // cek kriteria dengan tipe data kuantitatif
+        if ($kriteria[$i]['data_kuantitatif'] == 1) {
+          $nilaiKriteria[$i]['alternatif_id'] = $alternatif[$j]['id'];
+          $nilaiKriteria[$i]['kriteria_id'] = $kriteria[$i]['id'];
+
+          // cek kriteria.nama dlm array alternatif
+          if (array_key_exists($kriteria[$i]['nama'],  $alternatif[$j])) {
+            // set nilai_kriteria = value dari alternatif.nama
+            $nilaiKriteria[$i]['nilai_kriteria'] = $alternatif[$j][$kriteria[$i]['nama']];
+          }
+        }
+      }
+    }
+    return $nilaiKriteria;
+  }
+
+  public function setNilaiKriteriaKualitatif($alternatif, $subkriteria)
+  {
+    $nilaiKriteria = [];
+
+    for ($i = 0; $i < sizeof($alternatif); $i++) {
+
+      $keysAlternatif = array_keys($alternatif[$i]);
+      for ($j = 0; $j < sizeof($keysAlternatif); $j++) {
+
+        foreach ($subkriteria as $key => $row) {
+
+          if ($keysAlternatif[$j] === $row['nama_kriteria']) {
+            if ($alternatif[$i][$row['nama_kriteria']] == $row['nama']) {
+              $nilaiKriteria[$i]['alternatif_id'] = $alternatif[$i]['id'];
+              $nilaiKriteria[$i]['kriteria_id'] = $row['kriteria_id'];
+              $nilaiKriteria[$i]['nilai_kriteria'] = $row['nilai_preferensi'];
+            }
+          }
+        }
+      }
+    }
+
+    return $nilaiKriteria;
   }
 
   public function setNilaiKriteria()
   {
     $alternatif = $this->alternatifModel->getAlternatifCriteria();
     $kriteria = $this->kriteriaModel->findAll();
+    $subkriteria = $this->subkriteriaModel->getSpesificSubkriteria();
 
-    /*
-    Expected Array value of $nilaiKriteria
+    $dataKuantitatif = $this->setNilaiKriteriaKuantitatif($alternatif, $kriteria);
+    $dataKualitatif = $this->setNilaiKriteriaKualitatif($alternatif, $subkriteria);
 
-      $nilaiKriteria = [
-        'id' => AUTO_INCREMENT,
-        'alternatif_id' => $alternatif_id,
-        'kriteria_id' => $kriteria_id,
-        'nilai_kriteria' => alternatif value OR sub_kriteria.nilai_preferensi
-      ]
-    */
-    $nilaiKriteria = [];
-
-    for ($j = 0; $j < sizeOf($kriteria); $j++) {
-
-      for ($i = 0; $i < sizeOf($alternatif); $i++) {
-        if ($kriteria[$j]['data_kuantitatif'] == 1) {
-          $nilaiKriteria[$j]['alternatif_id'] = $alternatif[$i]['id'];
-          $nilaiKriteria[$j]['kriteria_id'] = $kriteria[$j]['id'];
-
-          if (array_key_exists($kriteria[$j]['nama'],  $alternatif[$i])) {
-            $nilaiKriteria[$j]['nilai_kriteria'] = $alternatif[$i][$kriteria[$j]['nama']];
-          }
-        }
-      }
-    }
+    $nilaiKriteria = array_merge($dataKuantitatif, $dataKualitatif);
 
     var_dump($nilaiKriteria);
   }

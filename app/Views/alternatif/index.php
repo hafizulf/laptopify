@@ -436,9 +436,9 @@
           // toastSuccess(response)
           // reload()
         },
-        error: function(xhr, ajaxOptions, thrownError) {
-          alert(xhr.status + "\n" + xhr.responseText + "\n" + thrownError)
-        }
+        // error: function(xhr, ajaxOptions, thrownError) {
+        //   alert(xhr.status + "\n" + xhr.responseText + "\n" + thrownError)
+        // }
       })
     })
 
