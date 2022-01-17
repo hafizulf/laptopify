@@ -10,8 +10,8 @@ class NormalisasiBobot extends Migration
   {
     $this->forge->addField([
       'id INT UNSIGNED AUTO_INCREMENT',
-      'pembobotan_id INT UNSIGNED NOT NULL',
-      'nilai_normalisasi_bobot FLOAT UNSIGNED NOT NULL DEFAULT "0"',
+      'pembobotan_id INT UNSIGNED',
+      'nilai_normalisasi_bobot FLOAT UNSIGNED DEFAULT "0"',
     ]);
     $this->forge->addKey('id', true);
     $this->forge->addForeignKey('pembobotan_id', 'pembobotan', 'id', 'CASCADE', 'CASCADE');

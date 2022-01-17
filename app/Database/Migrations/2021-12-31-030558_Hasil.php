@@ -10,8 +10,8 @@ class Hasil extends Migration
   {
     $this->forge->addField([
       'id INT UNSIGNED AUTO_INCREMENT',
-      'alternatif_id INT UNSIGNED NOT NULL',
-      'nilai_akhir FLOAT NOT NULL',
+      'alternatif_id INT UNSIGNED',
+      'nilai_akhir FLOAT',
     ]);
     $this->forge->addKey('id', true);
     $this->forge->addForeignKey('alternatif_id', 'alternatif', 'id', 'CASCADE', 'CASCADE');
