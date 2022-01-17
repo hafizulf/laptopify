@@ -28,7 +28,7 @@ class Kriteria extends BaseController
       throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
     }
 
-    $nama = ucwords($this->request->getPost('nama'));
+    $nama = strtolower(str_replace(" ", "_", $this->request->getPost('nama')));
     $data = [
       'nama' => $nama,
       'jenis' => $this->request->getPost('jenis'),
