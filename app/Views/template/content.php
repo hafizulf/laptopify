@@ -265,9 +265,8 @@
     }
 
     const requestGetDataById = function(url, ...params) {
-      if (params[1] !== 'detail') {
+      if (!params[1]) {
         let checked = $('.checkbox:checked')
-        let id = checked.val()
 
         if (checked.length < 1) {
           warnEmptyData()
@@ -278,6 +277,8 @@
             text: 'Silahkan pilih 1 data saja yang ingin diperbarui!',
           })
         } else {
+          let id = checked.val()
+
           $('#modalBoxUbah').modal({
             toggle: true,
             backdrop: 'static',
@@ -309,13 +310,11 @@
       } else {
         $('#modalBoxDetail').modal('toggle')
 
-        let id = $('.btn-detail').data('id')
-
         $.ajax({
           url: '' + url + '',
           type: 'POST',
           data: {
-            id: id
+            id: params[1]
           },
           dataType: 'JSON',
           success: function(response) {
@@ -332,6 +331,7 @@
           }
         })
       }
+
     }
   </script>
 

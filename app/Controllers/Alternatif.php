@@ -37,24 +37,7 @@ class Alternatif extends BaseController
       throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
     }
 
-    $harga = str_replace(['Rp', '.'], '', $this->request->getPost('harga'));
-    $data = [
-      'kode' => $this->request->getPost('kode'),
-      'nama' => $this->request->getPost('nama'),
-      'harga' => $harga,
-      'rating_produk' => $this->request->getPost('rating_produk'),
-      'merk' => $this->request->getPost('merk'),
-      'prosesor' => $this->request->getPost('prosesor'),
-      'kapasitas_ram' => $this->request->getPost('kapasitas_ram'),
-      'tipe_penyimpanan' => $this->request->getPost('tipe_penyimpanan'),
-      'kapasitas_penyimpanan' => $this->request->getPost('kapasitas_penyimpanan'),
-      'ukuran_layar' => $this->request->getPost('ukuran_layar'),
-      'kartu_grafis' => $this->request->getPost('kartu_grafis'),
-      'sistem_operasi' => $this->request->getPost('sistem_operasi'),
-      'masa_garansi' => $this->request->getPost('masa_garansi'),
-      'kondisi_produk' => $this->request->getPost('kondisi_produk'),
-      'url_produk' => $this->request->getPost('url_produk'),
-    ];
+    $data = $this->request->getPost();
 
     if ($this->model->save($data) === FALSE) {
       return $this->response->setJSON(['status' => FALSE, 'errors' => $this->model->errors()]);
@@ -91,24 +74,7 @@ class Alternatif extends BaseController
       throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
     }
 
-    $data = [
-      'id' => $this->request->getPost('id'),
-      'kode' => $this->request->getPost('kode'),
-      'nama' => $this->request->getPost('nama'),
-      'harga' => $this->request->getPost('harga'),
-      'rating_produk' => $this->request->getPost('rating_produk'),
-      'merk' => $this->request->getPost('merk'),
-      'prosesor' => $this->request->getPost('prosesor'),
-      'kapasitas_ram' => $this->request->getPost('kapasitas_ram'),
-      'tipe_penyimpanan' => $this->request->getPost('tipe_penyimpanan'),
-      'kapasitas_penyimpanan' => $this->request->getPost('kapasitas_penyimpanan'),
-      'ukuran_layar' => $this->request->getPost('ukuran_layar'),
-      'kartu_grafis' => $this->request->getPost('kartu_grafis'),
-      'sistem_operasi' => $this->request->getPost('sistem_operasi'),
-      'masa_garansi' => $this->request->getPost('masa_garansi'),
-      'kondisi_produk' => $this->request->getPost('kondisi_produk'),
-      'url_produk' => $this->request->getPost('url_produk'),
-    ];
+    $data = $this->request->getPost();
 
     if ($this->model->save($data) === FALSE) {
       return $this->response->setJSON(['status' => FALSE, 'errors' => $this->model->errors()]);

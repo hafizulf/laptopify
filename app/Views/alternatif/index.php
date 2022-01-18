@@ -526,7 +526,8 @@
     })
 
     $('.btn-detail').on('click', function() {
-      requestGetDataById('/alternatif/getDataById', '', 'detail')
+      let id = $(this).data('id')
+      requestGetDataById('/alternatif/getDataById', '', id)
     })
   })
 </script>
