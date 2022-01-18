@@ -20,6 +20,10 @@ class NilaiKriteria extends BaseController
 
   public function setNilaiKriteriaKuantitatif($alternatif, $kriteria)
   {
+    if (!$this->request->isAJAX()) {
+      throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
+    }
+
     $nilaiKriteria = [];
     for ($i = 0; $i < sizeOf($kriteria); $i++) {
 
@@ -42,6 +46,10 @@ class NilaiKriteria extends BaseController
 
   public function setNilaiKriteriaKualitatif($alternatif, $subkriteria)
   {
+    if (!$this->request->isAJAX()) {
+      throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
+    }
+
     $nilaiKriteria = [];
 
     for ($i = 0; $i < sizeof($alternatif); $i++) {
@@ -67,6 +75,10 @@ class NilaiKriteria extends BaseController
 
   public function setNilaiKriteria()
   {
+    if (!$this->request->isAJAX()) {
+      throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
+    }
+
     $alternatif = $this->alternatifModel->getAlternatifCriteria();
     $kriteria = $this->kriteriaModel->findAll();
     $subkriteria = $this->subkriteriaModel->getSpesificSubkriteria();
