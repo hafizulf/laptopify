@@ -77,7 +77,7 @@ class NilaiKriteria extends BaseController
     $nilaiKriteria = array_merge($dataKuantitatif, $dataKualitatif);
 
     if (sizeOf($nilaiKriteria) <= 0) {
-      return $this->response->setJSON(['status' => TRUE, 'message' => 'Belum ada data bobot kriteria']);
+      return $this->response->setJSON(['status' => TRUE, 'warning' => 'Belum ada data!']);
     }
 
     if ($this->model->setNilaiKriteria($nilaiKriteria) === FALSE) {

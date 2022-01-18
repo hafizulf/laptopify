@@ -486,8 +486,12 @@
           $('.btn-nilai-kriteria').html('<i class="fas fa fa-recycle"></i> Tentukan Nilai Kriteria')
         },
         success: function(response) {
-          toastSuccess(response)
-          reload()
+          if (!response.warning) {
+            toastSuccess(response)
+            reload()
+          } else {
+            toastAlert(response)
+          }
         },
         error: function(xhr, ajaxOptions, thrownError) {
           alert(xhr.status + "\n" + xhr.responseText + "\n" + thrownError)

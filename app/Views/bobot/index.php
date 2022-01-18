@@ -189,8 +189,12 @@
           $('.btn-normalisasi').html('<i class="fas fa fa-recycle"></i>  Update Normalisasi Bobot')
         },
         success: function(response) {
-          toastSuccess(response)
-          reload()
+          if (!response.warning) {
+            toastSuccess(response)
+            reload()
+          } else {
+            toastAlert(response)
+          }
         },
         error: function(xhr, ajaxOptions, thrownError) {
           alert(xhr.status + "\n" + xhr.responseText + "\n" + thrownError)

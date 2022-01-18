@@ -131,6 +131,13 @@
       }
     }
 
+    const toastAlert = function(response) {
+      Toast.fire({
+        icon: 'warning',
+        title: response.warning
+      })
+    }
+
     const reload = function() {
       setTimeout(function() {
         location.reload()
