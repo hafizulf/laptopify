@@ -27,7 +27,7 @@
               </div>
               <div class="card-body">
                 <div class="table-responsive">
-                  <table class="table table-bordered table-stripedtable-kriteria">
+                  <table class="table table-bordered table-striped table-kriteria">
                     <thead>
                       <th>Alternatif / Kriteria</th>
                       <?php foreach ($kriteria->getResultArray() as $row) : ?>
@@ -68,3 +68,34 @@
   </div>
 </div>
 <?php $this->endSection(); ?>
+
+<?php $this->section('custom-js') ?>
+<script>
+  $(document).ready(function() {
+    $('.btn-nilai-utility').on('click', function() {
+      $.ajax({
+        url: '/NilaiUtility/generateNilaiUtility',
+        type: 'POST',
+        dataType: 'JSON',
+        beforeSend: function() {
+          $('.btn-nilai-utility').html('loading.. <span class="spinner-border spinner-border-sm"></span>')
+        },
+        complete: function() {
+          $('.btn-nilai-utility').html('<i class="fas fa fa-recycle"></i>  Tentukan Nilai Utility')
+        },
+        success: function(response) {
+          if (!response.warning) {
+            toastSuccess(response)
+            reload()
+          } else {
+            toastAlert(response)
+          }
+        },
+        error: function(xhr, ajaxOptions, thrownError) {
+          alert(xhr.status + "\n" + xhr.responseText + "\n" + thrownError)
+        }
+      })
+    })
+  })
+</script>
+<?php $this->endSection() ?>

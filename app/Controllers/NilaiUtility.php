@@ -54,5 +54,15 @@ class NilaiUtility extends BaseController
         array_push($nilaiUtility, $data);
       }
     }
+
+    if (sizeOf($nilaiUtility) <= 0) {
+      return $this->response->setJSON(['status' => TRUE, 'warning' => 'Belum ada data nilai kriteria']);
+    }
+
+    if ($this->model->saveNilaiUtility($nilaiUtility) === FALSE) {
+      return $this->response->setJSON(['status' => FALSE, 'errors' => $this->model->errors()]);
+    } else {
+      return $this->response->setJSON(['status' => TRUE, 'message' => 'Nilai utility berhasil diperbarui']);
+    }
   }
 }
