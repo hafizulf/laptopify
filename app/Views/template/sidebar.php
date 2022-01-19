@@ -42,6 +42,12 @@
       <span>Data Alternatif</span></a>
   </li>
 
+  <li class="nav-item <?= url_is('/perhitungan') ? 'active' : '' ?>">
+    <a class="nav-link pb-0" href="/perhitungan">
+      <i class="fas fa-fw fa-calculator"></i>
+      <span>Proses Perhitungan</span></a>
+  </li>
+
   <!-- Divider -->
   <hr class="sidebar-divider d-none d-md-block mt-2">
 

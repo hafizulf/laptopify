@@ -33,4 +33,11 @@ class Alternatif extends Model
       SELECT id, harga, rating_produk, merk, prosesor, kapasitas_ram, tipe_penyimpanan, kapasitas_penyimpanan, ukuran_layar, kartu_grafis, sistem_operasi, masa_garansi, kondisi_produk FROM " . $this->table . "
     ")->getResultArray();
   }
+
+  public function getKodeAlternatif()
+  {
+    return $this->db->query("
+      SELECT id, kode FROM " . $this->table . " ORDER BY kode
+    ")->getResultArray();
+  }
 }
