@@ -46,10 +46,7 @@ class Bobot extends BaseController
       throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
     }
 
-    $data = [
-      'kriteria_id' => $this->request->getPost('kriteria_id'),
-      'nilai_bobot' => $this->request->getPost('nilai_bobot'),
-    ];
+    $data = $this->request->getPost();
 
     if ($this->model->save($data) === FALSE) {
       return $this->response->setJSON(['status' => FALSE, 'errors' => $this->model->errors()]);
@@ -86,10 +83,7 @@ class Bobot extends BaseController
       throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
     }
 
-    $data = [
-      'id' => $this->request->getPost('id'),
-      'nilai_bobot' => $this->request->getPost('nilai_bobot'),
-    ];
+    $data = $this->request->getPost();
 
     if ($this->model->save($data) === FALSE) {
       return $this->response->setJSON(['status' => FALSE, 'errors' => $this->model->errors()]);

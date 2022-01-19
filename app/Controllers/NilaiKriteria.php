@@ -20,44 +20,49 @@ class NilaiKriteria extends BaseController
 
   public function setNilaiKriteriaKuantitatif($alternatif, $kriteria)
   {
+    if (!$this->request->isAJAX()) {
+      throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
+    }
+
     $nilaiKriteria = [];
-    for ($i = 0; $i < sizeOf($kriteria); $i++) {
 
-      for ($j = 0; $j < sizeOf($alternatif); $j++) {
-        // cek kriteria dengan tipe data kuantitatif
-        if ($kriteria[$i]['data_kuantitatif'] == 1) {
-          $nilaiKriteria[$i]['alternatif_id'] = $alternatif[$j]['id'];
-          $nilaiKriteria[$i]['kriteria_id'] = $kriteria[$i]['id'];
+    for ($i = 0; $i < sizeof($alternatif); $i++) {
+      for ($j = 0; $j < sizeof($kriteria); $j++) {
+        // cek kriteria.nama dlm array alternatif
+        if (array_key_exists($kriteria[$j]['nama'],  $alternatif[$i])) {
+          $data = [
+            'alternatif_id' => $alternatif[$i]['id'],
+            'kriteria_id' => $kriteria[$j]['id'],
+            'nilai_kriteria' => $alternatif[$i][$kriteria[$j]['nama']],
+          ];
 
-          // cek kriteria.nama dlm array alternatif
-          if (array_key_exists($kriteria[$i]['nama'],  $alternatif[$j])) {
-            // set nilai_kriteria = value dari alternatif.nama
-            $nilaiKriteria[$i]['nilai_kriteria'] = $alternatif[$j][$kriteria[$i]['nama']];
-          }
+          array_push($nilaiKriteria, $data);
         }
       }
     }
+
     return $nilaiKriteria;
   }
 
   public function setNilaiKriteriaKualitatif($alternatif, $subkriteria)
   {
+    if (!$this->request->isAJAX()) {
+      throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
+    }
+
     $nilaiKriteria = [];
 
     for ($i = 0; $i < sizeof($alternatif); $i++) {
 
-      $keysAlternatif = array_keys($alternatif[$i]);
-      for ($j = 0; $j < sizeof($keysAlternatif); $j++) {
+      foreach ($subkriteria as $key => $row) {
+        if ($alternatif[$i][$row['nama_kriteria']] == $row['nama']) {
+          $data = [
+            'alternatif_id' => $alternatif[$i]['id'],
+            'kriteria_id' => $row['kriteria_id'],
+            'nilai_kriteria' => $row['nilai_preferensi'],
+          ];
 
-        foreach ($subkriteria as $key => $row) {
-
-          if ($keysAlternatif[$j] === $row['nama_kriteria']) {
-            if ($alternatif[$i][$row['nama_kriteria']] == $row['nama']) {
-              $nilaiKriteria[$i]['alternatif_id'] = $alternatif[$i]['id'];
-              $nilaiKriteria[$i]['kriteria_id'] = $row['kriteria_id'];
-              $nilaiKriteria[$i]['nilai_kriteria'] = $row['nilai_preferensi'];
-            }
-          }
+          array_push($nilaiKriteria, $data);
         }
       }
     }
@@ -67,8 +72,12 @@ class NilaiKriteria extends BaseController
 
   public function setNilaiKriteria()
   {
+    if (!$this->request->isAJAX()) {
+      throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
+    }
+
     $alternatif = $this->alternatifModel->getAlternatifCriteria();
-    $kriteria = $this->kriteriaModel->findAll();
+    $kriteria = $this->kriteriaModel->getQuantitativeCriteria();
     $subkriteria = $this->subkriteriaModel->getSpesificSubkriteria();
 
     $dataKuantitatif = $this->setNilaiKriteriaKuantitatif($alternatif, $kriteria);
@@ -77,7 +86,7 @@ class NilaiKriteria extends BaseController
     $nilaiKriteria = array_merge($dataKuantitatif, $dataKualitatif);
 
     if (sizeOf($nilaiKriteria) <= 0) {
-      return $this->response->setJSON(['status' => TRUE, 'message' => 'Belum ada data bobot kriteria']);
+      return $this->response->setJSON(['status' => TRUE, 'warning' => 'Belum ada data!']);
     }
 
     if ($this->model->setNilaiKriteria($nilaiKriteria) === FALSE) {

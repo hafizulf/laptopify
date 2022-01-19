@@ -28,4 +28,11 @@ class Kriteria extends Model
       "SELECT id, nama FROM " . $this->table . ""
     );
   }
+
+  public function getQuantitativeCriteria()
+  {
+    return $this->db->query(
+      "SELECT id, nama FROM " . $this->table . " WHERE data_kuantitatif = 1"
+    )->getResultArray();
+  }
 }

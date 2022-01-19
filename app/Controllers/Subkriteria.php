@@ -115,11 +115,7 @@ class Subkriteria extends BaseController
       throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
     }
 
-    $data = [
-      'id' => $this->request->getPost('id'),
-      'nama' => $this->request->getPost('nama'),
-      'nilai_preferensi' => $this->request->getPost('nilai_preferensi'),
-    ];
+    $data = $this->request->getPost();
 
     $this->model->setValidationRules([
       'kriteria_id' => 'required',
