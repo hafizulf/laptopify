@@ -6,6 +6,7 @@ use App\Controllers\BaseController;
 use App\Models\Alternatif;
 use App\Models\Kriteria;
 use App\Models\NilaiKriteria;
+use App\Models\NilaiUtility;
 
 class Hitung extends BaseController
 {
@@ -14,6 +15,7 @@ class Hitung extends BaseController
     $this->kriteriaModel = new Kriteria();
     $this->alternatifModel = new Alternatif();
     $this->nilaiKriteriaModel = new NilaiKriteria();
+    $this->nilaiUtilityModel = new NilaiUtility();
   }
 
   public function index()
@@ -23,6 +25,7 @@ class Hitung extends BaseController
       'kriteria' => $this->kriteriaModel->getCriteria(),
       'alternatif' => $this->alternatifModel->getKodeAlternatif(),
       'nilai_kriteria' => $this->nilaiKriteriaModel->getNilaiKriteria(),
+      'nilai_utility' => $this->nilaiUtilityModel->getNilaiUtility(),
     ];
 
     return view('perhitungan/index', $data);

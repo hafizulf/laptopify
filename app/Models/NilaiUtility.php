@@ -14,4 +14,11 @@ class NilaiUtility extends Model
     $this->truncate();
     return $this->insertBatch($data);
   }
+
+  public function getNilaiUtility()
+  {
+    return $this->db->query("
+      SELECT nilai_kriteria.alternatif_id, nilai_utility.* FROM " . $this->table . " JOIN nilai_kriteria ON nilai_utility.nilai_kriteria_id = nilai_kriteria.id
+    ")->getResultArray();
+  }
 }
