@@ -50,7 +50,7 @@ class Hitung extends BaseController
       'judul' => 'Proses Perhitungan',
       'kriteria' => $this->kriteriaModel->getCriteria(),
       'alternatif' => $this->alternatifModel->getKodeAlternatif(),
-      'nilai_akhir' => $this->nilaiAkhirModel->findAll(),
+      'nilai_akhir' => $this->nilaiAkhirModel->getNilaiAkhir(),
     ];
 
     return view('perhitungan/nilai-akhir', $data);

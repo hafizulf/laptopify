@@ -6,8 +6,6 @@
   <div class="row mt-4">
     <div class="col-md-8">
 
-      <h1 class="text-gray-900"><?= $judul; ?></h1>
-
       <?php if ($kriteria && $alternatif && $nilai_akhir) : ?>
 
         <div class="card shadow">
@@ -26,7 +24,7 @@
                   <?php foreach ($nilai_akhir as $key => $row) : ?>
                     <tr>
                       <td><?= $key + 1 ?></td>
-                      <td><?= $row['alternatif_id']; ?></td>
+                      <td><?= $row['kode']; ?></td>
                       <td><?= $row['nilai_akhir']; ?></td>
                     </tr>
                   <?php endforeach; ?>
@@ -38,7 +36,7 @@
 
       <?php else : ?>
         <div class="alert alert-info" role="alert">
-          <strong>Data Belum Ada,Tentukan nilai akhir setelah data nilai utility siap.</strong>
+          <strong>Data Belum Ada, Tentukan nilai akhir setelah data nilai utility siap.</strong>
         </div>
       <?php endif; ?>
     </div>

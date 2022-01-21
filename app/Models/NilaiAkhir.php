@@ -14,4 +14,11 @@ class NilaiAkhir extends Model
     $this->truncate();
     return $this->insertBatch($data);
   }
+
+  public function getNilaiAkhir()
+  {
+    return $this->db->query(
+      "SELECT a.kode, na.* FROM " . $this->table . " AS na JOIN alternatif AS a ON na.alternatif_id = a.id"
+    )->getResultArray();
+  }
 }

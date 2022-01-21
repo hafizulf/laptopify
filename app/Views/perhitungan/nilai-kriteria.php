@@ -6,8 +6,6 @@
   <div class="row">
     <div class="col-md-12">
 
-      <h1 class="text-gray-900"><?= $judul; ?></h1>
-
       <?php if ($kriteria && $alternatif && $nilai_kriteria) : ?>
 
         <div class="card shadow">
