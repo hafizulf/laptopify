@@ -65,16 +65,16 @@
 <?php $this->section('custom-js') ?>
 <script>
   $(document).ready(function() {
-    $('.btn-nilai-utility').on('click', function() {
+    $('.btn-nilai-akhir').on('click', function() {
       $.ajax({
-        url: '/NilaiUtility/generateNilaiUtility',
+        url: '/NilaiAkhir/generateNilaiAkhir',
         type: 'POST',
         dataType: 'JSON',
         beforeSend: function() {
-          $('.btn-nilai-utility').html('loading.. <span class="spinner-border spinner-border-sm"></span>')
+          $('.btn-nilai-akhir').html('loading.. <span class="spinner-border spinner-border-sm"></span>')
         },
         complete: function() {
-          $('.btn-nilai-utility').html('<i class="fas fa fa-recycle"></i>  Tentukan Nilai Utility')
+          $('.btn-nilai-akhir').html('<i class="fas fa fa-recycle"></i>  Tentukan Nilai Akhir')
         },
         success: function(response) {
           if (!response.warning) {

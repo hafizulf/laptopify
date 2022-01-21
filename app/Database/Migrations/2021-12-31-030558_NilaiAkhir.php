@@ -4,7 +4,7 @@ namespace App\Database\Migrations;
 
 use CodeIgniter\Database\Migration;
 
-class Hasil extends Migration
+class NIlaiAkhir extends Migration
 {
   public function up()
   {
@@ -15,11 +15,11 @@ class Hasil extends Migration
     ]);
     $this->forge->addKey('id', true);
     $this->forge->addForeignKey('alternatif_id', 'alternatif', 'id', 'CASCADE', 'CASCADE');
-    $this->forge->createTable('hasil');
+    $this->forge->createTable('nilai_akhir');
   }
 
   public function down()
   {
-    $this->forge->dropTable('hasil');
+    $this->forge->dropTable('nilai_akhir');
   }
 }
