@@ -18,16 +18,27 @@ class Hitung extends BaseController
     $this->nilaiUtilityModel = new NilaiUtility();
   }
 
-  public function index()
+  public function hitungNilaiKriteria()
   {
     $data = [
       'judul' => 'Proses Perhitungan',
       'kriteria' => $this->kriteriaModel->getCriteria(),
       'alternatif' => $this->alternatifModel->getKodeAlternatif(),
       'nilai_kriteria' => $this->nilaiKriteriaModel->getNilaiKriteria(),
+    ];
+
+    return view('perhitungan/nilai-kriteria', $data);
+  }
+
+  public function hitungNilaiUtility()
+  {
+    $data = [
+      'judul' => 'Proses Perhitungan',
+      'kriteria' => $this->kriteriaModel->getCriteria(),
+      'alternatif' => $this->alternatifModel->getKodeAlternatif(),
       'nilai_utility' => $this->nilaiUtilityModel->getNilaiUtility(),
     ];
 
-    return view('perhitungan/index', $data);
+    return view('perhitungan/nilai-utility', $data);
   }
 }

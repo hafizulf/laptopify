@@ -37,7 +37,9 @@ $routes->get('/sub-kriteria', 'Subkriteria::index');
 $routes->get('/sub-kriteria/create', 'Subkriteria::create_page');
 $routes->get('/bobot/index', 'Bobot::index');
 $routes->get('/alternatif/index', 'Alternatif::index');
-$routes->get('/perhitungan', 'Hitung::index');
+$routes->get('/perhitungan/nilai-kriteria', 'Hitung::hitungNilaiKriteria');
+$routes->get('/perhitungan/nilai-utility', 'Hitung::hitungNilaiUtility');
+$routes->get('/perhitungan/nilai-akhir', 'Hitung::hitungNilaiAkhir');
 
 /*
  * --------------------------------------------------------------------
