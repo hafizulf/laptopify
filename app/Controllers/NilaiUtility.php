@@ -18,6 +18,10 @@ class NilaiUtility extends BaseController
 
   public function generateNilaiUtility()
   {
+    if (!$this->request->isAJAX()) {
+      throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
+    }
+
     $kriteria = $this->kriteriaModel->getCriteria()->getResultArray();
     $nilaiUtility = [];
 
