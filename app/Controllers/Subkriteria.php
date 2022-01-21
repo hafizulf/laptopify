@@ -64,6 +64,10 @@ class Subkriteria extends BaseController
 
   public function create()
   {
+    if (!$this->request->isAJAX()) {
+      throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
+    }
+
     $kriteria_id = $this->request->getPost('kriteria_id');
     $nama = $this->request->getPost('nama');
     $nilai_preferensi = $this->request->getPost('nilai_preferensi');

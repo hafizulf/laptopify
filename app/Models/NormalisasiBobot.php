@@ -18,7 +18,7 @@ class NormalisasiBobot extends Model
   public function getNilaiNormalisasiBobot()
   {
     return $this->db->query(
-      "SELECT nilai_normalisasi_bobot FROM " . $this->table . ""
+      "SELECT p.kriteria_id, nb.nilai_normalisasi_bobot FROM " . $this->table . " AS nb JOIN pembobotan AS p ON nb.pembobotan_id = p.id"
     )->getResultArray();
   }
 }
