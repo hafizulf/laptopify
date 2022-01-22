@@ -45,7 +45,7 @@
   <li class="nav-item <?= url_is('/perhitungan/nilai-kriteria') || url_is('/perhitungan/nilai-utility') || url_is('/perhitungan/nilai-akhir') ? 'active' : '' ?>">
     <a class="nav-link collapsed pb-0" href="#" data-toggle="collapse" data-target="#hitungCollapse" aria-expanded="true" aria-controls="hitungCollapse">
       <i class="fas fa-fw fa-calculator"></i>
-      <span>Prose Perhitungan</span>
+      <span>Proses Perhitungan</span>
     </a>
     <div id="hitungCollapse" class="collapse" data-parent="#accordionSidebar">
       <div class="bg-white py-2 collapse-inner rounded">
