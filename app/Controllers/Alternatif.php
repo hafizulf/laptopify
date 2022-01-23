@@ -37,6 +37,12 @@ class Alternatif extends BaseController
       throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
     }
 
+    $jumlahAlternatif = $this->model->countAllResults();
+
+    if ($jumlahAlternatif > 20) {
+      return $this->response->setJSON(['status' => TRUE, 'warning' => 'Data alternatif sudah mencapai nilai maksimum!']);
+    }
+
     $data = $this->request->getPost();
 
     if ($this->model->save($data) === FALSE) {

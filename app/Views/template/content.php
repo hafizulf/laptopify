@@ -187,8 +187,12 @@
         },
         success: function(response) {
           if (response.status) {
-            toastSuccess(response, params[0])
-            reload()
+            if (!response.warning) {
+              toastSuccess(response)
+              reload()
+            } else {
+              toastAlert(response)
+            }
           } else {
             const errors = response.errors
             params[1] === 'has array' ? errorValidationArr(errors) : errorValidation(errors)
