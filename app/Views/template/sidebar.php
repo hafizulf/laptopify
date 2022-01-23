@@ -17,6 +17,12 @@
     Menu
   </div>
 
+  <li class="nav-item <?= url_is('/home') ? 'active' : '' ?>">
+    <a class="nav-link pb-0" href="/home">
+      <i class="fas fa-fw fa-info"></i>
+      <span>Informasi</span></a>
+  </li>
+
   <li class="nav-item <?= url_is('/kriteria') || url_is('sub-kriteria') || url_is('sub-kriteria/create') ? 'active' : '' ?>">
     <a class="nav-link collapsed pb-0" href="#" data-toggle="collapse" data-target="#kriteriaCollapse" aria-expanded="true" aria-controls="kriteriaCollapse">
       <i class="fas fa-fw fa-table"></i>
@@ -45,7 +51,7 @@
   <li class="nav-item <?= url_is('/perhitungan/nilai-kriteria') || url_is('/perhitungan/nilai-utility') || url_is('/perhitungan/nilai-akhir') ? 'active' : '' ?>">
     <a class="nav-link collapsed pb-0" href="#" data-toggle="collapse" data-target="#hitungCollapse" aria-expanded="true" aria-controls="hitungCollapse">
       <i class="fas fa-fw fa-calculator"></i>
-      <span>Prose Perhitungan</span>
+      <span>Proses Perhitungan</span>
     </a>
     <div id="hitungCollapse" class="collapse" data-parent="#accordionSidebar">
       <div class="bg-white py-2 collapse-inner rounded">

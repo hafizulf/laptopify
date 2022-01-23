@@ -28,7 +28,7 @@ li {
 }
 
 .badge-primary {
-  background-color: #095779;
+  background-color: #075070;
 }
 
 .btn-user {
@@ -41,4 +41,16 @@ li {
   color: #fff;
   background-color: #0b3446;
   border-color: #095779;
+}
+
+ol.text-putih li {
+  color: white;
+}
+
+ol.text-putih li a {
+  color: black;
+}
+
+ol.text-putih li p {
+  text-align: justify;
 }
