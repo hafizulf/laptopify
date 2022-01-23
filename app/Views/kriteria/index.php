@@ -35,7 +35,7 @@
                           <input type="checkbox" name="id[]" class="checkbox" value="<?= $row['id']; ?>">
                         </td>
                         <td><?= $key + 1; ?></td>
-                        <td><?= $row['nama']; ?></td>
+                        <td><?= ucfirst(str_replace("_", " ", $row['nama'])); ?></td>
                         <td><?= $row['jenis'] == 'bc' ? 'Benefit Criteria' : 'Cost Criteria'; ?></td>
                         <td><?= $row['data_kuantitatif'] == 1 ? 'Kuantitatif' : 'Kualitatif'; ?></td>
                       </tr>

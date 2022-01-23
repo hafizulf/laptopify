@@ -44,7 +44,7 @@
                           <input type="checkbox" name="id[]" class="checkbox" value="<?= $row['id']; ?>">
                         </td>
                         <td><?= $key + 1; ?></td>
-                        <td><?= $row['nama_kriteria']; ?></td>
+                        <td><?= ucfirst(str_replace("_", " ", $row['nama_kriteria'])); ?></td>
                         <td><?= $row['nilai_bobot']; ?></td>
                         <?php if ($normalisasi_bobot) : ?>
                           <td><?= $normalisasi_bobot[$key]['nilai_normalisasi_bobot']; ?></td>
@@ -86,7 +86,7 @@
                   <select name="kriteria_id" class="form-control" id="kriteria">
                     <option value="">-- Pilih --</option>
                     <?php foreach ($kriteria->getResultArray() as $row) : ?>
-                      <option value="<?= $row['id']; ?>"><?= $row['nama']; ?></option>
+                      <option value="<?= $row['id']; ?>"><?= ucfirst(str_replace("_", " ", $row['nama'])); ?></option>
                     <?php endforeach; ?>
                   </select>
                   <div class="invalid-feedback"></div>
