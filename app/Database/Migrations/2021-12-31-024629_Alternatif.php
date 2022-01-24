@@ -22,7 +22,7 @@ class Alternatif extends Migration
       'ukuran_layar VARCHAR(64)',
       'kartu_grafis VARCHAR(64)',
       'sistem_operasi VARCHAR(64)',
-      'masa_garansi INT UNSIGNED',
+      'masa_garansi FLOAT UNSIGNED',
       'kondisi_produk VARCHAR(64)',
       'url_produk TEXT',
     ]);

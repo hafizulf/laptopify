@@ -37,7 +37,7 @@ class Alternatif extends Model
   public function getKodeAlternatif()
   {
     return $this->db->query("
-      SELECT id, kode FROM " . $this->table . " ORDER BY kode
+      SELECT id, kode FROM " . $this->table . " ORDER BY id
     ")->getResultArray();
   }
 }

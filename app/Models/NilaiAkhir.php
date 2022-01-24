@@ -18,7 +18,7 @@ class NilaiAkhir extends Model
   public function getNilaiAkhir()
   {
     return $this->db->query(
-      "SELECT a.kode, na.* FROM " . $this->table . " AS na JOIN alternatif AS a ON na.alternatif_id = a.id"
+      "SELECT a.kode, na.* FROM " . $this->table . " AS na JOIN alternatif AS a ON na.alternatif_id = a.id ORDER BY nilai_akhir DESC"
     )->getResultArray();
   }
 }
