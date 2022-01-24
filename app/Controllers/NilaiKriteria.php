@@ -50,24 +50,46 @@ class NilaiKriteria extends BaseController
       throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
     }
 
-    $nilaiKriteria = [];
+    $data = [];
+    $index = 0;
+    $isExist = TRUE;
+    $temp = '';
 
     for ($i = 0; $i < sizeof($alternatif); $i++) {
 
-      foreach ($subkriteria as $key => $row) {
-        if ($alternatif[$i][$row['nama_kriteria']] == $row['nama']) {
-          $data = [
+      for ($j = 0; $j < sizeof($subkriteria); $j++) {
+        $init = $subkriteria[$j]['nama_kriteria'];
+
+        if ($temp != '' && $temp != $init) {
+          if ($isExist) {
+            $data[$index] = [
+              'alternatif_id' => $alternatif[$i]['id'],
+              'kriteria_id' => $subkriteria[$j - 1]['kriteria_id'],
+              'nilai_kriteria' => 0,
+            ];
+
+            $index++;
+          } else {
+            $isExist = TRUE;
+          }
+        }
+
+        if ($alternatif[$i][$init] == $subkriteria[$j]['nama']) {
+          $data[$index] = [
             'alternatif_id' => $alternatif[$i]['id'],
-            'kriteria_id' => $row['kriteria_id'],
-            'nilai_kriteria' => $row['nilai_preferensi'],
+            'kriteria_id' => $subkriteria[$j]['kriteria_id'],
+            'nilai_kriteria' => $subkriteria[$j]['nilai_preferensi'],
           ];
 
-          array_push($nilaiKriteria, $data);
+          $index++;
+          $isExist = FALSE; // reset
         }
+
+        $temp = $init;
       }
     }
 
-    return $nilaiKriteria;
+    return $data;
   }
 
   public function setNilaiKriteria()
