@@ -8,6 +8,12 @@
 
       <h1 class="text-gray-900"><?= $judul; ?></h1>
 
+      <div class="alert alert-primary mt-3" role="alert">
+        <strong>
+          Pastikan untuk meng-update normalisasi nilai bobot setiap ada perubahan data nilai bobot.
+        </strong>
+      </div>
+
       <div class="row mt-4">
         <div class="col-md-12">
           <div class="card shadow">
