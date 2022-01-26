@@ -118,7 +118,6 @@
                         <?php foreach ($merk_options as $row) : ?>
                           <option value="<?= $row['nama']; ?>"><?= $row['nama']; ?></option>
                         <?php endforeach; ?>
-                        <option value="Lain">Lain</option>
                       </select>
                       <div class="invalid-feedback"></div>
                     </div>
@@ -129,7 +128,6 @@
                         <?php foreach ($prosesor_options as $row) : ?>
                           <option value="<?= $row['nama']; ?>"><?= $row['nama']; ?></option>
                         <?php endforeach; ?>
-                        <option value="Lain">Lain</option>
                       </select>
                       <div class="invalid-feedback"></div>
                     </div>
@@ -148,7 +146,6 @@
                         <?php foreach ($tipe_penyimpanan_options as $row) : ?>
                           <option value="<?= $row['nama']; ?>"><?= $row['nama']; ?></option>
                         <?php endforeach; ?>
-                        <option value="Lain">Lain</option>
                       </select>
                       <div class="invalid-feedback"></div>
                     </div>
@@ -164,7 +161,6 @@
                         <?php foreach ($ukuran_layar_options as $row) : ?>
                           <option value="<?= $row['nama']; ?>"><?= $row['nama']; ?></option>
                         <?php endforeach; ?>
-                        <option value="Lain">Lain</option>
                       </select>
                       <div class="invalid-feedback"></div>
                     </div>
@@ -175,7 +171,6 @@
                         <?php foreach ($kartu_grafis_options as $row) : ?>
                           <option value="<?= $row['nama']; ?>"><?= $row['nama']; ?></option>
                         <?php endforeach; ?>
-                        <option value="Lain">Lain</option>
                       </select>
                       <div class="invalid-feedback"></div>
                     </div>
@@ -189,7 +184,6 @@
                         <?php foreach ($sistem_operasi_options as $row) : ?>
                           <option value="<?= $row['nama']; ?>"><?= $row['nama']; ?></option>
                         <?php endforeach; ?>
-                        <option value="Lain">Lain</option>
                       </select>
                       <div class="invalid-feedback"></div>
                     </div>
@@ -205,7 +199,6 @@
                         <?php foreach ($kondisi_produk_options as $row) : ?>
                           <option value="<?= $row['nama']; ?>"><?= $row['nama']; ?></option>
                         <?php endforeach; ?>
-                        <option value="Lain">Lain</option>
                       </select>
                       <div class="invalid-feedback"></div>
                     </div>
@@ -275,7 +268,6 @@
                         <?php foreach ($merk_options as $row) : ?>
                           <option value="<?= $row['nama']; ?>"><?= $row['nama']; ?></option>
                         <?php endforeach; ?>
-                        <option value="Lain">Lain</option>
                       </select>
                       <div class="invalid-feedback"></div>
                     </div>
@@ -286,7 +278,6 @@
                         <?php foreach ($prosesor_options as $row) : ?>
                           <option value="<?= $row['nama']; ?>"><?= $row['nama']; ?></option>
                         <?php endforeach; ?>
-                        <option value="Lain">Lain</option>
                       </select>
                       <div class="invalid-feedback"></div>
                     </div>
@@ -305,7 +296,6 @@
                         <?php foreach ($tipe_penyimpanan_options as $row) : ?>
                           <option value="<?= $row['nama']; ?>"><?= $row['nama']; ?></option>
                         <?php endforeach; ?>
-                        <option value="Lain">Lain</option>
                       </select>
                       <div class="invalid-feedback"></div>
                     </div>
@@ -321,7 +311,6 @@
                         <?php foreach ($ukuran_layar_options as $row) : ?>
                           <option value="<?= $row['nama']; ?>"><?= $row['nama']; ?></option>
                         <?php endforeach; ?>
-                        <option value="Lain">Lain</option>
                       </select>
                       <div class="invalid-feedback"></div>
                     </div>
@@ -332,7 +321,6 @@
                         <?php foreach ($kartu_grafis_options as $row) : ?>
                           <option value="<?= $row['nama']; ?>"><?= $row['nama']; ?></option>
                         <?php endforeach; ?>
-                        <option value="Lain">Lain</option>
                       </select>
                       <div class="invalid-feedback"></div>
                     </div>
@@ -346,7 +334,6 @@
                         <?php foreach ($sistem_operasi_options as $row) : ?>
                           <option value="<?= $row['nama']; ?>"><?= $row['nama']; ?></option>
                         <?php endforeach; ?>
-                        <option value="Lain">Lain</option>
                       </select>
                       <div class="invalid-feedback"></div>
                     </div>
