@@ -24,7 +24,7 @@ class NilaiKriteria extends Model
       )->getResultArray();
     } else {
       return $this->db->query(
-        "SELECT alternatif_id, nilai_kriteria FROM " . $this->table . ""
+        "SELECT alternatif_id, kriteria_id, nilai_kriteria FROM " . $this->table . " ORDER BY kriteria_id"
       )->getResultArray();
     }
   }

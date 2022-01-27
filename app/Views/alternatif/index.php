@@ -189,7 +189,8 @@
                     </div>
                     <div class="form-group">
                       <label for="masa_garansi">Garansi (bulan)</label>
-                      <input type="number" name="masa_garansi" id="masa_garansi" class="form-control" placeholder="misal. 12..">
+                      <p class="small text-sm">Jika garansi tidak sampai 1 bulan, misal 2 minggu isi dengan 0.5</p>
+                      <input type="text" name="masa_garansi" id="masa_garansi" class="form-control" placeholder="misal. 12..">
                       <div class="invalid-feedback"></div>
                     </div>
                     <div class="form-group">
@@ -339,7 +340,8 @@
                     </div>
                     <div class="form-group">
                       <label for="masa_garansi_ubah">Garansi (bulan)</label>
-                      <input type="number" name="masa_garansi" id="masa_garansi_ubah" class="form-control" placeholder="misal. 12..">
+                      <p class="small text-sm">Jika garansi tidak sampai 1 bulan, misal 2 minggu isi dengan 0.5</p>
+                      <input type="text" name="masa_garansi" id="masa_garansi_ubah" class="form-control" placeholder="misal. 12..">
                       <div class="invalid-feedback"></div>
                     </div>
                     <div class="form-group">
