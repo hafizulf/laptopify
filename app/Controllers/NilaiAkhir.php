@@ -28,11 +28,11 @@ class NilaiAkhir extends BaseController
     $alternatif = $this->alternatifModel->getKodeAlternatif();
 
     $nilaiAkhir = [];
-    $nilaiPenjumlahan = 0;
 
     for ($i = 0; $i < sizeof($alternatif); $i++) {
       $nilaiUtilityAlternatif = $this->nilaiUtilityModel->getNilaiUtility($alternatif[$i]['id']);
 
+      $nilaiPenjumlahan = 0;
       for ($j = 0; $j < sizeof($nilaiUtilityAlternatif); $j++) {
 
         for ($k = 0; $k < sizeof($nilaiBobotTernormalisasi); $k++) {
@@ -41,7 +41,7 @@ class NilaiAkhir extends BaseController
             $nilaiUtility = $nilaiUtilityAlternatif[$j]['nilai_utility'];
             $nilaiBobot = $nilaiBobotTernormalisasi[$k]['nilai_normalisasi_bobot'];
 
-            $nilaiPenjumlahan +=  ($nilaiUtility * $nilaiBobot);
+            $nilaiPenjumlahan += ($nilaiUtility * $nilaiBobot);
             break;
           }
         }

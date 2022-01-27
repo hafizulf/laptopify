@@ -51,7 +51,7 @@
 
       <?php else : ?>
         <div class="alert alert-info" role="alert">
-          <strong>Data Belum Ada,Tentukan nilai utility setelah data nilai kriteria siap.</strong>
+          <strong>Data Belum Ada, Tentukan nilai utility setelah data nilai kriteria siap.</strong>
         </div>
 
       <?php endif; ?>
