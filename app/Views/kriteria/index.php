@@ -17,7 +17,7 @@
               <button class="btn btn-success btn-ubah"><i class="fas fa fa-edit"></i> Ubah</button>
             </div>
             <div class="card-body">
-              <table class="table table-bordered table-striped table-kriteria">
+              <table class="table table-bordered table-striped table-kriteria" id="dataTable">
                 <thead>
                   <th>
                     <input type="checkbox" id="checkboxes">
@@ -28,25 +28,17 @@
                   <th>Tipe Data</th>
                 </thead>
                 <tbody>
-                  <?php if ($kriteria) : ?>
-                    <?php foreach ($kriteria as $key => $row) : ?>
-                      <tr>
-                        <td>
-                          <input type="checkbox" name="id[]" class="checkbox" value="<?= $row['id']; ?>">
-                        </td>
-                        <td><?= $key + 1; ?></td>
-                        <td><?= ucfirst(str_replace("_", " ", $row['nama'])); ?></td>
-                        <td><?= $row['jenis'] == 'bc' ? 'Benefit Criteria' : 'Cost Criteria'; ?></td>
-                        <td><?= $row['data_kuantitatif'] == 1 ? 'Kuantitatif' : 'Kualitatif'; ?></td>
-                      </tr>
-                    <?php endforeach; ?>
-                  <?php else : ?>
+                  <?php foreach ($kriteria as $key => $row) : ?>
                     <tr>
-                      <td colspan="5" class="text-gray-900 text-center">
-                        <h3>DATA BELUM ADA</h3>
+                      <td>
+                        <input type="checkbox" name="id[]" class="checkbox" value="<?= $row['id']; ?>">
                       </td>
+                      <td><?= $key + 1; ?></td>
+                      <td><?= ucfirst(str_replace("_", " ", $row['nama'])); ?></td>
+                      <td><?= $row['jenis'] == 'bc' ? 'Benefit Criteria' : 'Cost Criteria'; ?></td>
+                      <td><?= $row['data_kuantitatif'] == 1 ? 'Kuantitatif' : 'Kualitatif'; ?></td>
                     </tr>
-                  <?php endif; ?>
+                  <?php endforeach; ?>
                 </tbody>
               </table>
             </div>

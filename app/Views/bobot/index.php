@@ -30,7 +30,7 @@
               </div>
             </div>
             <div class="card-body">
-              <table class="table table-bordered table-striped table-kriteria">
+              <table class="table table-bordered table-striped table-kriteria" id="dataTable">
                 <thead>
                   <th>
                     <input type="checkbox" id="checkboxes">
@@ -43,27 +43,19 @@
                   <?php endif; ?>
                 </thead>
                 <tbody>
-                  <?php if ($bobot) : ?>
-                    <?php foreach ($bobot as $key => $row) : ?>
-                      <tr>
-                        <td>
-                          <input type="checkbox" name="id[]" class="checkbox" value="<?= $row['id']; ?>">
-                        </td>
-                        <td><?= $key + 1; ?></td>
-                        <td><?= ucfirst(str_replace("_", " ", $row['nama_kriteria'])); ?></td>
-                        <td><?= $row['nilai_bobot']; ?></td>
-                        <?php if ($normalisasi_bobot) : ?>
-                          <td><?= $normalisasi_bobot[$key]['nilai_normalisasi_bobot']; ?></td>
-                        <?php endif; ?>
-                      </tr>
-                    <?php endforeach; ?>
-                  <?php else : ?>
+                  <?php foreach ($bobot as $key => $row) : ?>
                     <tr>
-                      <td colspan="5" class="text-gray-900 text-center">
-                        <h3>DATA BELUM ADA</h3>
+                      <td>
+                        <input type="checkbox" name="id[]" class="checkbox" value="<?= $row['id']; ?>">
                       </td>
+                      <td><?= $key + 1; ?></td>
+                      <td><?= ucfirst(str_replace("_", " ", $row['nama_kriteria'])); ?></td>
+                      <td><?= $row['nilai_bobot']; ?></td>
+                      <?php if ($normalisasi_bobot) : ?>
+                        <td><?= $normalisasi_bobot[$key]['nilai_normalisasi_bobot']; ?></td>
+                      <?php endif; ?>
                     </tr>
-                  <?php endif; ?>
+                  <?php endforeach; ?>
                 </tbody>
               </table>
             </div>

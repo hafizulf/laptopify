@@ -30,36 +30,32 @@
               </div>
             </div>
             <div class="card-body">
-              <?php if ($alternatif) : ?>
-                <table class="table table-bordered table-striped table-alternatif">
-                  <thead>
-                    <th>
-                      <input type="checkbox" id="checkboxes">
-                    </th>
-                    <th>No.</th>
-                    <th>Kode</th>
-                    <th>Nama</th>
-                    <th>Detail</th>
-                  </thead>
-                  <tbody>
-                    <?php foreach ($alternatif as $key => $row) : ?>
-                      <tr>
-                        <td>
-                          <input type="checkbox" name="id[]" class="checkbox" value="<?= $row['id']; ?>">
-                        </td>
-                        <td><?= $key + 1; ?></td>
-                        <td><?= $row['kode']; ?></td>
-                        <td><?= $row['nama']; ?></td>
-                        <td>
-                          <button type="button" class="btn btn-info btn-detail" data-id="<?= $row['id']; ?>"><i class=" fas fa-eye"></i></button>
-                        </td>
-                      </tr>
-                    <?php endforeach; ?>
-                  </tbody>
-                </table>
-              <?php else : ?>
-                <h3 class="text-center">DATA BELUM ADA</h3>
-              <?php endif; ?>
+              <table class="table table-bordered table-striped table-alternatif" id="dataTable">
+                <thead>
+                  <th>
+                    <input type="checkbox" id="checkboxes">
+                  </th>
+                  <th>No.</th>
+                  <th>Kode</th>
+                  <th>Nama</th>
+                  <th>Detail</th>
+                </thead>
+                <tbody>
+                  <?php foreach ($alternatif as $key => $row) : ?>
+                    <tr>
+                      <td>
+                        <input type="checkbox" name="id[]" class="checkbox" value="<?= $row['id']; ?>">
+                      </td>
+                      <td><?= $key + 1; ?></td>
+                      <td><?= $row['kode']; ?></td>
+                      <td><?= $row['nama']; ?></td>
+                      <td>
+                        <button type="button" class="btn btn-info btn-detail" data-id="<?= $row['id']; ?>"><i class=" fas fa-eye"></i></button>
+                      </td>
+                    </tr>
+                  <?php endforeach; ?>
+                </tbody>
+              </table>
             </div>
           </div>
 

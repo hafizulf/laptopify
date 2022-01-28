@@ -14,7 +14,7 @@
           </div>
           <div class="card-body">
             <div class="table-responsive">
-              <table class="table table-bordered table-striped table-kriteria">
+              <table class="table table-bordered table-striped table-kriteria" id="dataTable">
                 <thead>
                   <th>No</th>
                   <th>Alternatif</th>

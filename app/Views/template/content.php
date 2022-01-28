@@ -16,6 +16,9 @@
 
   <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
+  <!-- DataTable -->
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.11.4/css/dataTables.bootstrap4.min.css">
+
   <!-- Custom styles for this template-->
   <link href="<?= base_url(); ?>/css/sb-admin-2.min.css" rel="stylesheet">
   <link href="<?= base_url(); ?>/css/my.css" rel="stylesheet">
@@ -94,7 +97,20 @@
 
   <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
+  <script src="//cdn.datatables.net/1.11.4/js/jquery.dataTables.min.js"></script>
+  <script src="//cdn.datatables.net/1.11.4/js/dataTables.bootstrap4.min.js"></script>
+
   <script>
+    $('table#dataTable').DataTable({
+      "ordering": false,
+      "info": false,
+      "pagingType": "first_last_numbers",
+      // "stateSave": true,
+      // "paging": false,
+      scrollY: '50vh',
+      scrollCollapse: true,
+    })
+
     $('#checkboxes').on('click', function() {
       $(this).is(':checked') ? $('.checkbox').prop('checked', true) : $('.checkbox').prop('checked', false)
     })

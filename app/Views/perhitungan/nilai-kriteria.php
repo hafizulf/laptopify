@@ -21,7 +21,7 @@
           </div>
           <div class="card-body">
             <div class="table-responsive">
-              <table class="table table-bordered table-striped table-kriteria">
+              <table class="table table-sm table-bordered table-striped table-kriteria" id="dataTable">
                 <thead>
                   <th>Alternatif / Kriteria</th>
                   <?php foreach ($kriteria->getResultArray() as $row) : ?>
