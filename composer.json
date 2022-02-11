@@ -8,7 +8,7 @@
         "php": "^7.3 || ^8.0",
         "codeigniter4/framework": "^4",
         "phpoffice/phpspreadsheet": "^1.21",
-        "tecnickcom/tcpdf": "^6.4"
+        "dompdf/dompdf": "^1.2"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9",

@@ -6,7 +6,8 @@ use App\Controllers\BaseController;
 
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
-use TCPDF;
+
+use Dompdf\Dompdf;
 
 class Report extends BaseController
 {
@@ -93,5 +94,29 @@ class Report extends BaseController
     readfile($filename);
     unlink($filename);
     exit;
+  }
+
+  public function pdfReporting()
+  {
+    if (!isset($_POST['pdf'])) {
+      throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
+    }
+
+    $data['query'] = $this->db->query(
+      "SELECT a.* FROM nilai_akhir na JOIN alternatif a ON na.alternatif_id = a.id ORDER BY nilai_akhir DESC"
+    )->getResultArray();
+
+    $dompdf = new Dompdf();
+    $options = $dompdf->getOptions();
+    $options->setDefaultFont('Courier');
+    $dompdf->setOptions($options);
+
+    $dompdf->loadHtml(view('perhitungan/pdf-reporting', $data));
+
+    $dompdf->setPaper('A4', 'portrait');
+    $dompdf->filename = "laporan peringkat alternatif.pdf";
+    $dompdf->render();
+
+    $dompdf->stream();
   }
 }
