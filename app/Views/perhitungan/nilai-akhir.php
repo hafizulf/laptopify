@@ -18,6 +18,9 @@
                 <form action="/report/excelReporting" method="POST">
                   <button type="submit" class="btn btn-success float-right" name="excel"><i class="fa fa-file-excel"></i> Excel</button>
                 </form>
+                <form action="/report/pdfReporting" method="POST">
+                  <button type="submit" class="btn btn-danger float-right mx-2" name="pdf"><i class="fa fa-file-pdf"></i> PDF</button>
+                </form>
               </div>
             </div>
           </div>
