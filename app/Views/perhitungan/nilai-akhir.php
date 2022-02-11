@@ -4,13 +4,22 @@
 
 <section>
   <div class="row mt-4">
-    <div class="col-md-8">
+    <div class="col-md-12">
 
       <?php if ($kriteria && $alternatif && $nilai_akhir) : ?>
 
         <div class="card shadow">
           <div class="card-header">
-            <h3 class="text-gray-900 mb-0">Tabel Nilai Akhir</h3>
+            <div class="row">
+              <div class="col-md-6">
+                <h3 class="text-gray-900 mb-0">Tabel Nilai Akhir</h3>
+              </div>
+              <div class="col-md-6">
+                <form action="/report/excelReporting" method="POST">
+                  <button type="submit" class="btn btn-success float-right" name="excel"><i class="fa fa-file-excel"></i> Excel</button>
+                </form>
+              </div>
+            </div>
           </div>
           <div class="card-body">
             <div class="table-responsive">
