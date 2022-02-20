@@ -44,13 +44,13 @@
                   <?php foreach ($alternatif as $key => $row) : ?>
                     <tr>
                       <td>
-                        <input type="checkbox" name="id[]" class="checkbox" value="<?= $row['id']; ?>">
+                        <input type="checkbox" name="id[]" class="checkbox" value="<?= $row['id_alternatif']; ?>">
                       </td>
                       <td><?= $key + 1; ?></td>
                       <td><?= $row['kode']; ?></td>
                       <td><?= $row['nama']; ?></td>
                       <td>
-                        <button type="button" class="btn btn-info btn-detail" data-id="<?= $row['id']; ?>"><i class=" fas fa-eye"></i></button>
+                        <button type="button" class="btn btn-info btn-detail" data-id="<?= $row['id_alternatif']; ?>"><i class=" fas fa-eye"></i></button>
                       </td>
                     </tr>
                   <?php endforeach; ?>
@@ -523,7 +523,7 @@
       removeClasses('#formUbah')
     })
 
-    $('.btn-detail').on('click', function() {
+    $(document).on('click', '.btn-detail', function() {
       let id = $(this).data('id')
       requestGetDataById('/alternatif/getDataById', '', id)
     })

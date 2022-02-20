@@ -54,7 +54,7 @@ class Subkriteria extends Model
   {
     if ($clause) {
       return $this->db->query(
-        "SELECT sk.nama FROM " . $this->table . " sk JOIN kriteria k ON sk.id_kriteria = k.id_kriteria WHERE k.nama = '" . $clause . "' ORDER BY id_kriteria"
+        "SELECT sk.nama, k.id_kriteria FROM " . $this->table . " sk JOIN kriteria k ON sk.id_kriteria = k.id_kriteria WHERE k.nama = '" . $clause . "' ORDER BY id_kriteria"
       )->getResultArray();
     } else {
       return $this->db->query(

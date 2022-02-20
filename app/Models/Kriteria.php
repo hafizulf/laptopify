@@ -11,7 +11,7 @@ class Kriteria extends Model
   protected $allowedFields    = ['nama', 'jenis', 'data_kuantitatif'];
 
   protected $validationRules = [
-    'nama' => 'required|is_unique[kriteria.nama, id_kriteria, {id}]',
+    'nama' => 'required|is_unique[kriteria.nama, id_kriteria, {id_kriteria}]',
     'jenis' => 'required',
     'data_kuantitatif' => 'required',
   ];
