@@ -18,16 +18,9 @@
         <div class="col-md-12">
           <div class="card shadow">
             <div class="card-header">
-              <div class="row">
-                <div class="col-md-8">
-                  <button class="btn btn-primary btn-tambah" data-toggle="modal" data-target="#modalBoxTambah" data-backdrop="static" data-keyboard="false"><i class="fas fa fa-plus"></i> Tambah</button>
-                  <button class="btn btn-danger btn-hapus"><i class="fas fa fa-trash-alt"></i> Hapus</button>
-                  <button class="btn btn-success btn-ubah"><i class="fas fa fa-edit"></i> Ubah</button>
-                </div>
-                <div class="col-md-4">
-                  <button type="button" class="btn btn-dark float-right btn-nilai-kriteria"><i class="fas fa fa-recycle"></i> Tentukan Nilai Kriteria</button>
-                </div>
-              </div>
+              <button class="btn btn-primary btn-tambah" data-toggle="modal" data-target="#modalBoxTambah" data-backdrop="static" data-keyboard="false"><i class="fas fa fa-plus"></i> Tambah</button>
+              <button class="btn btn-danger btn-hapus"><i class="fas fa fa-trash-alt"></i> Hapus</button>
+              <button class="btn btn-success btn-ubah"><i class="fas fa fa-edit"></i> Ubah</button>
             </div>
             <div class="card-body">
               <table class="table table-bordered table-striped table-alternatif" id="dataTable">
@@ -527,6 +520,11 @@
       let id = $(this).data('id')
       requestGetDataById('/alternatif/getDataById', '', id)
     })
+  })
+
+  $(document).on('click', '.btn-detail', function() {
+    let id = $(this).data('id')
+    requestGetDataById('/alternatif/getDataById', '', id)
   })
 </script>
 <?= $this->endSection(); ?>
