@@ -61,37 +61,6 @@
 </section>
 <?php $this->endSection(); ?>
 
-<?php $this->section('custom-js') ?>
-<script>
-  $(document).ready(function() {
-    $('.btn-nilai-akhir').on('click', function() {
-      $.ajax({
-        url: '/NilaiAkhir/generateNilaiAkhir',
-        type: 'POST',
-        dataType: 'JSON',
-        beforeSend: function() {
-          $('.btn-nilai-akhir').html('loading.. <span class="spinner-border spinner-border-sm"></span>')
-        },
-        complete: function() {
-          $('.btn-nilai-akhir').html('<i class="fas fa fa-recycle"></i>  Tentukan Nilai Akhir')
-        },
-        success: function(response) {
-          if (!response.warning) {
-            toastSuccess(response)
-            reload()
-          } else {
-            toastAlert(response)
-          }
-        },
-        error: function(xhr, ajaxOptions, thrownError) {
-          alert(xhr.status + "\n" + xhr.responseText + "\n" + thrownError)
-        }
-      })
-    })
-  })
-</script>
-<?php $this->endSection() ?>
-
 <?= $this->section('custom-js'); ?>
 <script>
   $(document).ready(function() {
