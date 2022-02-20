@@ -28,6 +28,12 @@ class Kriteria extends BaseController
       throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
     }
 
+    $jumlahKriteria = $this->model->countAllResults();
+
+    if ($jumlahKriteria >= 12) {
+      return $this->response->setJSON(['status' => TRUE, 'warning' => 'Data kriteria sudah mencapai nilai maksimum!']);
+    }
+
     $data = $this->request->getPost();
     $data['nama'] = strtolower(str_replace(" ", "_", $this->request->getPost('nama')));
 
