@@ -21,7 +21,7 @@ class NilaiKriteria extends Model
   {
     if ($clause !== FALSE) {
       return $this->db->query(
-        "SELECT k.jenis, nk.* FROM " . $this->table . " nk JOIN kriteria k ON nk.id_kriteria = k.id_kriteria WHERE id_kriteria = " . $clause . ""
+        "SELECT k.jenis, nk.* FROM " . $this->table . " nk JOIN kriteria k ON nk.id_kriteria = k.id_kriteria WHERE k.id_kriteria = " . $clause . ""
       )->getResultArray();
     } else {
       return $this->db->query(

@@ -27,7 +27,7 @@ class NilaiUtility extends BaseController
 
     for ($i = 0; $i < sizeof($kriteria); $i++) {
       // select data nilai kriteria based on kriteria_id
-      $dataKriteria = $this->nilaiKriteriaModel->getNilaiKriteria($kriteria[$i]['id']);
+      $dataKriteria = $this->nilaiKriteriaModel->getNilaiKriteria($kriteria[$i]['id_kriteria']);
 
       // select spesific column ('nilai_kriteia')
       $nilaiKriteria = array_column($dataKriteria, 'nilai_kriteria');
@@ -38,7 +38,7 @@ class NilaiUtility extends BaseController
 
 
       for ($j = 0; $j < sizeof($dataKriteria); $j++) {
-        $data['nilai_kriteria_id'] = $dataKriteria[$j]['id'];
+        $data['id_nilai_kriteria'] = $dataKriteria[$j]['id_nilai_kriteria'];
 
         // get nilai kriteria with kriteria.jenis = bc -> Formula: Benefit Criteria
         if ($dataKriteria[$j]['jenis'] === 'bc') {
