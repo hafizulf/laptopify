@@ -35,7 +35,7 @@
                         <?= $alt['kode']; ?>
                       </td>
                       <?php for ($i = 0; $i < sizeof($nilai_kriteria); $i++) : ?>
-                        <?php if ($nilai_kriteria[$i]['alternatif_id'] === $alt['id']) : ?>
+                        <?php if ($nilai_kriteria[$i]['id_alternatif'] === $alt['id_alternatif']) : ?>
                           <td>
                             <?= $nilai_kriteria[$i]['nilai_kriteria']; ?>
                           </td>
@@ -50,8 +50,16 @@
         </div>
 
       <?php else : ?>
-        <div class="alert alert-info" role="alert">
-          <strong>Data Belum Ada, Tentukan Nilai kriteria setelah data alternatif siap.</strong>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="card">
+              <div class="card-body">
+                <div class="alert alert-info" role="alert">
+                  <strong class="text-center">Data Belum Ada, </strong> <button type="button" class="btn btn-dark btn-nilai-kriteria"><i class="fas fa fa-recycle"></i> Tentukan Nilai Kriteria</button>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
 
       <?php endif; ?>
@@ -65,16 +73,16 @@
 <?php $this->section('custom-js') ?>
 <script>
   $(document).ready(function() {
-    $('.btn-nilai-utility').on('click', function() {
+    $('.btn-nilai-kriteria').on('click', function() {
       $.ajax({
-        url: '/NilaiUtility/generateNilaiUtility',
+        url: '/NilaiKriteria/setNilaiKriteria',
         type: 'POST',
         dataType: 'JSON',
         beforeSend: function() {
-          $('.btn-nilai-utility').html('loading.. <span class="spinner-border spinner-border-sm"></span>')
+          $('.btn-nilai-kriteria').html('loading.. <span class="spinner-border spinner-border-sm"></span>')
         },
         complete: function() {
-          $('.btn-nilai-utility').html('<i class="fas fa fa-recycle"></i>  Tentukan Nilai Utility')
+          $('.btn-nilai-kriteria').html('<i class="fas fa fa-recycle"></i> Tentukan Nilai Kriteria')
         },
         success: function(response) {
           if (!response.warning) {
@@ -88,6 +96,37 @@
           alert(xhr.status + "\n" + xhr.responseText + "\n" + thrownError)
         }
       })
+    })
+
+    const formTambah = $('#formTambah')
+    formTambah.submit(function(e) {
+      e.preventDefault()
+
+      requestSaveData(formTambah, '#modalBoxTambah')
+
+      removeClasses('#formTambah')
+    })
+
+    $('.btn-hapus').on('click', function() {
+      requestDeleteData('/alternatif/delete')
+    })
+
+    $('.btn-ubah').on('click', function(e) {
+      requestGetDataById('/alternatif/getDataById')
+    })
+
+    const formUbah = $('#formUbah')
+    formUbah.submit(function(e) {
+      e.preventDefault()
+
+      requestSaveData(formUbah, '#modalBoxUbah')
+
+      removeClasses('#formUbah')
+    })
+
+    $(document).on('click', '.btn-detail', function() {
+      let id = $(this).data('id')
+      requestGetDataById('/alternatif/getDataById', '', id)
     })
   })
 </script>
