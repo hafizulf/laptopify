@@ -28,7 +28,7 @@ class NormalisasiBobot extends BaseController
     for ($i = 0; $i < sizeof($bobot); $i++) {
       $nilaiNormalisasiBobot = ($bobot[$i]['nilai_bobot'] / $totalNilaiBobot);
       $data = [
-        'pembobotan_id' => $bobot[$i]['id'],
+        'id_pembobotan' => $bobot[$i]['id_pembobotan'],
         'nilai_normalisasi_bobot' => $nilaiNormalisasiBobot,
       ];
 

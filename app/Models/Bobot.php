@@ -6,14 +6,16 @@ use CodeIgniter\Model;
 
 class Bobot extends Model
 {
-  protected $table = 'pembobotan';
-  protected $allowedFields = ['kriteria_id', 'nilai_bobot'];
+  protected $table          = 'pembobotan';
+  protected $primaryKey     = 'id_pembobotan';
+  protected $allowedFields  = ['id_kriteria', 'nilai_bobot'];
+
   protected $validationRules = [
-    'kriteria_id' => 'required|is_unique[pembobotan.kriteria_id]',
+    'id_kriteria' => 'required|is_unique[pembobotan.id_kriteria]',
     'nilai_bobot' => 'required|is_numeric'
   ];
   protected $validationMessages = [
-    'kriteria_id' => [
+    'id_kriteria' => [
       'required' => 'wajib dipilih.',
       'is_unique' => 'bobot kriteria sudah ada, coba lain.'
     ]
@@ -22,21 +24,21 @@ class Bobot extends Model
   public function findAllBobot()
   {
     return $this->db->query(
-      "SELECT k.nama as nama_kriteria, p.* FROM " . $this->table . " AS p JOIN kriteria AS k ON p.kriteria_id = k.id"
+      "SELECT k.nama as nama_kriteria, p.* FROM " . $this->table . " p JOIN kriteria k ON p.id_kriteria = k.id_kriteria"
     );
   }
 
   public function findBobotById($id)
   {
     return $this->db->query(
-      "SELECT k.nama as nama_kriteria, p.id, p.nilai_bobot FROM " . $this->table . " AS p JOIN kriteria AS k ON p.kriteria_id = k.id WHERE p.id = $id"
+      "SELECT k.nama as nama_kriteria, p.id_pembobotan, p.nilai_bobot FROM " . $this->table . " p JOIN kriteria k ON p.id_kriteria = k.id_kriteria WHERE p.id_pembobotan = $id"
     )->getRowArray();
   }
 
   public function getNilaiBobot()
   {
     return $this->db->query(
-      "SELECT id, nilai_bobot FROM " . $this->table . ""
+      "SELECT id_pembobotan, nilai_bobot FROM " . $this->table . ""
     )->getResultArray();
   }
 }
