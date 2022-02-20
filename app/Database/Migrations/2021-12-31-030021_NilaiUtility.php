@@ -9,12 +9,12 @@ class NilaiUtility extends Migration
   public function up()
   {
     $this->forge->addField([
-      'id INT UNSIGNED AUTO_INCREMENT',
-      'nilai_kriteria_id INT UNSIGNED',
+      'id_nilai_utility INT UNSIGNED AUTO_INCREMENT',
+      'id_nilai_kriteria INT UNSIGNED',
       'nilai_utility FLOAT',
     ]);
-    $this->forge->addKey('id', true);
-    $this->forge->addForeignKey('nilai_kriteria_id', 'nilai_kriteria', 'id', 'CASCADE', 'CASCADE');
+    $this->forge->addKey('id_nilai_utility', true);
+    $this->forge->addForeignKey('id_nilai_kriteria', 'nilai_kriteria', 'id_nilai_kriteria', 'CASCADE', 'CASCADE');
     $this->forge->createTable('nilai_utility');
   }
 

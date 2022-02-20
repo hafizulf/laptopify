@@ -9,7 +9,7 @@ class Alternatif extends Migration
   public function up()
   {
     $this->forge->addField([
-      'id INT UNSIGNED AUTO_INCREMENT',
+      'id_alternatif INT UNSIGNED AUTO_INCREMENT',
       'nama VARCHAR(255)',
       'kode VARCHAR(64)',
       'harga INT UNSIGNED',
@@ -26,7 +26,7 @@ class Alternatif extends Migration
       'kondisi_produk VARCHAR(64)',
       'url_produk TEXT',
     ]);
-    $this->forge->addKey('id', true);
+    $this->forge->addKey('id_alternatif', true);
     $this->forge->createTable('alternatif');
   }
 
