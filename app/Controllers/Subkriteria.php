@@ -68,7 +68,7 @@ class Subkriteria extends BaseController
       throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
     }
 
-    $kriteria_id = $this->request->getPost('kriteria_id');
+    $id_kriteria = $this->request->getPost('id_kriteria');
     $nama = $this->request->getPost('nama');
     $nilai_preferensi = $this->request->getPost('nilai_preferensi');
     $jumlahSk = $this->request->getPost('jumlahsk');
@@ -76,7 +76,7 @@ class Subkriteria extends BaseController
     $batchData = [];
     for ($i = 0; $i < $jumlahSk; $i++) {
       $data = [
-        'kriteria_id' => $kriteria_id,
+        'id_kriteria' => $id_kriteria,
         'nama' => $nama[$i],
         'nilai_preferensi' => $nilai_preferensi[$i],
       ];
@@ -98,7 +98,7 @@ class Subkriteria extends BaseController
     }
 
     $ids = $this->request->getPost('id');
-    $this->model->whereIn('id', $ids)->delete();
+    $this->model->whereIn('id_sub_kriteria', $ids)->delete();
     return $this->response->setJSON(['status' => TRUE, 'message' => 'Data berhasil dihapus']);
   }
 
@@ -122,7 +122,7 @@ class Subkriteria extends BaseController
     $data = $this->request->getPost();
 
     $this->model->setValidationRules([
-      'kriteria_id' => 'required',
+      'id_kriteria' => 'required',
       'nama' => 'required',
       'nilai_preferensi' => 'required|is_numeric',
     ]);
