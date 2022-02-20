@@ -30,14 +30,14 @@ class NilaiAkhir extends BaseController
     $nilaiAkhir = [];
 
     for ($i = 0; $i < sizeof($alternatif); $i++) {
-      $nilaiUtilityAlternatif = $this->nilaiUtilityModel->getNilaiUtility($alternatif[$i]['id']);
+      $nilaiUtilityAlternatif = $this->nilaiUtilityModel->getNilaiUtility($alternatif[$i]['id_alternatif']);
 
       $nilaiPenjumlahan = 0;
       for ($j = 0; $j < sizeof($nilaiUtilityAlternatif); $j++) {
 
         for ($k = 0; $k < sizeof($nilaiBobotTernormalisasi); $k++) {
 
-          if ($nilaiUtilityAlternatif[$j]['kriteria_id'] == $nilaiBobotTernormalisasi[$k]['kriteria_id']) {
+          if ($nilaiUtilityAlternatif[$j]['id_kriteria'] == $nilaiBobotTernormalisasi[$k]['id_kriteria']) {
             $nilaiUtility = $nilaiUtilityAlternatif[$j]['nilai_utility'];
             $nilaiBobot = $nilaiBobotTernormalisasi[$k]['nilai_normalisasi_bobot'];
 
@@ -48,7 +48,7 @@ class NilaiAkhir extends BaseController
       }
 
       $data = [
-        'alternatif_id' => $alternatif[$i]['id'],
+        'id_alternatif' => $alternatif[$i]['id_alternatif'],
         'nilai_akhir' => $nilaiPenjumlahan,
       ];
 

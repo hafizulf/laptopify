@@ -62,7 +62,7 @@ class Bobot extends BaseController
     }
 
     $ids = $this->request->getPost('id');
-    $this->model->whereIn('id', $ids)->delete();
+    $this->model->whereIn('id_pembobotan', $ids)->delete();
     return $this->response->setJSON(['status' => TRUE, 'message' => 'Data berhasil dihapus']);
   }
 

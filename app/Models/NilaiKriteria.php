@@ -7,7 +7,8 @@ use CodeIgniter\Model;
 class NilaiKriteria extends Model
 {
   protected $table            = 'nilai_kriteria';
-  protected $allowedFields    = ['alternatif_id', 'kriteria_id', 'nilai_kriteria'];
+  protected $primaryKey       = 'id_nilai_kriteria';
+  protected $allowedFields    = ['id_alternatif', 'id_kriteria', 'nilai_kriteria'];
 
   public function setNilaiKriteria($data)
   {
@@ -20,11 +21,11 @@ class NilaiKriteria extends Model
   {
     if ($clause !== FALSE) {
       return $this->db->query(
-        "SELECT kriteria.jenis, nilai_kriteria.* FROM " . $this->table . " JOIN kriteria ON nilai_kriteria.kriteria_id = kriteria.id WHERE kriteria_id = " . $clause . ""
+        "SELECT k.jenis, nk.* FROM " . $this->table . " nk JOIN kriteria k ON nk.id_kriteria = k.id_kriteria WHERE k.id_kriteria = " . $clause . ""
       )->getResultArray();
     } else {
       return $this->db->query(
-        "SELECT alternatif_id, kriteria_id, nilai_kriteria FROM " . $this->table . " ORDER BY kriteria_id"
+        "SELECT id_alternatif, id_kriteria, nilai_kriteria FROM " . $this->table . " ORDER BY id_kriteria"
       )->getResultArray();
     }
   }

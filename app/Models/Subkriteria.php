@@ -7,16 +7,17 @@ use CodeIgniter\Model;
 class Subkriteria extends Model
 {
   protected $table            = 'sub_kriteria';
-  protected $allowedFields    = ['kriteria_id', 'nama', 'nilai_preferensi'];
+  protected $primaryKey       = 'id_sub_kriteria';
+  protected $allowedFields    = ['id_kriteria', 'nama', 'nilai_preferensi'];
 
   protected $validationRules = [
-    'kriteria_id' => 'required',
+    'id_kriteria' => 'required',
     'nama.*' => 'required',
     'nilai_preferensi.*' => 'required|is_numeric',
   ];
 
   protected $validationMessages = [
-    "kriteria_id" => [
+    "id_kriteria" => [
       "required" => "Kriteria wajib dipilih",
     ],
     "nama.*" => [
@@ -32,14 +33,14 @@ class Subkriteria extends Model
   public function findAllSubkriteria()
   {
     return $this->db->query(
-      "SELECT k.nama as nama_kriteria, sk.* FROM " . $this->table . " AS sk JOIN kriteria AS k ON sk.kriteria_id = k.id ORDER BY kriteria_id"
+      "SELECT k.nama as nama_kriteria, sk.* FROM " . $this->table . " sk JOIN kriteria k ON sk.id_kriteria = k.id_kriteria ORDER BY id_kriteria"
     );
   }
 
   public function findSubkriteriaById($id)
   {
     return $this->db->query(
-      "SELECT id, nama, nilai_preferensi FROM " . $this->table . " WHERE id = $id"
+      "SELECT id_sub_kriteria, nama, nilai_preferensi FROM " . $this->table . " WHERE id_sub_kriteria = $id"
     )->getRowArray();
   }
 
@@ -53,11 +54,11 @@ class Subkriteria extends Model
   {
     if ($clause) {
       return $this->db->query(
-        "SELECT sk.nama FROM " . $this->table . " AS sk JOIN kriteria ON sk.kriteria_id = kriteria.id WHERE kriteria.nama = '" . $clause . "' ORDER BY kriteria_id"
+        "SELECT sk.nama, k.id_kriteria FROM " . $this->table . " sk JOIN kriteria k ON sk.id_kriteria = k.id_kriteria WHERE k.nama = '" . $clause . "' ORDER BY id_kriteria"
       )->getResultArray();
     } else {
       return $this->db->query(
-        "SELECT k.nama as nama_kriteria, sk.kriteria_id, sk.nama, sk.nilai_preferensi FROM " . $this->table . " AS sk JOIN kriteria AS k ON sk.kriteria_id = k.id ORDER BY kriteria_id"
+        "SELECT k.nama as nama_kriteria, sk.id_kriteria, sk.nama, sk.nilai_preferensi FROM " . $this->table . " sk JOIN kriteria k ON sk.id_kriteria = k.id_kriteria ORDER BY id_kriteria"
       )->getResultArray();
     }
   }

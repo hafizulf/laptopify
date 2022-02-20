@@ -46,7 +46,7 @@
                   <?php foreach ($bobot as $key => $row) : ?>
                     <tr>
                       <td>
-                        <input type="checkbox" name="id[]" class="checkbox" value="<?= $row['id']; ?>">
+                        <input type="checkbox" name="id[]" class="checkbox" value="<?= $row['id_pembobotan']; ?>">
                       </td>
                       <td><?= $key + 1; ?></td>
                       <td><?= ucfirst(str_replace("_", " ", $row['nama_kriteria'])); ?></td>
@@ -81,10 +81,10 @@
 
                 <div class="form-group">
                   <label for="kriteria">Kriteria</label>
-                  <select name="kriteria_id" class="form-control" id="kriteria">
+                  <select name="id_kriteria" class="form-control" id="kriteria">
                     <option value="">-- Pilih --</option>
                     <?php foreach ($kriteria->getResultArray() as $row) : ?>
-                      <option value="<?= $row['id']; ?>"><?= ucfirst(str_replace("_", " ", $row['nama'])); ?></option>
+                      <option value="<?= $row['id_kriteria']; ?>"><?= ucfirst(str_replace("_", " ", $row['nama'])); ?></option>
                     <?php endforeach; ?>
                   </select>
                   <div class="invalid-feedback"></div>
@@ -118,7 +118,7 @@
             <form action="/bobot/update" method="POST" class="formSubmit" id="formUbah">
               <div class="modal-body">
                 <?= csrf_field(); ?>
-                <input type="hidden" name="id" id="id_ubah">
+                <input type="hidden" name="id_pembobotan" id="id_ubah">
 
                 <div class="form-group">
                   <label for="kriteria_ubah">Kriteria</label>

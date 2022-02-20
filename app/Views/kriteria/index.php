@@ -31,7 +31,7 @@
                   <?php foreach ($kriteria as $key => $row) : ?>
                     <tr>
                       <td>
-                        <input type="checkbox" name="id[]" class="checkbox" value="<?= $row['id']; ?>">
+                        <input type="checkbox" name="id[]" class="checkbox" value="<?= $row['id_kriteria']; ?>">
                       </td>
                       <td><?= $key + 1; ?></td>
                       <td><?= ucfirst(str_replace("_", " ", $row['nama'])); ?></td>
@@ -108,7 +108,7 @@
             <form action="/kriteria/update" method="POST" class="formSubmit" id="formUbah">
               <div class="modal-body">
                 <?= csrf_field(); ?>
-                <input type="hidden" name="id" id="id_ubah">
+                <input type="hidden" name="id_kriteria" id="id_ubah">
                 <div class="form-group">
                   <label for="nama_ubah">Nama</label>
                   <input type="text" name="nama" id="nama_ubah" class="form-control" placeholder="Nama kriteria..">

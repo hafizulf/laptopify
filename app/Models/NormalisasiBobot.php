@@ -6,8 +6,9 @@ use CodeIgniter\Model;
 
 class NormalisasiBobot extends Model
 {
-  protected $table            = 'normalisasi_bobot';
-  protected $allowedFields    = ['pembobotan_id', 'nilai_normalisasi_bobot'];
+  protected $table             = 'normalisasi_bobot';
+  protected $normalisasi_bobot = 'id_normalisasi_bobot';
+  protected $allowedFields     = ['id_pembobotan', 'nilai_normalisasi_bobot'];
 
   public function normalisasi($data)
   {
@@ -18,7 +19,7 @@ class NormalisasiBobot extends Model
   public function getNilaiNormalisasiBobot()
   {
     return $this->db->query(
-      "SELECT p.kriteria_id, nb.nilai_normalisasi_bobot FROM " . $this->table . " AS nb JOIN pembobotan AS p ON nb.pembobotan_id = p.id"
+      "SELECT p.id_kriteria, nb.nilai_normalisasi_bobot FROM " . $this->table . " nb JOIN pembobotan p ON nb.id_pembobotan = p.id_pembobotan"
     )->getResultArray();
   }
 }

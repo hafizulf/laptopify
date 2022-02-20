@@ -6,11 +6,12 @@ use CodeIgniter\Model;
 
 class Alternatif extends Model
 {
-  protected $table            = 'alternatif';
-  protected $allowedFields    = ['kode', 'nama', 'harga', 'rating_produk', 'merk', 'prosesor', 'kapasitas_ram', 'tipe_penyimpanan', 'kapasitas_penyimpanan', 'ukuran_layar', 'kartu_grafis', 'sistem_operasi', 'masa_garansi', 'kondisi_produk', 'url_produk'];
+  protected $table          = 'alternatif';
+  protected $primaryKey     = 'id_alternatif';
+  protected $allowedFields  = ['kode', 'nama', 'harga', 'rating_produk', 'merk', 'prosesor', 'kapasitas_ram', 'tipe_penyimpanan', 'kapasitas_penyimpanan', 'ukuran_layar', 'kartu_grafis', 'sistem_operasi', 'masa_garansi', 'kondisi_produk', 'url_produk'];
 
   protected $validationRules = [
-    'kode' => 'required|is_unique[alternatif.kode, id, {id}]',
+    'kode' => 'required|is_unique[alternatif.kode, id_alternatif, {id_alternatif}]',
     'nama' => 'required',
     'harga' => 'required|is_numeric',
     'rating_produk' => 'required|is_numeric',
@@ -30,14 +31,14 @@ class Alternatif extends Model
   public function getAlternatifCriteria()
   {
     return $this->db->query("
-      SELECT id, harga, rating_produk, merk, prosesor, kapasitas_ram, tipe_penyimpanan, kapasitas_penyimpanan, ukuran_layar, kartu_grafis, sistem_operasi, masa_garansi, kondisi_produk FROM " . $this->table . "
+      SELECT id_alternatif, harga, rating_produk, merk, prosesor, kapasitas_ram, tipe_penyimpanan, kapasitas_penyimpanan, ukuran_layar, kartu_grafis, sistem_operasi, masa_garansi, kondisi_produk FROM " . $this->table . "
     ")->getResultArray();
   }
 
   public function getKodeAlternatif()
   {
     return $this->db->query("
-      SELECT id, kode FROM " . $this->table . " ORDER BY id
+      SELECT id_alternatif, kode FROM " . $this->table . " ORDER BY id_alternatif
     ")->getResultArray();
   }
 }

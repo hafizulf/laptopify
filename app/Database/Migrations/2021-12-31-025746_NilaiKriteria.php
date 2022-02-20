@@ -9,14 +9,14 @@ class NilaiKriteria extends Migration
   public function up()
   {
     $this->forge->addField([
-      'id INT UNSIGNED AUTO_INCREMENT',
-      'alternatif_id INT UNSIGNED NOT NULL',
-      'kriteria_id INT UNSIGNED NOT NULL',
+      'id_nilai_kriteria INT UNSIGNED AUTO_INCREMENT',
+      'id_alternatif INT UNSIGNED NOT NULL',
+      'id_kriteria INT UNSIGNED NOT NULL',
       'nilai_kriteria FLOAT UNSIGNED NOT NULL DEFAULT "0"',
     ]);
-    $this->forge->addKey('id', true);
-    $this->forge->addForeignKey('kriteria_id', 'kriteria', 'id', 'CASCADE', 'CASCADE');
-    $this->forge->addForeignKey('alternatif_id', 'alternatif', 'id', 'CASCADE', 'CASCADE');
+    $this->forge->addKey('id_nilai_kriteria', true);
+    $this->forge->addForeignKey('id_kriteria', 'kriteria', 'id_kriteria', 'CASCADE', 'CASCADE');
+    $this->forge->addForeignKey('id_alternatif', 'alternatif', 'id_alternatif', 'CASCADE', 'CASCADE');
     $this->forge->createTable('nilai_kriteria');
   }
 

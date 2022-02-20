@@ -31,8 +31,8 @@ class NilaiKriteria extends BaseController
         // cek kriteria.nama dlm array alternatif
         if (array_key_exists($kriteria[$j]['nama'],  $alternatif[$i])) {
           $data = [
-            'alternatif_id' => $alternatif[$i]['id'],
-            'kriteria_id' => $kriteria[$j]['id'],
+            'id_alternatif' => $alternatif[$i]['id_alternatif'],
+            'id_kriteria' => $kriteria[$j]['id_kriteria'],
             'nilai_kriteria' => $alternatif[$i][$kriteria[$j]['nama']],
           ];
 
@@ -63,8 +63,8 @@ class NilaiKriteria extends BaseController
         if ($temp != '' && $temp != $init) {
           if ($isExist) {
             $data[$index] = [
-              'alternatif_id' => $alternatif[$i]['id'],
-              'kriteria_id' => $subkriteria[$j - 1]['kriteria_id'],
+              'id_alternatif' => $alternatif[$i]['id_alternatif'],
+              'id_kriteria' => $subkriteria[$j - 1]['id_kriteria'],
               'nilai_kriteria' => 0,
             ];
 
@@ -76,8 +76,8 @@ class NilaiKriteria extends BaseController
 
         if ($alternatif[$i][$init] == $subkriteria[$j]['nama']) {
           $data[$index] = [
-            'alternatif_id' => $alternatif[$i]['id'],
-            'kriteria_id' => $subkriteria[$j]['kriteria_id'],
+            'id_alternatif' => $alternatif[$i]['id_alternatif'],
+            'id_kriteria' => $subkriteria[$j]['id_kriteria'],
             'nilai_kriteria' => $subkriteria[$j]['nilai_preferensi'],
           ];
 

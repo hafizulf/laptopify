@@ -28,7 +28,7 @@
             <div class="table-responsive">
               <table class="table table-bordered table-striped table-kriteria" id="dataTable">
                 <thead>
-                  <th>No</th>
+                  <th>Peringkat</th>
                   <th>Alternatif</th>
                   <th>Nilai Akhir</th>
                 </thead>
@@ -47,11 +47,51 @@
         </div>
 
       <?php else : ?>
-        <div class="alert alert-info" role="alert">
-          <strong>Data Belum Ada, Tentukan nilai akhir setelah data nilai utility siap.</strong>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="card">
+              <div class="card-body">
+                <div class="alert alert-info" role="alert">
+                  <strong class="text-center">Data Belum Ada, </strong> <button type="button" class="btn btn-dark mx-1 btn-nilai-akhir"><i class="fas fa fa-recycle"></i> Tentukan Nilai Akhir</button>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       <?php endif; ?>
     </div>
   </div>
 </section>
 <?php $this->endSection(); ?>
+
+
+<?php $this->section('custom-js') ?>
+<script>
+  $(document).ready(function() {
+    $('.btn-nilai-akhir').on('click', function() {
+      $.ajax({
+        url: '/NilaiAkhir/generateNilaiAkhir',
+        type: 'POST',
+        dataType: 'JSON',
+        beforeSend: function() {
+          $('.btn-nilai-akhir').html('loading.. <span class="spinner-border spinner-border-sm"></span>')
+        },
+        complete: function() {
+          $('.btn-nilai-akhir').html('<i class="fas fa fa-recycle"></i>  Tentukan Nilai Akhir')
+        },
+        success: function(response) {
+          if (!response.warning) {
+            toastSuccess(response)
+            reload()
+          } else {
+            toastAlert(response)
+          }
+        },
+        error: function(xhr, ajaxOptions, thrownError) {
+          alert(xhr.status + "\n" + xhr.responseText + "\n" + thrownError)
+        }
+      })
+    })
+  })
+</script>
+<?php $this->endSection() ?>

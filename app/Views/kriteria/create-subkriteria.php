@@ -16,7 +16,7 @@
               <p>Masukkan jumlah sub kriteria yang diinginkan sesuai dengan kriteria yang ada</p>
             </li>
             <li>
-              <p>Masukkan nilai preferensi yang berbeda untuk masing-masing sub kriteria, sesuai dengan tingkat kepentingan yang diprioritaskan. Contoh: dengan pola bilangan ganjil 1-9, berikan nilai 9 untuk sub-kriteria yang dianggap paling penting (<span class="text-sm text-danger">Pastikan nilai tidak ada yang sama, untuk mendapatkan hasil yang optimal</span>)</p>
+              <p>Masukkan nilai preferensi yang berbeda untuk masing-masing sub kriteria, sesuai dengan tingkat kepentingan yang diprioritaskan. Contoh: dengan rentang nilai 1-9, berikan nilai paling besar untuk sub-kriteria yang dianggap paling penting dan yang terkecil dimulai dari 1. <br> <span class="text-sm text-danger">Pastikan nilai tidak ada yang sama, untuk mendapatkan hasil yang optimal</span></p>
             </li>
           </ul>
         </div>
@@ -31,10 +31,10 @@
             <?= csrf_field(); ?>
             <div class="form-group">
               <label for="kriteria">Kriteria</label>
-              <select name="kriteria_id" id="kriteria" class="form-control">
+              <select name="id_kriteria" id="kriteria" class="form-control">
                 <option value="">-- Pilih --</option>
                 <?php foreach ($kriteria->getResultArray() as $row) : ?>
-                  <option value="<?= $row['id']; ?>" id="kriteria"><?= $row['nama']; ?></option>
+                  <option value="<?= $row['id_kriteria']; ?>" id="kriteria"><?= $row['nama']; ?></option>
                 <?php endforeach; ?>
               </select>
             </div>

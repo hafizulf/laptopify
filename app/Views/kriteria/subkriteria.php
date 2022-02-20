@@ -16,7 +16,7 @@
               <button class="btn btn-success btn-ubah"><i class="fas fa fa-edit"></i> Ubah</button>
             </div>
             <div class="card-body">
-              <table class="table table-bordered table-subkriteria">
+              <table class="table table-bordered table-striped table-subkriteria">
                 <thead>
                   <th>
                     <input type="checkbox" id="checkboxes">
@@ -32,7 +32,7 @@
                     <?php foreach ($subkriteria->getResultArray() as $key => $row) : ?>
                       <tr>
                         <td>
-                          <input type="checkbox" name="id[]" class="checkbox" value="<?= $row['id']; ?>">
+                          <input type="checkbox" name="id[]" class="checkbox" value="<?= $row['id_sub_kriteria']; ?>">
                         </td>
 
                         <?php if ($rowspan[$row['nama_kriteria']]['printed'] == 'yes') : ?>
@@ -78,7 +78,7 @@
             <form action="/subkriteria/update" method="POST" class="formSubmit" id="formUbah">
               <div class="modal-body">
                 <?= csrf_field(); ?>
-                <input type="hidden" name="id" id="id_ubah">
+                <input type="hidden" name="id_sub_kriteria" id="id_ubah">
                 <div class="form-group">
                   <label for="nama_ubah">Nama</label>
                   <input type="text" name="nama" id="nama_ubah" class="form-control" placeholder="Sub kriteria..">

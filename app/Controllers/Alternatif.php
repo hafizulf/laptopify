@@ -39,7 +39,7 @@ class Alternatif extends BaseController
 
     $jumlahAlternatif = $this->model->countAllResults();
 
-    if ($jumlahAlternatif > 20) {
+    if ($jumlahAlternatif >= 20) {
       return $this->response->setJSON(['status' => TRUE, 'warning' => 'Data alternatif sudah mencapai nilai maksimum!']);
     }
 
@@ -59,7 +59,7 @@ class Alternatif extends BaseController
     }
 
     $ids = $this->request->getPost('id');
-    $this->model->whereIn('id', $ids)->delete();
+    $this->model->whereIn('id_alternatif', $ids)->delete();
     return $this->response->setJSON(['status' => TRUE, 'message' => 'Data berhasil dihapus']);
   }
 
