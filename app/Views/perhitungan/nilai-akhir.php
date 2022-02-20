@@ -28,7 +28,7 @@
             <div class="table-responsive">
               <table class="table table-bordered table-striped table-kriteria" id="dataTable">
                 <thead>
-                  <th>No</th>
+                  <th>Peringkat</th>
                   <th>Alternatif</th>
                   <th>Nilai Akhir</th>
                 </thead>
