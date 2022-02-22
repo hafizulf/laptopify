@@ -11,7 +11,7 @@ class NIlaiAkhir extends Migration
     $this->forge->addField([
       'id_nilai_akhir INT UNSIGNED AUTO_INCREMENT',
       'id_alternatif INT UNSIGNED',
-      'nilai_akhir FLOAT',
+      'nilai_akhir DOUBLE UNSIGNED',
     ]);
     $this->forge->addKey('id_nilai_akhir', true);
     $this->forge->addForeignKey('id_alternatif', 'alternatif', 'id_alternatif', 'CASCADE', 'CASCADE');

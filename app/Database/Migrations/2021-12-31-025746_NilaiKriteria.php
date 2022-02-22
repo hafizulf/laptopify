@@ -12,7 +12,7 @@ class NilaiKriteria extends Migration
       'id_nilai_kriteria INT UNSIGNED AUTO_INCREMENT',
       'id_alternatif INT UNSIGNED NOT NULL',
       'id_kriteria INT UNSIGNED NOT NULL',
-      'nilai_kriteria FLOAT UNSIGNED NOT NULL DEFAULT "0"',
+      'nilai_kriteria DOUBLE UNSIGNED NOT NULL DEFAULT "0"',
     ]);
     $this->forge->addKey('id_nilai_kriteria', true);
     $this->forge->addForeignKey('id_kriteria', 'kriteria', 'id_kriteria', 'CASCADE', 'CASCADE');
