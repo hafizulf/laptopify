@@ -10,7 +10,14 @@
 
         <div class="card shadow">
           <div class="card-header">
-            <h3 class="text-gray-900 mb-0">Tabel Nilai Utility</h3>
+            <div class="row">
+              <div class="col-md-6">
+                <h3 class="text-gray-900 mb-0">Tabel Nilai Utility</h3>
+              </div>
+              <div class="col-md-6">
+                <button type="button" class="btn btn-dark mx-1 float-right btn-nilai-utility"><i class="fas fa fa-recycle"></i> Update Nilai Utility</button>
+              </div>
+            </div>
           </div>
           <div class="card-body">
             <div class="table-responsive">

@@ -25,6 +25,11 @@ class NilaiAkhir extends BaseController
     }
 
     $nilaiBobotTernormalisasi = $this->normalisasiBobotModel->getNilaiNormalisasiBobot();
+
+    if (sizeOf($nilaiBobotTernormalisasi) <= 0) {
+      return $this->response->setJSON(['status' => TRUE, 'warning' => 'Belum ada data normalisasi bobot!']);
+    }
+
     $alternatif = $this->alternatifModel->getKodeAlternatif();
 
     $nilaiAkhir = [];

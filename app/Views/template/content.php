@@ -149,7 +149,7 @@
       }
     }
 
-    const toastWarning = function(response) {
+    const toastAlert = function(response) {
       Toast.fire({
         icon: 'warning',
         title: response.warning
@@ -207,7 +207,7 @@
               toastSuccess(response, params[0])
               reload()
             } else {
-              toastWarning(response)
+              toastAlert(response)
             }
           } else {
             const errors = response.errors
