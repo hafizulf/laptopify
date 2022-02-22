@@ -14,6 +14,7 @@ class NilaiKriteria extends Model
   {
     $this->db->disableForeignKeyChecks();
     $this->truncate();
+    $this->db->query('DELETE FROM nilai_utility');
     return $this->insertBatch($data);
   }
 

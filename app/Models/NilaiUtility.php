@@ -13,6 +13,7 @@ class NilaiUtility extends Model
   public function saveNilaiUtility($data)
   {
     $this->truncate();
+    $this->db->query('DELETE FROM nilai_akhir');
     return $this->insertBatch($data);
   }
 
