@@ -178,7 +178,7 @@
                     </div>
                     <div class="form-group">
                       <label for="masa_garansi">Garansi (bulan)</label>
-                      <p class="small text-sm">Jika garansi tidak sampai 1 bulan, misal 2 minggu isi dengan 0.5</p>
+                      <p class="small text-sm">Jika garansi tidak ada, isi dengan nilai 0</p>
                       <input type="text" name="masa_garansi" id="masa_garansi" class="form-control" placeholder="misal. 12..">
                       <div class="invalid-feedback"></div>
                     </div>
@@ -329,7 +329,7 @@
                     </div>
                     <div class="form-group">
                       <label for="masa_garansi_ubah">Garansi (bulan)</label>
-                      <p class="small text-sm">Jika garansi tidak sampai 1 bulan, misal 2 minggu isi dengan 0.5</p>
+                      <p class="small text-sm">Jika garansi tidak ada, isi dengan nilai 0</p>
                       <input type="text" name="masa_garansi" id="masa_garansi_ubah" class="form-control" placeholder="misal. 12..">
                       <div class="invalid-feedback"></div>
                     </div>
@@ -464,31 +464,6 @@
 <?php $this->section('custom-js') ?>
 <script>
   $(document).ready(function() {
-
-    $('.btn-nilai-kriteria').on('click', function() {
-      $.ajax({
-        url: '/NilaiKriteria/setNilaiKriteria',
-        type: 'POST',
-        dataType: 'JSON',
-        beforeSend: function() {
-          $('.btn-nilai-kriteria').html('loading.. <span class="spinner-border spinner-border-sm"></span>')
-        },
-        complete: function() {
-          $('.btn-nilai-kriteria').html('<i class="fas fa fa-recycle"></i> Tentukan Nilai Kriteria')
-        },
-        success: function(response) {
-          if (!response.warning) {
-            toastSuccess(response)
-            reload()
-          } else {
-            toastAlert(response)
-          }
-        },
-        error: function(xhr, ajaxOptions, thrownError) {
-          alert(xhr.status + "\n" + xhr.responseText + "\n" + thrownError)
-        }
-      })
-    })
 
     const formTambah = $('#formTambah')
     formTambah.submit(function(e) {
