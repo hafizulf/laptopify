@@ -29,6 +29,21 @@
               <th>Role</th>
             </thead>
             <tbody>
+              <?php foreach ($users as $key => $row) : ?>
+                <tr>
+                  <td><input type="checkbox" name="id[]" class="checkbox" value="<?= $row['id_user']; ?>"></td>
+                  <td><?= $key + 1; ?></td>
+                  <td><?= $row['nama']; ?></td>
+                  <td><?= $row['username']; ?></td>
+                  <td>
+                    <?php foreach ($roles as $role) : ?>
+                      <?php if ($row['id_user_role'] == $role['id_user_role']) : ?>
+                        <?= $role['role']; ?>
+                      <?php endif; ?>
+                    <?php endforeach; ?>
+                  </td>
+                </tr>
+              <?php endforeach; ?>
             </tbody>
           </table>
         </div>
@@ -48,7 +63,7 @@
           </button>
         </div>
 
-        <form action="/manage-user/create" method="POST" class="formSubmit" id="formTambah">
+        <form action="/admin/ManageUser/create" method="POST" class="formSubmit" id="formTambah">
           <div class="modal-body">
             <?= csrf_field(); ?>
             <div class="form-group">
@@ -63,11 +78,11 @@
             </div>
             <div class="form-group">
               <label for="password">Password</label>
-              <input type="password" name="password" id="password" class="form-control" placeholder="Masukkan password..">
+              <input type="text" name="password" id="password" class="form-control" placeholder="Masukkan password..">
               <div class="invalid-feedback"></div>
             </div>
             <div class="form-group">
-              <label for="role">Role</label>
+              <label for="id_user_role">Role</label>
               <select name="id_user_role" class="form-control" id="id_user_role">
                 <option value="">-- Pilih --</option>
                 <?php foreach ($roles as $row) : ?>
@@ -87,4 +102,19 @@
   </div>
 </div>
 
+<?= $this->endSection(); ?>
+
+<?= $this->section('custom-js'); ?>
+<script>
+  $(document).ready(function() {
+
+    const formTambah = $('#formTambah')
+    formTambah.submit(function(e) {
+      e.preventDefault()
+      requestSaveData(formTambah, '#modalBoxTambah')
+      removeClasses('#formTambah')
+    })
+
+  })
+</script>
 <?= $this->endSection(); ?>
