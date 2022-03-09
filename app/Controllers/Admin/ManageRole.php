@@ -20,7 +20,7 @@ class ManageRole extends Controller
     return view('admin/manage-role', $data);
   }
 
-  public function create()
+  public function save()
   {
     if (!$this->request->isAJAX()) {
       throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();

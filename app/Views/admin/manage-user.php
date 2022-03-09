@@ -63,7 +63,7 @@
           </button>
         </div>
 
-        <form action="/admin/ManageUser/create" method="POST" class="formSubmit" id="formTambah">
+        <form action="/admin/ManageUser/save" method="POST" class="formSubmit" id="formTambah">
           <div class="modal-body">
             <?= csrf_field(); ?>
             <div class="form-group">
@@ -111,7 +111,7 @@
           </button>
         </div>
 
-        <form action="/admin/ManageUser/create" method="POST" class="formSubmit" id="formUbah">
+        <form action="/admin/ManageUser/save" method="POST" class="formSubmit" id="formUbah">
           <div class="modal-body">
             <?= csrf_field(); ?>
             <input type="hidden" name="id_user" id="id_ubah">
@@ -174,6 +174,10 @@
       e.preventDefault()
       requestSaveData(formUbah, '#modalBoxUbah')
       removeClasses('#formUbah')
+    })
+
+    $('.btn-hapus').on('click', function(e) {
+      requestDeleteData('/admin/ManageUser/delete')
     })
 
   })

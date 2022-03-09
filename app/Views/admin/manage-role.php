@@ -53,7 +53,7 @@
           </button>
         </div>
 
-        <form action="/Admin/ManageRole/create" method="POST" class="formSubmit" id="formTambah">
+        <form action="/Admin/ManageRole/save" method="POST" class="formSubmit" id="formTambah">
           <div class="modal-body">
             <?= csrf_field(); ?>
             <div class="form-group">
@@ -81,7 +81,7 @@
           </button>
         </div>
 
-        <form action="/Admin/ManageRole/create" method="POST" class="formSubmit" id="formUbah">
+        <form action="/Admin/ManageRole/save" method="POST" class="formSubmit" id="formUbah">
           <div class="modal-body">
             <?= csrf_field(); ?>
             <input type="hidden" name="id_user_role" id="id_ubah">
@@ -126,7 +126,8 @@
     })
 
     $('.btn-hapus').on('click', function() {
-      requestDeleteData('/admin/ManageRole/delete')
+      $cautionMsg = 'Semua user dengan role ini akan terhapus';
+      requestDeleteData('/admin/ManageRole/delete', 'caution', $cautionMsg)
     })
   })
 </script>

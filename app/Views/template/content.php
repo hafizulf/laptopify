@@ -234,9 +234,11 @@
       if (data.length < 1) {
         warnEmptyData()
       } else {
+        let text = arguments[1] === 'caution' ? arguments[2] : 'anda akan menghapus data'
+
         Swal.fire({
           title: 'Apakah anda yakin?',
-          text: `anda akan menghapus data.`,
+          text: `${text}.`,
           icon: 'warning',
           showCancelButton: true,
           confirmButtonColor: '#3085d6',
