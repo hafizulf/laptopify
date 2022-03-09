@@ -42,6 +42,7 @@ $routes->get('/perhitungan/nilai-utility', 'Hitung::hitungNilaiUtility');
 $routes->get('/perhitungan/nilai-akhir', 'Hitung::hitungNilaiAkhir');
 
 $routes->get('/manage-user', 'Admin\ManageUser::index');
+$routes->get('/manage-role', 'Admin\ManageRole::index');
 
 /*
  * --------------------------------------------------------------------
