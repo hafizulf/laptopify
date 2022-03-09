@@ -14,6 +14,16 @@
 
   <!-- Heading -->
   <div class="sidebar-heading">
+    Admin
+  </div>
+
+  <li class="nav-item <?= url_is('/manage-user') ? 'active' : '' ?>">
+    <a class="nav-link" href="/manage-user">
+      <i class="fas fa-fw fa-users"></i>
+      <span>User</span></a>
+  </li>
+
+  <div class="sidebar-heading">
     Menu
   </div>
 
