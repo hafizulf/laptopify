@@ -126,6 +126,10 @@
 
       removeClasses('#formUbah')
     })
+
+    $('.btn-hapus').on('click', function() {
+      requestDeleteData('/admin/ManageRole/delete')
+    })
   })
 </script>
 <?= $this->endSection(); ?>

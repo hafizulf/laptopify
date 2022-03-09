@@ -46,4 +46,15 @@ class ManageRole extends Controller
     $data = $this->model->find($id);
     return $this->response->setJSON($data);
   }
+
+  public function delete()
+  {
+    if (!$this->request->isAJAX()) {
+      throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
+    }
+
+    $ids = $this->request->getPost('id');
+    $this->model->whereIn('id_user_role', $ids)->delete();
+    return $this->response->setJSON(['status' => TRUE, 'message' => 'Data berhasil dihapus']);
+  }
 }
