@@ -4,7 +4,7 @@ namespace App\Models\Admin;
 
 use CodeIgniter\Model;
 
-class ManageUser extends Model
+class User extends Model
 {
   protected $table            = 'users';
   protected $primaryKey       = 'id_user';
