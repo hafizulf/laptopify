@@ -32,7 +32,8 @@ class ManageRole extends Controller
     if ($result === FALSE) {
       return $this->response->setJSON(['status' => FALSE, 'errors' => $this->model->errors()]);
     } else {
-      return $this->response->setJSON(['status' => TRUE, 'message' => 'Data berhasil ditambahkan']);
+      $msg = isset($data['id_user_role']) ? 'diperbaharui' : 'ditambahkan';
+      return $this->response->setJSON(['status' => TRUE, 'message' => 'Data berhasil ' . $msg]);
     }
   }
 

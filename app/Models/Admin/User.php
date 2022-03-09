@@ -23,8 +23,14 @@ class User extends Model
   }
 
   protected $beforeInsert = ['beforeInsert'];
+  protected $beforeUpdate = ['beforeUpdate'];
 
   protected function beforeInsert($data)
+  {
+    return $this->getUpdatedDataWithHashedPassword($data);
+  }
+
+  protected function beforeUpdate($data)
   {
     return $this->getUpdatedDataWithHashedPassword($data);
   }
@@ -38,7 +44,7 @@ class User extends Model
     return $data;
   }
 
-  private function hashPassword(string $plaintextPassword): string
+  private function hashPassword($plaintextPassword)
   {
     return password_hash($plaintextPassword, PASSWORD_DEFAULT);
   }

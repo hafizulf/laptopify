@@ -34,7 +34,19 @@ class ManageUser extends Controller
     if ($this->model->save($data) === FALSE) {
       return $this->response->setJSON(['status' => FALSE, 'errors' => $this->model->errors()]);
     } else {
-      return $this->response->setJSON(['status' => TRUE, 'message' => 'Data berhasil ditambahkan']);
+      $msg = isset($data['id_user']) ? 'diperbaharui' : 'ditambahkan';
+      return $this->response->setJSON(['status' => TRUE, 'message' => 'Data berhasil ' . $msg]);
     }
+  }
+
+  public function getDataById()
+  {
+    if (!$this->request->isAJAX()) {
+      throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
+    }
+
+    $id = $this->request->getPost('id');
+    $data = $this->model->find($id);
+    return $this->response->setJSON($data);
   }
 }

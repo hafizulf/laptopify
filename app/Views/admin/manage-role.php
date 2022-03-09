@@ -121,9 +121,7 @@
     const formUbah = $('#formUbah')
     formUbah.submit(function(e) {
       e.preventDefault()
-
       requestSaveData(formUbah, '#modalBoxUbah')
-
       removeClasses('#formUbah')
     })
 
