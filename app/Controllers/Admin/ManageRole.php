@@ -19,4 +19,20 @@ class ManageRole extends Controller
 
     return view('admin/manage-role', $data);
   }
+
+  public function create()
+  {
+    if (!$this->request->isAJAX()) {
+      throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
+    }
+
+    $data = $this->request->getPost();
+    $result = $this->model->save($data);
+
+    if ($result === FALSE) {
+      return $this->response->setJSON(['status' => FALSE, 'errors' => $this->model->errors()]);
+    } else {
+      return $this->response->setJSON(['status' => TRUE, 'message' => 'Data berhasil ditambahkan']);
+    }
+  }
 }

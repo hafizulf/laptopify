@@ -17,10 +17,17 @@
     Admin
   </div>
 
-  <li class="nav-item <?= url_is('/manage-user') ? 'active' : '' ?>">
-    <a class="nav-link" href="/manage-user">
+  <li class="nav-item <?= url_is('/manage-user') || url_is('manage-role')  ? 'active' : '' ?>">
+    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#usersCollapse" aria-expanded="true" aria-controls="usersCollapse">
       <i class="fas fa-fw fa-users"></i>
-      <span>User</span></a>
+      <span>Manage User</span>
+    </a>
+    <div id="usersCollapse" class="collapse" data-parent="#accordionSidebar">
+      <div class="bg-white py-2 collapse-inner rounded">
+        <a class="collapse-item" href="/manage-role">Role</a>
+        <a class="collapse-item" href="/manage-user">User</a>
+      </div>
+    </div>
   </li>
 
   <div class="sidebar-heading">

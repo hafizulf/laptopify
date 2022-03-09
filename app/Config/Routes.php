@@ -44,6 +44,12 @@ $routes->get('/perhitungan/nilai-akhir', 'Hitung::hitungNilaiAkhir');
 $routes->get('/manage-user', 'Admin\ManageUser::index');
 $routes->get('/manage-role', 'Admin\ManageRole::index');
 
+// $routes->group('manage-role', function ($routes) {
+//   $routes->add('/', 'Admin\ManageRole::index');
+//   $routes->add('index', 'Admin\ManageRole::index');
+//   $routes->add('create', 'Admin\ManageRole::create');
+// });
+
 /*
  * --------------------------------------------------------------------
  * Additional Routing

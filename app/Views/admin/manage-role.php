@@ -27,11 +27,11 @@
               <th>Role</th>
             </thead>
             <tbody>
-              <?php foreach ($roles as $key => $role) :; ?>
+              <?php foreach ($roles as $key => $row) :; ?>
                 <tr>
                   <td><input type="checkbox" name="id[]" class="checkbox" value="<?= $row['id_user_role']; ?>"></td>
                   <td><?= $key + 1; ?></td>
-                  <td><?= $role['role']; ?></td>
+                  <td><?= $row['role']; ?></td>
                 </tr>
               <?php endforeach ?>
             </tbody>
@@ -53,7 +53,7 @@
           </button>
         </div>
 
-        <form action="/manage-role/create" method="POST" class="formSubmit" id="formTambah">
+        <form action="/Admin/ManageRole/create" method="POST" class="formSubmit" id="formTambah">
           <div class="modal-body">
             <?= csrf_field(); ?>
             <div class="form-group">
@@ -72,4 +72,17 @@
   </div>
 </div>
 
+<?= $this->endSection(); ?>
+
+<?= $this->section('custom-js'); ?>
+<script>
+  $(document).ready(function() {
+    const formTambah = $('#formTambah')
+    formTambah.submit(function(e) {
+      e.preventDefault()
+      requestSaveData(formTambah, '#modalBoxTambah')
+      removeClasses('#formTambah')
+    })
+  })
+</script>
 <?= $this->endSection(); ?>
