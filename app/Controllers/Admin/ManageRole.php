@@ -35,4 +35,15 @@ class ManageRole extends Controller
       return $this->response->setJSON(['status' => TRUE, 'message' => 'Data berhasil ditambahkan']);
     }
   }
+
+  public function getDataById()
+  {
+    if (!$this->request->isAJAX()) {
+      throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
+    }
+
+    $id = $this->request->getPost('id');
+    $data = $this->model->find($id);
+    return $this->response->setJSON($data);
+  }
 }

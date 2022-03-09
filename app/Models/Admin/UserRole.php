@@ -11,6 +11,6 @@ class UserRole extends Model
   protected $allowedFields    = ['role'];
 
   protected $validationRules  = [
-    'role' => 'required|is_unique[user_roles.role]',
+    'role' => 'required|is_unique[user_roles.role, id_user_role, {id_user_role}]',
   ];
 }
