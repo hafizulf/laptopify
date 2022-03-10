@@ -78,6 +78,7 @@
             </div>
             <div class="form-group">
               <label for="password">Password</label>
+              <button type="button" class="btn btn-sm btn-outline-primary" id="generate-password">Generate</button>
               <input type="password" name="password" id="password" class="form-control" placeholder="Masukkan password..">
               <div class="invalid-feedback"></div>
             </div>
@@ -117,23 +118,23 @@
             <input type="hidden" name="id_user" id="id_ubah">
 
             <div class="form-group">
-              <label for="nama">Nama</label>
-              <input type="text" name="nama" id="nama" class="form-control" placeholder="Masukkan nama..">
+              <label for="nama_ubah">Nama</label>
+              <input type="text" name="nama" id="nama_ubah" class="form-control" placeholder="Masukkan nama..">
               <div class="invalid-feedback"></div>
             </div>
             <div class="form-group">
-              <label for="username">Username</label>
-              <input type="text" name="username" id="username" class="form-control" placeholder="Masukkan username..">
+              <label for="username_ubah">Username</label>
+              <input type="text" name="username" id="username_ubah" class="form-control" placeholder="Masukkan username..">
               <div class="invalid-feedback"></div>
             </div>
             <div class="form-group">
-              <label for="password">Password</label>
-              <input type="password" name="password" id="password" class="form-control" placeholder="Update password baru..">
+              <label for="password_ubah">Password</label>
+              <input type="password" name="password" id="password_ubah" class="form-control" placeholder="Update password baru..">
               <div class="invalid-feedback"></div>
             </div>
             <div class="form-group">
-              <label for="id_user_role">Role</label>
-              <select name="id_user_role" class="form-control" id="id_user_role">
+              <label for="id_user_role_ubah">Role</label>
+              <select name="id_user_role" class="form-control" id="id_user_role_ubah">
                 <option value="">-- Pilih --</option>
                 <?php foreach ($roles as $row) : ?>
                   <option value="<?= $row['id_user_role']; ?>"><?= $row['role']; ?></option>
@@ -180,6 +181,19 @@
       requestDeleteData('/admin/ManageUser/delete')
     })
 
+    $('#generate-password').on('click', function(e) {
+      $('#password').get(0).type = 'text'
+      generatePassword()
+    })
+
+    const generatePassword = function() {
+      let password = ''
+      let possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+'
+      for (let i = 0; i < 8; i++) {
+        password += possible.charAt(Math.floor(Math.random() * possible.length))
+      }
+      $('#password').val(password)
+    }
   })
 </script>
 <?= $this->endSection(); ?>

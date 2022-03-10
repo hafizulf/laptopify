@@ -2,9 +2,9 @@
 
 namespace App\Controllers\Admin;
 
-use CodeIgniter\Controller;
+use App\Controllers\BaseController;
 
-class ManageUser extends Controller
+class ManageUser extends BaseController
 {
   public function __construct()
   {

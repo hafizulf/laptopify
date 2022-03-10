@@ -2,9 +2,9 @@
 
 namespace App\Controllers\Admin;
 
-use CodeIgniter\Controller;
+use App\Controllers\BaseController;
 
-class ManageRole extends Controller
+class ManageRole extends BaseController
 {
   public function __construct()
   {
