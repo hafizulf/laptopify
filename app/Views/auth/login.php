@@ -41,12 +41,15 @@
                   <div class="text-center">
                     <h1 class="h4 text-gray-900 mb-4">Silahkan Login!</h1>
                   </div>
-                  <form class="user">
+
+                  <form class="user" id="formLogin" action="/auth/login/fieldValidation" method="POST">
                     <div class="form-group">
-                      <input type="text" class="form-control form-control-user" id="username" placeholder="Username">
+                      <input type="text" class="form-control form-control-user" name="username" id="username" placeholder="Username">
+                      <div class="invalid-feedback pl-2"></div>
                     </div>
                     <div class="form-group">
-                      <input type="password" class="form-control form-control-user" id="password" placeholder="Password">
+                      <input type="password" class="form-control form-control-user" name="password" id="password" placeholder="Password">
+                      <div class="invalid-feedback pl-2"></div>
                     </div>
                     <div class="form-group">
                       <div class="custom-control custom-checkbox small">
@@ -54,9 +57,9 @@
                         <label class="custom-control-label" for="customCheck">Ingat Saya</label>
                       </div>
                     </div>
-                    <a href="index.html" class="btn btn-primary btn-user btn-block">
+                    <button type="submit" class="btn btn-primary btn-user btn-block">
                       Login
-                    </a>
+                    </button>
                 </div>
               </div>
             </div>
@@ -74,11 +77,53 @@
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.6.1/js/bootstrap.bundle.min.js" integrity="sha512-mULnawDVcCnsk9a4aG1QLZZ6rcce/jSzEGqUkeOLy0b6q0+T6syHrxlsAGH7ZVoqC93Pd0lBqd6WguPWih7VHA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
-  <!-- Core plugin JavaScript-->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js" integrity="sha512-0QbL0ph8Tc8g5bLhfVzSqxe9GERORsKhIn1IrpxDAgUsbBGz/V7iSav2zzW325XGd1OMLdL4UiqRJj702IeqnQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
-  <!-- Custom scripts for all pages-->
   <script src="<?= base_url(); ?>/js/sb-admin-2.min.js"></script>
+
+  <script>
+    $(document).ready(function() {
+      const formLogin = $('#formLogin')
+      formLogin.submit(function(e) {
+        e.preventDefault();
+
+        $.ajax({
+          type: 'POST',
+          url: formLogin.attr('action'),
+          data: formLogin.serialize(),
+          dataType: 'json',
+          beforeSend: function() {
+            $('.btn-block').html('Loading... <span class="spinner-border spinner-border-sm"></span>')
+          },
+          complete: function() {
+            $('.btn-block').html('Login')
+          },
+          success: function(response) {
+            if (response.status) {
+              window.location.href = response.redirect;
+            } else {
+              let errors = response.errors
+              if (errors) {
+                $.each(errors, function(key, val) {
+                  $('[name="' + key + '"]').addClass('is-invalid')
+                  $('[name="' + key + '"]').next().text(val)
+                })
+              } else {
+                alert('Password salah!')
+              }
+            }
+          },
+          error: function(xhr, status, error) {
+            alert(xhr.responseText)
+          }
+        })
+
+        $('#formLogin input').keyup(function() {
+          $(this).removeClass('is-invalid is-valid')
+        })
+      })
+    })
+  </script>
 
 </body>
 
