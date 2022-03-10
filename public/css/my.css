@@ -54,3 +54,9 @@ ol.text-putih li a {
 ol.text-putih li p {
   text-align: justify;
 }
+
+.bg-login-image {
+  background: url('/img/laptopify2.jpg');
+  background-position: center;
+  background-size: cover;
+}
