@@ -15,6 +15,10 @@ class Login extends BaseController
 
   public function index()
   {
+    if (session('is_login')) {
+      return redirect()->back();
+    }
+
     if ($this->rememberMe->checkUserLogin() === TRUE) {
       return redirect()->to('/');
     } else {
@@ -58,7 +62,8 @@ class Login extends BaseController
         }
 
         $user['is_login'] = true;
-        $this->session->set($user);
+        session()->set($user);
+
         return $this->response->setJSON(['status' => TRUE, 'redirect' => '/']);
       } else {
         return $this->response->setJSON(['status' => FALSE, 'errors' => ['password' => 'Password salah!']]);

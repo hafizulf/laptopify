@@ -31,27 +31,21 @@ $routes->setAutoRoute(true);
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
-$routes->get('/login', 'Auth\Login::index');
-$routes->get('/logout', 'Auth\Logout::index');
+$routes->get('login', 'Auth\Login::index');
+$routes->get('logout', 'Auth\Logout::index');
 
 $routes->get('/', 'Home::index');
-$routes->get('/kriteria', 'Kriteria::index');
-$routes->get('/sub-kriteria', 'Subkriteria::index');
-$routes->get('/sub-kriteria/create', 'Subkriteria::create_page');
-$routes->get('/bobot/index', 'Bobot::index');
-$routes->get('/alternatif/index', 'Alternatif::index');
-$routes->get('/perhitungan/nilai-kriteria', 'Hitung::hitungNilaiKriteria');
-$routes->get('/perhitungan/nilai-utility', 'Hitung::hitungNilaiUtility');
-$routes->get('/perhitungan/nilai-akhir', 'Hitung::hitungNilaiAkhir');
+$routes->get('kriteria', 'Kriteria::index');
+$routes->get('sub-kriteria', 'Subkriteria::index');
+$routes->get('sub-kriteria/create', 'Subkriteria::create_page');
+$routes->get('bobot/index', 'Bobot::index');
+$routes->get('alternatif/index', 'Alternatif::index');
+$routes->get('perhitungan/nilai-kriteria', 'Hitung::hitungNilaiKriteria');
+$routes->get('perhitungan/nilai-utility', 'Hitung::hitungNilaiUtility');
+$routes->get('perhitungan/nilai-akhir', 'Hitung::hitungNilaiAkhir');
 
-$routes->get('/manage-user', 'Admin\ManageUser::index');
-$routes->get('/manage-role', 'Admin\ManageRole::index');
-
-// $routes->group('manage-role', function ($routes) {
-//   $routes->add('/', 'Admin\ManageRole::index');
-//   $routes->add('index', 'Admin\ManageRole::index');
-//   $routes->add('create', 'Admin\ManageRole::create');
-// });
+$routes->get('manage-user', 'Admin\ManageUser::index');
+$routes->get('manage-role', 'Admin\ManageRole::index');
 
 /*
  * --------------------------------------------------------------------
