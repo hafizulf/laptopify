@@ -39,6 +39,12 @@
     Menu
   </div>
 
+  <li class="nav-item <?= url_is('/user-profile') ? 'active' : '' ?>">
+    <a class="nav-link pb-0" href="/user-profile">
+      <i class="fas fa-fw fa-user"></i>
+      <span>My Profile</span></a>
+  </li>
+
   <li class="nav-item <?= url_is('/home') ? 'active' : '' ?>">
     <a class="nav-link pb-0" href="/home">
       <i class="fas fa-fw fa-info"></i>
