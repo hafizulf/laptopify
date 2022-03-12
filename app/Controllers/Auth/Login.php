@@ -3,29 +3,20 @@
 namespace App\Controllers\Auth;
 
 use App\Controllers\BaseController;
+use App\Controllers\Auth\RememberMe;
 
 class Login extends BaseController
 {
   public function __construct()
   {
     $this->db = \Config\Database::connect();
+    $this->rememberMe = new RememberMe();
   }
 
   public function index()
   {
-    if (get_cookie('key') && get_cookie('usr_idntty')) {
-
-      $id_user = get_cookie('key');
-      $username = get_cookie('usr_idntty');
-
-      $user = $this->db->table('users')->where('id_user', $id_user)->get()->getRowArray();
-
-      if ($username === hash('sha256', $user['username'])) {
-        $user['is_login'] = true;
-        $this->session->set($user);
-
-        return redirect()->to('/');
-      }
+    if ($this->rememberMe->checkUserLogin() === TRUE) {
+      return redirect()->to('/');
     } else {
       $data = [
         'judul' => 'Login Page',
@@ -63,8 +54,7 @@ class Login extends BaseController
     if ($user) {
       if (password_verify($password, $user['password'])) {
         if ($this->request->getPost('remember')) {
-          set_cookie('key', $user['id_user'], 604800);
-          set_cookie('usr_idntty', hash('sha256', $user['username']), 604800);
+          $this->rememberMe->saveUserLogin($username);
         }
 
         $user['is_login'] = true;
