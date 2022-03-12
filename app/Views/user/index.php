@@ -14,7 +14,7 @@
         <div class="text-center">
           <img src="<?= base_url() ?>/img/undraw_profile.svg" class="card-img-top mt-2" style="width: 80px">
         </div>
-        <div class="card-body">
+        <div class="card-body shadow-sm">
           <ul class="list-group list-group-flush">
             <li class="list-group-item"><span class="badge badge-primary"> <?= $data['role']; ?></span></li>
             <li class="list-group-item"><?= $data['nama']; ?> </li>
@@ -23,7 +23,7 @@
           <hr class="mb-2 mt-0">
           <div class="text-center">
             <a href="#" data-toggle="modal" data-target="#modalBoxUbah" data-id="<?= $data['id_user']; ?>" class="card-link update-profile">Ubah Profil</a>
-            <a href="#" class="card-link">Ubah Password</a>
+            <a href="#" data-toggle="modal" data-target="#mbUbahPassword" data-id="<?= $data['id_user']; ?>" class="card-link">Ubah Password</a>
           </div>
         </div>
       </div>
@@ -49,6 +49,42 @@
             <div class="form-group">
               <label for="username">Username</label>
               <input type="text" class="form-control" id="username" name="username" placeholder="Username">
+              <div class="invalid-feedback"></div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary btn-simpan">Simpan</button>
+          </div>
+        </form>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="mbUbahPassword" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header badge-primary">
+          <h5 class="modal-title text-white"><i class="fa fa-key"></i> Change Password</h5>
+        </div>
+
+        <form action="/auth/managePassword/update" method="POST" id="formUbahPassword">
+          <div class="modal-body">
+            <?= csrf_field(); ?>
+            <div class="form-group">
+              <label for="current-password">Password Lama</label>
+              <input type="password" name="current-password" id="current-password" class="form-control" placeholder="Masukkan password saat ini" autocomplete="false">
+              <div class="invalid-feedback"></div>
+            </div>
+            <div class="form-group">
+              <label for="new-password">Password Baru</label>
+              <input type="password" name="new-password" id="new-password" class="form-control" placeholder="Masukkan password baru" autocomplete="false">
+              <div class="invalid-feedback"></div>
+            </div>
+            <div class="form-group">
+              <label for="confirm-password">Konfirmasi Password</label>
+              <input type="password" name="confirm-password" id="confirm-password" class="form-control" placeholder="Konfirmasi password baru" autocomplete="false">
               <div class="invalid-feedback"></div>
             </div>
           </div>
@@ -90,6 +126,13 @@
       e.preventDefault()
       requestSaveData(formUbah, '#modalBoxUbah')
       removeClasses('#formUbah')
+    })
+
+    const formUbahPassword = $('#formUbahPassword')
+    formUbahPassword.submit(function(e) {
+      e.preventDefault()
+      requestSaveData(formUbahPassword, '#mbUbahPassword')
+      removeClasses('#formUbahPassword')
     })
   })
 </script>

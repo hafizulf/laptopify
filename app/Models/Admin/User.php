@@ -17,6 +17,13 @@ class User extends Model
     'id_user_role' => 'required',
   ];
 
+  public function updatePassword($data)
+  {
+    $this->set('password', $data['password']);
+    $this->where('id_user', $data['id_user']);
+    $this->update();
+  }
+
   public function getUser($id = false)
   {
     return ($id == false) ? $this->findAll() : $this->find($id);

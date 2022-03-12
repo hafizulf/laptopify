@@ -214,6 +214,13 @@
           } else {
             const errors = response.errors
             params[1] === 'has array' ? errorValidationArr(errors) : errorValidation(errors)
+
+            if (response.type === 'verify') {
+              Toast.fire({
+                icon: 'error',
+                title: response.message
+              })
+            }
           }
         },
         error: function(xhr, ajaxOptions, thrownError) {
