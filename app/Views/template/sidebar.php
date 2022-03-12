@@ -12,23 +12,28 @@
   <!-- Divider -->
   <hr class="sidebar-divider">
 
-  <!-- Heading -->
-  <div class="sidebar-heading">
-    Admin
-  </div>
+  <?php if (session('role') === 'Admin') : ?>
 
-  <li class="nav-item <?= url_is('/manage-user') || url_is('manage-role')  ? 'active' : '' ?>">
-    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#usersCollapse" aria-expanded="true" aria-controls="usersCollapse">
-      <i class="fas fa-fw fa-users"></i>
-      <span>Manage User</span>
-    </a>
-    <div id="usersCollapse" class="collapse" data-parent="#accordionSidebar">
-      <div class="bg-white py-2 collapse-inner rounded">
-        <a class="collapse-item" href="/manage-role">Role</a>
-        <a class="collapse-item" href="/manage-user">User</a>
-      </div>
+    <!-- Heading -->
+    <div class="sidebar-heading">
+      Admin
     </div>
-  </li>
+
+    <li class="nav-item <?= url_is('/manage-user') || url_is('manage-role')  ? 'active' : '' ?>">
+      <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#usersCollapse" aria-expanded="true" aria-controls="usersCollapse">
+        <i class="fas fa-fw fa-users"></i>
+        <span>Manage User</span>
+      </a>
+      <div id="usersCollapse" class="collapse" data-parent="#accordionSidebar">
+        <div class="bg-white py-2 collapse-inner rounded">
+          <a class="collapse-item" href="/manage-role">Role</a>
+          <a class="collapse-item" href="/manage-user">User</a>
+        </div>
+      </div>
+    </li>
+
+
+  <?php endif; ?>
 
   <div class="sidebar-heading">
     Menu

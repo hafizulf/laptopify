@@ -53,7 +53,10 @@ class Login extends BaseController
     $username = htmlspecialchars($this->request->getPost('username'), TRUE);
     $password = htmlspecialchars($this->request->getPost('password'), TRUE);
 
-    $user = $this->db->table('users')->where('username', $username)->get()->getRowArray();
+    $user = $this->db->table('users')
+      ->join('user_roles', 'users.id_user_role = user_roles.id_user_role')
+      ->where('username', $username)
+      ->get()->getRowArray();
 
     if ($user) {
       if (password_verify($password, $user['password'])) {
