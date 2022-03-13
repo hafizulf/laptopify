@@ -8,27 +8,31 @@
 
       <h1 class="text-gray-900"><?= $judul; ?></h1>
 
-      <div class="alert alert-primary mt-3" role="alert">
-        <strong>
-          Pastikan untuk meng-update normalisasi nilai bobot setiap ada perubahan data nilai bobot.
-        </strong>
-      </div>
+      <?php if (session('role') === 'Admin') : ?>
+        <div class="alert alert-primary mt-3" role="alert">
+          <strong>
+            Pastikan untuk meng-update normalisasi nilai bobot setiap ada perubahan data nilai bobot.
+          </strong>
+        </div>
+      <?php endif; ?>
 
       <div class="row mt-4">
         <div class="col-md-12">
           <div class="card shadow">
-            <div class="card-header">
-              <div class="row">
-                <div class="col-md-8">
-                  <button type="button" class="btn btn-primary btn-tambah" data-toggle="modal" data-target="#modalBoxTambah" data-backdrop="static" data-keyboard="false"><i class="fas fa fa-plus"></i> Tambah</button>
-                  <button type="button" class="btn btn-danger btn-hapus"><i class="fas fa fa-trash-alt"></i> Hapus</button>
-                  <button type="button" class="btn btn-success btn-ubah"><i class="fas fa fa-edit"></i> Ubah</button>
-                </div>
-                <div class="col-md-4">
-                  <button type="button" class="btn btn-dark float-right btn-normalisasi"><i class="fas fa fa-recycle"></i> Update Normalisasi Nilai Bobot</button>
+            <?php if (session('role') === 'Admin') : ?>
+              <div class="card-header">
+                <div class="row">
+                  <div class="col-md-8">
+                    <button type="button" class="btn btn-primary btn-tambah" data-toggle="modal" data-target="#modalBoxTambah" data-backdrop="static" data-keyboard="false"><i class="fas fa fa-plus"></i> Tambah</button>
+                    <button type="button" class="btn btn-danger btn-hapus"><i class="fas fa fa-trash-alt"></i> Hapus</button>
+                    <button type="button" class="btn btn-success btn-ubah"><i class="fas fa fa-edit"></i> Ubah</button>
+                  </div>
+                  <div class="col-md-4">
+                    <button type="button" class="btn btn-dark float-right btn-normalisasi"><i class="fas fa fa-recycle"></i> Update Normalisasi Nilai Bobot</button>
+                  </div>
                 </div>
               </div>
-            </div>
+            <?php endif; ?>
             <div class="card-body">
               <table class="table table-bordered table-striped table-kriteria" id="dataTable">
                 <thead>

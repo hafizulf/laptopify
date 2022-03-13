@@ -8,11 +8,13 @@
 
       <h1 class="text-gray-900"><?= $judul; ?></h1>
 
-      <div class="alert alert-primary mt-3" role="alert">
-        <strong>
-          Pastikan telah memasukkan semua data kriteria dan sub kriteria, hal ini juga akan digunakan pada form tambah data alternatif.
-        </strong>
-      </div>
+      <?php if (session('role') === 'Admin') : ?>
+        <div class="alert alert-primary mt-3" role="alert">
+          <strong>
+            Pastikan telah memasukkan semua data kriteria dan sub kriteria, hal ini juga akan digunakan pada form tambah data alternatif.
+          </strong>
+        </div>
+      <?php endif; ?>
 
       <div class="row mt-4">
         <div class="col-md-12">
