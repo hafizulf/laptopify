@@ -57,7 +57,7 @@ class Report extends BaseController
     $sheet->getStyle('A1:O1')->getFont()->setBold(true);
 
     $data = $this->db->query(
-      "SELECT a.* FROM nilai_akhir na JOIN alternatif a ON na.alternatif_id = a.id ORDER BY nilai_akhir DESC"
+      "SELECT a.* FROM nilai_akhir na JOIN alternatif a ON na.id_alternatif = a.id_alternatif ORDER BY nilai_akhir DESC"
     )->getResultArray();
 
     foreach ($data as $key => $value) {
@@ -103,7 +103,7 @@ class Report extends BaseController
     }
 
     $data['query'] = $this->db->query(
-      "SELECT a.* FROM nilai_akhir na JOIN alternatif a ON na.alternatif_id = a.id ORDER BY nilai_akhir DESC"
+      "SELECT a.* FROM nilai_akhir na JOIN alternatif a ON na.id_alternatif = a.id_alternatif ORDER BY nilai_akhir DESC"
     )->getResultArray();
 
     $dompdf = new Dompdf();
