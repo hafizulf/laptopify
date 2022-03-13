@@ -77,8 +77,8 @@
         </div>
         <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
         <div class="modal-footer">
-          <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-          <a class="btn btn-primary" href="login.html">Logout</a>
+          <button class="btn btn-danger" type="button" data-dismiss="modal">Cancel</button>
+          <a class="btn btn-primary" href="/logout">Logout</a>
         </div>
       </div>
     </div>
@@ -124,7 +124,9 @@
     })
 
     $('.modal').on('show.bs.modal', function() {
-      $('.formSubmit')[0].reset()
+      if ($('.formSubmit') >= 0) {
+        $('.formSubmit')[0].reset()
+      }
       $(".is-valid").removeClass("is-valid");
       $(".is-invalid").removeClass("is-invalid")
       $('.evolution').remove('')
@@ -212,6 +214,13 @@
           } else {
             const errors = response.errors
             params[1] === 'has array' ? errorValidationArr(errors) : errorValidation(errors)
+
+            if (response.type === 'verify') {
+              Toast.fire({
+                icon: 'error',
+                title: response.message
+              })
+            }
           }
         },
         error: function(xhr, ajaxOptions, thrownError) {
@@ -234,9 +243,11 @@
       if (data.length < 1) {
         warnEmptyData()
       } else {
+        let text = arguments[1] === 'caution' ? arguments[2] : 'anda akan menghapus data'
+
         Swal.fire({
           title: 'Apakah anda yakin?',
-          text: `anda akan menghapus data.`,
+          text: `${text}.`,
           icon: 'warning',
           showCancelButton: true,
           confirmButtonColor: '#3085d6',

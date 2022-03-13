@@ -5,4 +5,5 @@ return [
   'required' => 'wajib diisi',
   'is_unique' => '{field} sudah ada, coba lain',
   'is_numeric' => 'harus angka',
+  'min_length' => '{field} minimal {param} karakter',
 ];

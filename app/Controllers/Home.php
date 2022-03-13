@@ -12,6 +12,6 @@ class Home extends BaseController
       'judul' => 'Home Page',
     ];
 
-    return view('home/index', $data);
+    return view('informasi/index', $data);
   }
 }

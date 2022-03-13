@@ -12,10 +12,38 @@
   <!-- Divider -->
   <hr class="sidebar-divider">
 
-  <!-- Heading -->
+  <?php if (session('role') === 'Admin') : ?>
+
+    <!-- Heading -->
+    <div class="sidebar-heading">
+      Admin
+    </div>
+
+    <li class="nav-item <?= url_is('/manage-user') || url_is('manage-role')  ? 'active' : '' ?>">
+      <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#usersCollapse" aria-expanded="true" aria-controls="usersCollapse">
+        <i class="fas fa-fw fa-users"></i>
+        <span>Manage User</span>
+      </a>
+      <div id="usersCollapse" class="collapse" data-parent="#accordionSidebar">
+        <div class="bg-white py-2 collapse-inner rounded">
+          <a class="collapse-item" href="/manage-role">Role</a>
+          <a class="collapse-item" href="/manage-user">User</a>
+        </div>
+      </div>
+    </li>
+
+
+  <?php endif; ?>
+
   <div class="sidebar-heading">
     Menu
   </div>
+
+  <li class="nav-item <?= url_is('/user-profile') ? 'active' : '' ?>">
+    <a class="nav-link pb-0" href="/user-profile">
+      <i class="fas fa-fw fa-user"></i>
+      <span>My Profile</span></a>
+  </li>
 
   <li class="nav-item <?= url_is('/home') ? 'active' : '' ?>">
     <a class="nav-link pb-0" href="/home">

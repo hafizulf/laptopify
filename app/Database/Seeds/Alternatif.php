@@ -11,6 +11,7 @@ class Alternatif extends Seeder
 
     $data = [
       [
+        "id_user" => 1,
         "nama" => "MICROSOFT SURFACE PRO 5",
         "kode" => "A1",
         "harga" => 7500000,
@@ -28,6 +29,7 @@ class Alternatif extends Seeder
         "url_produk" => "https://shopee.co.id/MICROSOFT-SURFACE-PRO-5-CORE-i5-7300U-RAM-4GB-SSD-128GB-13-INCH-QHD-i.23062282.13841049612?sp_atk=92a124b3-a7e3-4d69-80e3-d2edb36ea1f4"
       ],
       [
+        "id_user" => 1,
         "nama" => "Hp Probook 430-G3 I5 Gen 6",
         "kode" => "A2",
         "harga" => 4750000,
@@ -45,6 +47,7 @@ class Alternatif extends Seeder
         "url_produk" => "https://shopee.co.id/Hp-Probook-430-G3-I5-Gen-6-8GB-SSD-256GB-13-Inch-Mulus-Like-NEW-i.30169103.1950157260?sp_atk=69ebc9a5-96bf-40c1-a772-8df495de296c"
       ],
       [
+        "id_user" => 1,
         "nama" => "LAPTOP BUILTUP MERK HP BRAND AMERIKA",
         "kode" => "A3",
         "harga" => 6075020,
@@ -62,6 +65,7 @@ class Alternatif extends Seeder
         "url_produk" => "Jual LAPTOP BUILTUP MERK HP BRAND AMERIKA RAM 8GB SSD 256GB GAMING RENDER GRAFIS MURAH BERGARANSI SIAP PAKAI Indonesia|Shopee Indonesia"
       ],
       [
+        "id_user" => 1,
         "nama" => "LENOVO SLIM D330 FLEX TOUCH N4020",
         "kode" => "A4",
         "harga" => 4849000,
@@ -79,6 +83,7 @@ class Alternatif extends Seeder
         "url_produk" => "https://shopee.co.id/LENOVO-SLIM-D330-FLEX-TOUCH-N4020-RAM-8GB-128GB-256GB-10.1-HD-W10-PRO-i.250649369.6692681198?sp_atk=77185df1-faf7-4140-bc20-05e1c9052a6b"
       ],
       [
+        "id_user" => 1,
         "nama" => "ACER Aspire 3 A314-35-C03Y",
         "kode" => "A5",
         "harga" => 5295600,
@@ -96,6 +101,7 @@ class Alternatif extends Seeder
         "url_produk" => "https://shopee.co.id/ACER-Aspire-3-A314-35-C03Y-i.51115741.14110266308?sp_atk=7ae7f42c-2e19-4fc7-9e81-4007187a36f1"
       ],
       [
+        "id_user" => 1,
         "nama" => "ASUS E410MA",
         "kode" => "A6",
         "harga" => 5049000,
@@ -113,6 +119,7 @@ class Alternatif extends Seeder
         "url_produk" => "https://shopee.co.id/ASUS-E410MA-N4020-4GB-192GB-W10-OFF365-1YR-14.0FHD-i.256652736.13614200337?sp_atk=49d27c59-7c16-41af-ab38-3cb6f5801df2"
       ],
       [
+        "id_user" => 1,
         "nama" => "ACER ASPIRE 3 SLIM A314 22",
         "kode" => "A7",
         "harga" => 6049000,
@@ -130,6 +137,7 @@ class Alternatif extends Seeder
         "url_produk" => "https://shopee.co.id/ACER-ASPIRE-3-SLIM-A314-22-AMD-RYZEN-3-3250-4GB-256SSD-W11-OHS21-14.0FHD-R890-i.78730497.13352650747?sp_atk=4e346e53-c62b-49c6-8507-86b019db5e82"
       ],
       [
+        "id_user" => 1,
         "nama" => "HP 14-CM0075AU",
         "kode" => "A8",
         "harga" => 5500000,
@@ -147,6 +155,7 @@ class Alternatif extends Seeder
         "url_produk" => "https://shopee.co.id/LAPTOP-HP-14-CM0075AU-AMD-Ryzen-5-2500U-RAM-4GB-1TB-14-INCH-WIN-10-GOLD-i.369345918.8497893728?sp_atk=04454f5f-12b6-4a38-8710-2c790023ff09"
       ],
       [
+        "id_user" => 1,
         "nama" => "LENOVO IDEAPAD D330",
         "kode" => "A9",
         "harga" => 4849000,
@@ -164,6 +173,7 @@ class Alternatif extends Seeder
         "url_produk" => "https://shopee.co.id/LENOVO-IDEAPAD-D330-N4020U-8GB-128GB-10.1-HD-IPS-TOUCH-WIN10-PRO-i.30555036.1901646215?sp_atk=355dfb4b-b0f4-42fb-81f4-2c708867a714"
       ],
       [
+        "id_user" => 1,
         "nama" => "Lenovo Slim D330 Flex TOUCH N4020",
         "kode" => "A10",
         "harga" => 4849000,
@@ -181,6 +191,7 @@ class Alternatif extends Seeder
         "url_produk" => "https://shopee.co.id/Lenovo-Slim-D330-Flex-TOUCH-N4020-8GB-256GB-W10Pro-10.1-GRY-i.330673548.11713949141?sp_atk=fbf455fe-a1b2-422a-9edc-43d368688aec"
       ],
       [
+        "id_user" => 1,
         "nama" => "Laptop GAMING ELITEBOOK 745 G3",
         "kode" => "A11",
         "harga" => 4080000,
@@ -198,6 +209,7 @@ class Alternatif extends Seeder
         "url_produk" => "https://shopee.co.id/Laptop-GAMING-ELITEBOOK-745-G3-AMD-PRO-A10-8700B-8GB-256-LIKE-NEW-i.67842944.15310908712?sp_atk=2b8c7099-e4dd-4394-ae09-6d95aeb3fd33"
       ],
       [
+        "id_user" => 1,
         "nama" => "Dell Latitude E 7280 High End 6th Gen",
         "kode" => "A12",
         "harga" => 4750000,
@@ -215,6 +227,7 @@ class Alternatif extends Seeder
         "url_produk" => "https://shopee.co.id/Laptop-Core-i5-Dell-Latitude-E-7280-High-End-6th-Gen-SSD-i.178040220.12123310174?sp_atk=f7516809-e9d6-47c7-98bb-27a3ab49f46d"
       ],
       [
+        "id_user" => 1,
         "nama" => "ASUS E210MA",
         "kode" => "A13",
         "harga" => 5499000,
@@ -232,6 +245,7 @@ class Alternatif extends Seeder
         "url_produk" => "https://shopee.co.id/ASUS-E210MA-INTEL-N4020-RAM4GB-SSD512GB-INTEL-UHD-WINDOWS-OHS-2019-ORIGINAL-i.32829345.1467104178?sp_atk=85583211-705f-4f21-a7e8-a5d2d9acd2e3"
       ],
       [
+        "id_user" => 1,
         "nama" => "Apple Macbook Pro 13in",
         "kode" => "A14",
         "harga" => 4000000,
@@ -249,6 +263,7 @@ class Alternatif extends Seeder
         "url_produk" => "https://shopee.co.id/Apple-Macbook-Pro-13in-Silver-Mulus-Aplikasi-Lengkap-Siap-Pakai-i.44084567.9664015141?sp_atk=2de1eaa2-fa33-447e-9c14-ebea1dd9e9a7"
       ],
       [
+        "id_user" => 1,
         "nama" => "Lenovo Ideapad Slim 1 11",
         "kode" => "A15",
         "harga" => 4399000,
@@ -266,6 +281,7 @@ class Alternatif extends Seeder
         "url_produk" => "https://shopee.co.id/Lenovo-Ideapad-Slim-1-11-N4020-RAM-4GB-256GB-SSD-11.6-HD-W10-05ID-i.250649369.10736746888?sp_atk=b487c9f2-25f5-44ec-ba5e-f0601b3ae828"
       ],
       [
+        "id_user" => 1,
         "nama" => "Asus Vivobook X413JA",
         "kode" => "A16",
         "harga" => 6599000,
@@ -283,6 +299,7 @@ class Alternatif extends Seeder
         "url_produk" => "https://shopee.co.id/Asus-Vivobook-X413JA-i3-1005G1-4GB-128-256SSD-W10-14-INCHI-FULL-HD-i.319647164.10523690214?sp_atk=befef283-45cf-4cf7-96d7-924941ce57b7"
       ],
       [
+        "id_user" => 1,
         "nama" => "Lenovo Thinkpad Yoga 11e",
         "kode" => "A17",
         "harga" => 3200000,
@@ -300,6 +317,7 @@ class Alternatif extends Seeder
         "url_produk" => "https://shopee.co.id/Lenovo-Thinkpad-Yoga-11e-Celeron-4GB-SSD-128GB-Touchscreen-i.30169103.15419163360?sp_atk=a159a97e-5241-47de-bfbf-d4115dda4e3f"
       ],
       [
+        "id_user" => 1,
         "nama" => "ACER ASPIRE 3 A314-22",
         "kode" => "A18",
         "harga" => 4899000,
@@ -317,6 +335,7 @@ class Alternatif extends Seeder
         "url_produk" => "https://shopee.co.id/ACER-ASPIRE-3-A314-22-AMD-A3020e-4GB-1TB-HDD-14-HD-WIN10-OFFICE-HOME-STUDENT-i.30555036.5515779941?sp_atk=53529874-232f-440b-8f21-da03145becbe"
       ],
       [
+        "id_user" => 1,
         "nama" => "Xiaomi Redmi Book 15",
         "kode" => "A19",
         "harga" => 7499000,
@@ -334,6 +353,7 @@ class Alternatif extends Seeder
         "url_produk" => "https://shopee.co.id/Xiaomi-Redmi-Book-15-(8GB-512GB)-Layar-15.6-inch-FHD-Intel%C2%AE-Core%E2%84%A2-i3-1115G4-Baterai-Besar-46Whr-i.51925611.13460883687?sp_atk=5912506c-e019-4c50-b449-a0c7085af7c3"
       ],
       [
+        "id_user" => 1,
         "nama" => "MacBook Retina 12 inch 2017",
         "kode" => "A20",
         "harga" => 10800000,

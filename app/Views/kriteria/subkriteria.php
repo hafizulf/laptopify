@@ -10,11 +10,13 @@
       <div class="row mt-4">
         <div class="col-md-12">
           <div class="card shadow">
-            <div class="card-header">
-              <a href="/sub-kriteria/create" class="btn btn-primary btn-tambah"><i class="fas fa fa-plus"></i> Tambah</a>
-              <button class="btn btn-danger btn-hapus"><i class="fas fa fa-trash-alt"></i> Hapus</button>
-              <button class="btn btn-success btn-ubah"><i class="fas fa fa-edit"></i> Ubah</button>
-            </div>
+            <?php if (session('role') === 'Admin') : ?>
+              <div class="card-header">
+                <a href="/sub-kriteria/create" class="btn btn-primary btn-tambah"><i class="fas fa fa-plus"></i> Tambah</a>
+                <button class="btn btn-danger btn-hapus"><i class="fas fa fa-trash-alt"></i> Hapus</button>
+                <button class="btn btn-success btn-ubah"><i class="fas fa fa-edit"></i> Ubah</button>
+              </div>
+            <?php endif; ?>
             <div class="card-body">
               <table class="table table-bordered table-striped table-subkriteria">
                 <thead>

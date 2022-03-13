@@ -35,7 +35,7 @@ class NormalisasiBobot extends BaseController
       array_push($bobotTernormalisasi, $data);
     }
 
-    if (sizeOf($bobotTernormalisasi) <= 0) {
+    if (sizeOf($bobot) <= 0) {
       return $this->response->setJSON(['status' => TRUE, 'warning' => 'Belum ada data bobot kriteria']);
     }
 

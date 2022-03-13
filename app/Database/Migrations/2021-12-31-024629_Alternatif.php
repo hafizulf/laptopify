@@ -10,6 +10,7 @@ class Alternatif extends Migration
   {
     $this->forge->addField([
       'id_alternatif INT UNSIGNED AUTO_INCREMENT',
+      'id_user INT UNSIGNED',
       'nama VARCHAR(255)',
       'kode VARCHAR(64)',
       'harga INT UNSIGNED',
