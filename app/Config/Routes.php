@@ -40,6 +40,7 @@ $routes->get('/alternatif/index', 'Alternatif::index');
 $routes->get('/perhitungan/nilai-kriteria', 'Hitung::hitungNilaiKriteria');
 $routes->get('/perhitungan/nilai-utility', 'Hitung::hitungNilaiUtility');
 $routes->get('/perhitungan/nilai-akhir', 'Hitung::hitungNilaiAkhir');
+$routes->get('/otomatis', 'Automatic::index');
 $routes->get('/otomatis/index', 'Automatic::index');
 $routes->get('/otomatis/get-data', 'Automatic::get_data');
 

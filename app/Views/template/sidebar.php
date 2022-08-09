@@ -36,6 +36,12 @@
     </div>
   </li>
 
+  <li class="nav-item <?= url_is('/otomatis') ? 'active' : '' ?>">
+    <a class="nav-link pb-0" href="/otomatis">
+      <i class="fas fa-fw fa-adjust"></i>
+      <span>Cari Data Otomatis</span></a>
+  </li>
+
   <li class="nav-item <?= url_is('/bobot') ? 'active' : '' ?>">
     <a class="nav-link pb-0" href="/bobot">
       <i class="fas fa-fw fa-weight"></i>
