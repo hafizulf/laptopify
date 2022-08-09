@@ -6,7 +6,7 @@ Laptopify is an application for Decision Support System that can be use for reco
 
 ## Updates
 
-there are 2 branches in the repository which is for `basic-no-auth` is really mean to be like the branch's name whereas `master` branch is complete with authentication.
+there are 3 branches in the repository which is for `basic-no-auth` is really mean to be like the branch's name whereas `master` branch is complete with authentication. The last one is `get-data-by-automatic` u can use this branch for more benefit with getting data .
 
 ## Setup
 
@@ -16,13 +16,15 @@ there are 2 branches in the repository which is for `basic-no-auth` is really me
 git clone https://github.com/hafizulf/laptopify.git
 ```
 
+- Check <a href="https://github.com/hafizulf/pyscraper-shopee" target="_blank"> PyScraper</a> to consume api for getting automatic data from Shopee platform.
+
 - copy `env` & rename to `.env` to setup your local environment
 
 ```
 # copy
 cp env .env
 
-# you can use ENV Variable for get_Data Method in Automatic Controller, instead using manual path
+# you can use ENV Variable for get_data Method in Automatic Controller, instead using manual path
 # for example PHP_SPARK_PATH = '...'
 
 # activate and change app base url, example:

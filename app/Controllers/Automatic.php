@@ -43,14 +43,14 @@ class Automatic extends BaseController
       sleep(1);
 
       // re-migrate table and seed alternatif data
-      exec('php C:\xampp\htdocs\laptopify\spark migrate:refresh');
+      exec('php ' . $_ENV['PHP_SPARK_PATH'] . ' migrate:refresh');
 
       sleep(1);
 
-      exec('php C:\xampp\htdocs\laptopify\spark db:seed kriteria');
-      exec('php C:\xampp\htdocs\laptopify\spark db:seed subkriteria');
-      exec('php C:\xampp\htdocs\laptopify\spark db:seed pembobotan');
-      exec('php C:\xampp\htdocs\laptopify\spark db:seed alternatif');
+      exec('php ' . $_ENV['PHP_SPARK_PATH'] . ' db:seed kriteria');
+      exec('php ' . $_ENV['PHP_SPARK_PATH'] . ' db:seed subkriteria');
+      exec('php ' . $_ENV['PHP_SPARK_PATH'] . ' db:seed pembobotan');
+      exec('php ' . $_ENV['PHP_SPARK_PATH'] . ' db:seed alternatif');
 
       sleep(1);
 
