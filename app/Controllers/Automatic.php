@@ -37,5 +37,17 @@ class Automatic extends BaseController
     $products = json_encode(json_decode($response), JSON_PRETTY_PRINT);
     $file_path = 'data/products.json';
     file_put_contents($file_path, $products);
+
+    sleep(1);
+
+    // re-migrate table and seed alternatif data
+    exec('php C:\xampp\htdocs\laptopify\spark migrate:refresh');
+
+    sleep(1);
+
+    exec('php  C:\xampp\htdocs\laptopify\spark db:seed kriteria');
+    exec('php  C:\xampp\htdocs\laptopify\spark db:seed subkriteria');
+    exec('php  C:\xampp\htdocs\laptopify\spark db:seed pembobotan');
+    exec('php  C:\xampp\htdocs\laptopify\spark db:seed alternatif');
   }
 }
