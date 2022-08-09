@@ -6,7 +6,7 @@ Laptopify is an application for Decision Support System that can be use for reco
 
 ## Updates
 
-there are 2 branches in the repository which is for `basic-no-auth` is really mean to be like the branch's name whereas `master` branch is complete with authentication.
+there are 2 branches in the repository which is for `basic-no-auth` is really mean to be like the branch's name whereas `master` branch is complete with authentication. The last one is `get-data-by-automatic` u can use this branch for more benefit with getting data.
 
 ## Setup
 
