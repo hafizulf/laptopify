@@ -10,10 +10,11 @@ class Alternatif extends Migration
   {
     $this->forge->addField([
       'id_alternatif INT UNSIGNED AUTO_INCREMENT',
-      'nama VARCHAR(255)',
       'kode VARCHAR(64)',
-      'harga INT UNSIGNED',
+      'nama VARCHAR(255)',
+      'url_produk TEXT',
       'rating_produk FLOAT',
+      'harga INT UNSIGNED',
       'merk VARCHAR(64)',
       'prosesor VARCHAR(64)',
       'kapasitas_ram INT UNSIGNED',
@@ -22,9 +23,8 @@ class Alternatif extends Migration
       'ukuran_layar VARCHAR(64)',
       'kartu_grafis VARCHAR(64)',
       'sistem_operasi VARCHAR(64)',
-      'masa_garansi FLOAT UNSIGNED',
+      'masa_garansi INT UNSIGNED',
       'kondisi_produk VARCHAR(64)',
-      'url_produk TEXT',
     ]);
     $this->forge->addKey('id_alternatif', true);
     $this->forge->createTable('alternatif');
