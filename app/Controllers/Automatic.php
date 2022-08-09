@@ -17,12 +17,11 @@ class Automatic extends BaseController
 
   public function get_data()
   {
-    $params = $this->request->getGet();
+    $maxPrice = $this->request->getGet('max_price');
+    $minPrice = $this->request->getGet('min_price');
+    $limit = $this->request->getGet('limit');
 
-    $maxPrice = isset($params['max_price']) ? $params['max_price'] : 0;
-    $minPrice = isset($params['min_price']) ? $params['min_price'] : 0;
-    $limit = isset($params['limit']) ? $params['limit'] : 20;
-
+    // Request data
     ini_set('max_execution_time', '1200');
 
     $ch = curl_init("http://127.0.0.1:8000/products?max={$maxPrice}&min={$minPrice}&limit={$limit}");
@@ -45,9 +44,9 @@ class Automatic extends BaseController
 
     sleep(1);
 
-    exec('php  C:\xampp\htdocs\laptopify\spark db:seed kriteria');
-    exec('php  C:\xampp\htdocs\laptopify\spark db:seed subkriteria');
-    exec('php  C:\xampp\htdocs\laptopify\spark db:seed pembobotan');
-    exec('php  C:\xampp\htdocs\laptopify\spark db:seed alternatif');
+    exec('php C:\xampp\htdocs\laptopify\spark db:seed kriteria');
+    exec('php C:\xampp\htdocs\laptopify\spark db:seed subkriteria');
+    exec('php C:\xampp\htdocs\laptopify\spark db:seed pembobotan');
+    exec('php C:\xampp\htdocs\laptopify\spark db:seed alternatif');
   }
 }

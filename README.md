@@ -22,6 +22,9 @@ git clone https://github.com/hafizulf/laptopify.git
 # copy
 cp env .env
 
+# you can use ENV Variable for get_Data Method in Automatic Controller, instead using manual path
+# for example PHP_SPARK_PATH = '...'
+
 # activate and change app base url, example:
 app.baseURL = 'http://localhost:8080/'
 
@@ -41,21 +44,7 @@ database.default.DBPrefix =
   composer install
 ```
 
-- create a new `database` and migrate
-
-```
-  php spark migrate
-```
-
-- run `seeder.sh` for running all seeder
-
-```
-  # run seeder.sh
-  ./seeder.sh
-  # or run each seeder
-  php spark db:seed seederName
-```
-
+- create a new `database`
 - run the application
 
 ```
@@ -65,15 +54,6 @@ php spark serve
 # custom port
 php spark serve --port 3036
 
-```
-
-- now you can login using these default accounts
-
-```
-  # [admin role]
-  # username and password: admin123
-  # [user role]
-  # username and password: user123
 ```
 
 ## Server Requirements
