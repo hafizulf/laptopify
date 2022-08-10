@@ -48,11 +48,10 @@ class Report extends BaseController
     $sheet->setCellValue('H1', 'Tipe Penyimpanan');
     $sheet->setCellValue('I1', 'Kapasitas Penyimpanan');
     $sheet->setCellValue('J1', 'Ukuran Layar');
-    $sheet->setCellValue('K1', 'Kartu Grafis');
-    $sheet->setCellValue('L1', 'Sistem Operasi');
-    $sheet->setCellValue('M1', 'Masa Garansi');
-    $sheet->setCellValue('N1', 'Kondisi Produk');
-    $sheet->setCellValue('O1', 'URL Produk');
+    $sheet->setCellValue('K1', 'Sistem Operasi');
+    $sheet->setCellValue('L1', 'Masa Garansi');
+    $sheet->setCellValue('M1', 'Kondisi Produk');
+    $sheet->setCellValue('N1', 'URL Produk');
 
     $sheet->getStyle('A1:O1')->getFont()->setBold(true);
 
@@ -71,11 +70,10 @@ class Report extends BaseController
       $sheet->setCellValue('H' . ($key + 2), $value['tipe_penyimpanan']);
       $sheet->setCellValue('I' . ($key + 2), $value['kapasitas_penyimpanan']);
       $sheet->setCellValue('J' . ($key + 2), $value['ukuran_layar']);
-      $sheet->setCellValue('K' . ($key + 2), $value['kartu_grafis']);
-      $sheet->setCellValue('L' . ($key + 2), $value['sistem_operasi']);
-      $sheet->setCellValue('M' . ($key + 2), $value['masa_garansi']);
-      $sheet->setCellValue('N' . ($key + 2), $value['kondisi_produk']);
-      $sheet->setCellValue('O' . ($key + 2), $value['url_produk']);
+      $sheet->setCellValue('K' . ($key + 2), $value['sistem_operasi']);
+      $sheet->setCellValue('L' . ($key + 2), $value['masa_garansi']);
+      $sheet->setCellValue('M' . ($key + 2), $value['kondisi_produk']);
+      $sheet->setCellValue('N' . ($key + 2), $value['url_produk']);
     }
 
     $filename = 'Laporan peringkat alternatif.xlsx';
