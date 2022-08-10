@@ -27,7 +27,6 @@ class Alternatif extends Seeder
         'tipe_penyimpanan' => $product->tipe_penyimpanan,
         'kapasitas_penyimpanan' => $product->kapasitas_penyimpanan,
         'ukuran_layar' => $product->ukuran_layar,
-        'kartu_grafis' => $product->kartu_grafis,
         'sistem_operasi' => $product->sistem_operasi,
         'masa_garansi' => $product->masa_garansi,
         'kondisi_produk' => $product->kondisi_produk,

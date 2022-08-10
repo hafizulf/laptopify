@@ -23,6 +23,12 @@
       <span>Informasi</span></a>
   </li>
 
+  <li class="nav-item <?= url_is('/otomatis') ? 'active' : '' ?>">
+    <a class="nav-link pb-0" href="/otomatis">
+      <i class="fas fa-fw fa-adjust"></i>
+      <span>Cari Data Otomatis</span></a>
+  </li>
+
   <li class="nav-item <?= url_is('/kriteria') || url_is('sub-kriteria') || url_is('sub-kriteria/create') ? 'active' : '' ?>">
     <a class="nav-link collapsed pb-0" href="#" data-toggle="collapse" data-target="#kriteriaCollapse" aria-expanded="true" aria-controls="kriteriaCollapse">
       <i class="fas fa-fw fa-table"></i>
@@ -34,12 +40,6 @@
         <a class="collapse-item" href="/sub-kriteria">Sub Kriteria</a>
       </div>
     </div>
-  </li>
-
-  <li class="nav-item <?= url_is('/otomatis') ? 'active' : '' ?>">
-    <a class="nav-link pb-0" href="/otomatis">
-      <i class="fas fa-fw fa-adjust"></i>
-      <span>Cari Data Otomatis</span></a>
   </li>
 
   <li class="nav-item <?= url_is('/bobot') ? 'active' : '' ?>">

@@ -154,19 +154,6 @@
                       <div class="invalid-feedback"></div>
                     </div>
                     <div class="form-group">
-                      <label for="kartu_grafis">Kartu Grafis</label>
-                      <select name="kartu_grafis" id="kartu_grafis" class="form-control">
-                        <option value="">-- Pilih --</option>
-                        <?php foreach ($kartu_grafis_options as $row) : ?>
-                          <option value="<?= $row['nama']; ?>"><?= $row['nama']; ?></option>
-                        <?php endforeach; ?>
-                      </select>
-                      <div class="invalid-feedback"></div>
-                    </div>
-                  </div>
-
-                  <div class="col-xl-3">
-                    <div class="form-group">
                       <label for="sistem_operasi">Sistem Operasi</label>
                       <select name="sistem_operasi" id="sistem_operasi" class="form-control">
                         <option value="">-- Pilih --</option>
@@ -176,6 +163,9 @@
                       </select>
                       <div class="invalid-feedback"></div>
                     </div>
+                  </div>
+
+                  <div class="col-xl-3">
                     <div class="form-group">
                       <label for="masa_garansi">Garansi (bulan)</label>
                       <p class="small text-sm">Jika garansi tidak ada, isi dengan nilai 0</p>
@@ -305,19 +295,6 @@
                       <div class="invalid-feedback"></div>
                     </div>
                     <div class="form-group">
-                      <label for="kartu_grafis_ubah">Kartu Grafis</label>
-                      <select name="kartu_grafis" id="kartu_grafis" class="form-control">
-                        <option value="">-- Pilih --</option>
-                        <?php foreach ($kartu_grafis_options as $row) : ?>
-                          <option value="<?= $row['nama']; ?>"><?= $row['nama']; ?></option>
-                        <?php endforeach; ?>
-                      </select>
-                      <div class="invalid-feedback"></div>
-                    </div>
-                  </div>
-
-                  <div class="col-xl-3">
-                    <div class="form-group">
                       <label for="sistem_operasi_ubah">Sistem Operasi</label>
                       <select name="sistem_operasi" id="sistem_operasi" class="form-control">
                         <option value="">-- Pilih --</option>
@@ -327,6 +304,9 @@
                       </select>
                       <div class="invalid-feedback"></div>
                     </div>
+                  </div>
+
+                  <div class="col-xl-3">
                     <div class="form-group">
                       <label for="masa_garansi_ubah">Garansi (bulan)</label>
                       <p class="small text-sm">Jika garansi tidak ada, isi dengan nilai 0</p>
@@ -419,11 +399,6 @@
                         <div class="col-md-3 text-gray-900">Ukuran Layar</div>
                         <div class="col-md-1 d-none d-md-block">:</div>
                         <div class="col-md-8 ukuran_layar"></div>
-                      </div>
-                      <div class="row">
-                        <div class="col-md-3 text-gray-900">Kartu Grafis</div>
-                        <div class="col-md-1 d-none d-md-block">:</div>
-                        <div class="col-md-8 kartu_grafis"></div>
                       </div>
                       <div class="row">
                         <div class="col-md-3 text-gray-900">Sistem Operasi</div>

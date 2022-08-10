@@ -21,7 +21,6 @@ class Alternatif extends Migration
       'tipe_penyimpanan VARCHAR(64)',
       'kapasitas_penyimpanan INT UNSIGNED',
       'ukuran_layar VARCHAR(64)',
-      'kartu_grafis VARCHAR(64)',
       'sistem_operasi VARCHAR(64)',
       'masa_garansi INT UNSIGNED',
       'kondisi_produk VARCHAR(64)',

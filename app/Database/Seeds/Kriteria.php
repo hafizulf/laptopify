@@ -21,7 +21,6 @@ class Kriteria extends Seeder
       ['nama' => 'tipe_penyimpanan', 'jenis' => 'bc', 'data_kuantitatif' => 0],
       ['nama' => 'kapasitas_penyimpanan', 'jenis' => 'bc', 'data_kuantitatif' => 1],
       ['nama' => 'ukuran_layar', 'jenis' => 'bc', 'data_kuantitatif' => 0],
-      ['nama' => 'kartu_grafis', 'jenis' => 'bc', 'data_kuantitatif' => 0],
       ['nama' => 'sistem_operasi', 'jenis' => 'bc', 'data_kuantitatif' => 0],
       ['nama' => 'masa_garansi', 'jenis' => 'bc', 'data_kuantitatif' => 1],
       ['nama' => 'kondisi_produk', 'jenis' => 'bc', 'data_kuantitatif' => 0],

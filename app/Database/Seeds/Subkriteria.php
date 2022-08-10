@@ -29,16 +29,12 @@ class Subkriteria extends Seeder
       ['id_kriteria' => 8, 'nama' => 'Portable (13-14,9 inch)', 'nilai_preferensi' => 3],
       ['id_kriteria' => 8, 'nama' => 'Large (>17,3 inch)', 'nilai_preferensi' => 2],
       ['id_kriteria' => 8, 'nama' => 'Ultra Portable (<13 inch)', 'nilai_preferensi' => 1],
-      ['id_kriteria' => 9, 'nama' => 'nvidia geforce', 'nilai_preferensi' => 4],
-      ['id_kriteria' => 9, 'nama' => 'amd radeon', 'nilai_preferensi' => 3],
-      ['id_kriteria' => 9, 'nama' => 'intel hd/uhd', 'nilai_preferensi' => 2],
+      ['id_kriteria' => 9, 'nama' => 'windows', 'nilai_preferensi' => 4],
+      ['id_kriteria' => 9, 'nama' => 'macos based', 'nilai_preferensi' => 3],
+      ['id_kriteria' => 9, 'nama' => 'linux based', 'nilai_preferensi' => 2],
       ['id_kriteria' => 9, 'nama' => 'lain', 'nilai_preferensi' => 1],
-      ['id_kriteria' => 10, 'nama' => 'windows', 'nilai_preferensi' => 4],
-      ['id_kriteria' => 10, 'nama' => 'macos based', 'nilai_preferensi' => 3],
-      ['id_kriteria' => 10, 'nama' => 'linux based', 'nilai_preferensi' => 2],
-      ['id_kriteria' => 10, 'nama' => 'lain', 'nilai_preferensi' => 1],
-      ['id_kriteria' => 12, 'nama' => 'baru', 'nilai_preferensi' => 2],
-      ['id_kriteria' => 12, 'nama' => 'bekas', 'nilai_preferensi' => 1],
+      ['id_kriteria' => 11, 'nama' => 'baru', 'nilai_preferensi' => 2],
+      ['id_kriteria' => 11, 'nama' => 'bekas', 'nilai_preferensi' => 1],
     ];
 
     $this->db->table('sub_kriteria')->insertBatch($data);

@@ -17,10 +17,9 @@ class Pembobotan extends Seeder
       ['id_kriteria' => 6, 'nilai_bobot' => 91],
       ['id_kriteria' => 7, 'nilai_bobot' => 92],
       ['id_kriteria' => 8, 'nilai_bobot' => 84],
-      ['id_kriteria' => 9, 'nilai_bobot' => 86],
-      ['id_kriteria' => 10, 'nilai_bobot' => 91],
-      ['id_kriteria' => 11, 'nilai_bobot' => 83],
-      ['id_kriteria' => 12, 'nilai_bobot' => 96],
+      ['id_kriteria' => 9, 'nilai_bobot' => 91],
+      ['id_kriteria' => 10, 'nilai_bobot' => 83],
+      ['id_kriteria' => 11, 'nilai_bobot' => 96],
     ];
 
     $this->db->table('pembobotan')->insertBatch($data);
