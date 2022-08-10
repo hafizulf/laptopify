@@ -221,7 +221,7 @@
               <div class="modal-body">
                 <?= csrf_field(); ?>
 
-                <input type="hidden" name="id">
+                <input type="hidden" name="id_alternatif">
 
                 <div class="row">
                   <div class="col-xl-3">
