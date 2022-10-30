@@ -24,8 +24,8 @@ git clone https://github.com/hafizulf/laptopify.git
 # copy
 cp env .env
 
-# you can use ENV Variable for get_data Method in Automatic Controller, instead using manual path
-# for example PHP_SPARK_PATH = '...'
+# set environment
+CI_ENVIRONMENT = development
 
 # activate and change app base url, example:
 app.baseURL = 'http://localhost:8080/'
@@ -37,6 +37,9 @@ database.default.username = user
 database.default.password = pass
 database.default.DBDriver = MySQLi
 database.default.DBPrefix =
+
+# you can use ENV Variable for get_data Method in Automatic Controller, instead using manual path
+# for example PHP_SPARK_PATH = 'C\\xampp\\repo\\spark'
 ```
 
 - Install app dependencies
@@ -46,7 +49,21 @@ database.default.DBPrefix =
   composer install
 ```
 
-- create a new `database`
+- create a new `database`, set database name based on ```database.default.database =```
+- migrate table
+
+```
+  php spark migrate
+```
+
+- run `seeder.sh` for running all seeder
+
+```
+  # run seeder.sh
+  ./seeder.sh
+  # or run each seeder
+  php spark db:seed seederName
+```
 - run the application
 
 ```
