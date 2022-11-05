@@ -30,7 +30,7 @@ class Kriteria extends BaseController
 
     $jumlahKriteria = $this->model->countAllResults();
 
-    if ($jumlahKriteria >= 12) {
+    if ($jumlahKriteria >= 11) {
       return $this->response->setJSON(['status' => TRUE, 'warning' => 'Data kriteria sudah mencapai nilai maksimum!']);
     }
 
