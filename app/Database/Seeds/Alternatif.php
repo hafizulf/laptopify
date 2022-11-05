@@ -9,7 +9,7 @@ class Alternatif extends Seeder
 {
   public function run()
   {
-    $json = file_get_contents('data/products.json');
+    $json = file_get_contents(ROOTPATH . 'data/products.json');
     $products = json_decode($json);
 
     foreach ($products as $product) {

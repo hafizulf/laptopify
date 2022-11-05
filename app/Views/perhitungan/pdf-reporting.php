@@ -57,10 +57,6 @@
                 <td>: <?= $row['ukuran_layar']; ?></td>
               </tr>
               <tr>
-                <td>Kartu Grafis</td>
-                <td>: <?= $row['kartu_grafis']; ?></td>
-              </tr>
-              <tr>
                 <td>Sistem Operasi</td>
                 <td>: <?= $row['sistem_operasi']; ?></td>
               </tr>
